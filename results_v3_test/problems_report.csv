@@ -1,0 +1,11 @@
+device_id,installation_id,problem_type,severity,start,end,duration_hours,description
+9f5c487f-1687-4f51-b40b-bb8a941dbfdf,a645f52d-f674-4e11-831c-84583029135c,condensation_risk,warning,2024-06-21 13:35:00,2024-06-30 19:50:00,222.25,Cavity humidity sustained at 78.6% (peak 85.2%) for >48h
+9f5c487f-1687-4f51-b40b-bb8a941dbfdf,a645f52d-f674-4e11-831c-84583029135c,condensation_risk,warning,2024-07-09 20:00:00,2024-07-13 09:05:00,85.08333333333333,Cavity humidity sustained at 82.2% (peak 85.6%) for >48h
+9f5c487f-1687-4f51-b40b-bb8a941dbfdf,a645f52d-f674-4e11-831c-84583029135c,condensation_risk,warning,2024-08-15 07:50:00,2024-08-19 03:55:00,92.08333333333333,Cavity humidity sustained at 78.1% (peak 81.4%) for >48h
+9f5c487f-1687-4f51-b40b-bb8a941dbfdf,a645f52d-f674-4e11-831c-84583029135c,drying_failure,warning,2023-11-16 14:15:00,2026-01-22 14:45:00,19152.5,Chronic moisture: resistance STAGNANT at 11.2% (slope: -0.2 pct/quarter over 27 months)
+3c64a8a6-3f82-4541-a33f-9075d488b805,a645f52d-f674-4e11-831c-84583029135c,condensation_risk,warning,2023-11-16 14:15:00,2025-02-22 11:05:00,11132.833333333334,Cavity humidity sustained at 81.0% (peak 87.7%) for >48h
+3c64a8a6-3f82-4541-a33f-9075d488b805,a645f52d-f674-4e11-831c-84583029135c,condensation_risk,warning,2025-09-27 10:10:00,2025-10-04 09:55:00,167.75,Cavity humidity sustained at 76.9% (peak 81.4%) for >48h
+3c64a8a6-3f82-4541-a33f-9075d488b805,a645f52d-f674-4e11-831c-84583029135c,condensation_risk,warning,2025-10-12 08:45:00,2025-10-18 09:35:00,144.83333333333334,Cavity humidity sustained at 75.5% (peak 81.4%) for >48h
+3c64a8a6-3f82-4541-a33f-9075d488b805,a645f52d-f674-4e11-831c-84583029135c,condensation_risk,warning,2025-11-15 10:50:00,2025-11-17 11:35:00,48.75,Cavity humidity sustained at 75.9% (peak 80.6%) for >48h
+3c64a8a6-3f82-4541-a33f-9075d488b805,a645f52d-f674-4e11-831c-84583029135c,condensation_risk,warning,2025-12-06 10:15:00,2025-12-24 15:45:00,437.5,Cavity humidity sustained at 76.5% (peak 82.6%) for >48h
+3c64a8a6-3f82-4541-a33f-9075d488b805,a645f52d-f674-4e11-831c-84583029135c,condensation_risk,warning,2026-01-08 10:30:00,2026-01-17 11:15:00,216.75,Cavity humidity sustained at 76.0% (peak 81.4%) for >48h

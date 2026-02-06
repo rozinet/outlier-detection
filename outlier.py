@@ -44,21 +44,26 @@ COLUMN_NAMES = ["temp", "hum_ambient", "hum_cavity", "moisture"]
 CONFIG = {
     "resample_interval": "5min",
 
+    # --- Preprocessing ---
+    "median_filter_window": 7,              # median filter kernel size (samples); removes short spikes
+    "smoothing_window": 6,                  # rolling mean window (samples, ~30min); smooths remaining noise
+    "min_data_hours": 48,                   # skip devices with less data than this
+
     # --- Moisture intrusion ---
     # A drop in moisture_resistance over 24h that exceeds this pct-points = alert
-    "moisture_drop_threshold_24h": 2.0,     # pct-points drop in 24h
+    "moisture_drop_threshold_24h": 3.0,     # pct-points drop in 24h (was 2.0)
     "moisture_drop_threshold_7d": 5.0,      # pct-points drop in 7 days
     # Cavity humidity rise that co-occurs with moisture drop
-    "cavity_rise_threshold_24h": 5.0,       # pct-points rise in 24h
+    "cavity_rise_threshold_24h": 8.0,       # pct-points rise in 24h (was 5.0)
     # Minimum duration (hours) before flagging as intrusion (not transient)
-    "moisture_intrusion_min_hours": 6,
+    "moisture_intrusion_min_hours": 24,     # at least 1 day (was 6)
 
     # --- Condensation risk ---
     "condensation_warning_pct": 80.0,       # cavity hum % -> mold risk
     "condensation_danger_pct": 90.0,        # cavity hum % -> condensation likely
     "condensation_critical_pct": 95.0,      # cavity hum % -> active condensation
     # Minimum sustained duration (hours) above threshold to flag
-    "condensation_min_hours": 12,
+    "condensation_min_hours": 48,           # at least 2 days (was 12)
 
     # --- Drying failure ---
     # Weekly rolling average; if moisture trend reverses or plateaus for this many weeks
@@ -67,13 +72,17 @@ CONFIG = {
     "drying_reversal_threshold": 1.0,       # moisture_resistance drops by this = reversal
 
     # --- Sensor malfunction ---
-    "flatline_window_hours": 6,             # zero variance for this long = flatline
-    "jump_threshold_temp": 5.0,             # deg C jump in 5 min
-    "jump_threshold_humidity": 15.0,        # pct-points jump in 5 min
-    "jump_threshold_moisture": 10.0,        # pct-points jump in 5 min
+    "flatline_window_hours": 24,            # zero variance for this long = flatline (was 6)
+    "jump_threshold_temp": 10.0,            # deg C jump in 5 min (was 5.0)
+    "jump_threshold_humidity": 25.0,        # pct-points jump in 5 min (was 15.0)
+    "jump_threshold_moisture": 20.0,        # pct-points jump in 5 min (was 10.0)
+    "jump_min_count": 3,                    # require at least this many jumps in a cluster
     "temp_range": (-40.0, 60.0),            # physically possible range
     "humidity_range": (0.0, 100.0),
     "moisture_range": (0.0, 100.0),
+
+    # --- Episode merging ---
+    "episode_merge_gap_hours": 6,           # merge episodes separated by less than this
 }
 
 # Severity levels
@@ -181,6 +190,56 @@ def load_device_data(data_dir: str) -> dict[str, pd.DataFrame]:
 
 
 # ---------------------------------------------------------------------------
+# Step 2: Preprocessing - noise removal
+# ---------------------------------------------------------------------------
+
+def preprocess_device_data(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Preprocess sensor data to remove noise and short spikes.
+
+    1. Median filter: removes isolated spikes (salt-and-pepper noise from sensor glitches)
+       without blurring real step changes. Window of 7 samples = 35 min.
+    2. Light smoothing: rolling mean to reduce remaining high-frequency noise.
+       Window of 6 samples = 30 min.
+    3. Forward-fill small gaps (up to 30 min = 6 samples).
+
+    The original raw data is preserved in columns with '_raw' suffix for
+    sensor malfunction detection (which needs to see the actual spikes).
+    """
+    from scipy.ndimage import median_filter
+
+    median_k = CONFIG["median_filter_window"]
+    smooth_k = CONFIG["smoothing_window"]
+
+    processed = df.copy()
+
+    for col in COLUMN_NAMES:
+        if col not in processed.columns:
+            continue
+        raw = processed[col].values.copy()
+
+        # Save raw for sensor malfunction detector
+        processed[f"{col}_raw"] = raw
+
+        # Step 1: Median filter (ignoring NaNs by filling temporarily)
+        mask = np.isnan(raw)
+        if mask.all():
+            continue
+        filled = pd.Series(raw).ffill().bfill().values
+        filtered = median_filter(filled, size=median_k)
+        filtered[mask] = np.nan  # restore NaN positions
+
+        # Step 2: Light rolling mean smoothing
+        smoothed = pd.Series(filtered, index=df.index).rolling(
+            smooth_k, min_periods=1, center=True
+        ).mean()
+
+        processed[col] = smoothed
+
+    return processed
+
+
+# ---------------------------------------------------------------------------
 # Detector 1: MOISTURE INTRUSION
 # ---------------------------------------------------------------------------
 
@@ -192,7 +251,7 @@ def detect_moisture_intrusion(df: pd.DataFrame, device_id: str) -> list[Problem]
     and cavity humidity RISES. We look for:
       - Rapid moisture_resistance decrease (24h and 7d windows)
       - Concurrent cavity humidity increase
-      - Sustained for >6h (not transient rain splash)
+      - Sustained for >24h (not transient rain splash)
     """
     problems = []
 
@@ -264,12 +323,13 @@ def detect_condensation_risk(df: pd.DataFrame, device_id: str) -> list[Problem]:
     """
     Detect sustained high cavity humidity indicating condensation/mold risk.
 
+    Produces max ~1 episode per quarter per severity level by using a large
+    merge gap (7 days). Chronic devices get a few long episodes instead of many short ones.
+
     Thresholds (building science):
       - >80% RH sustained -> mold growth conditions (WARNING)
       - >90% RH sustained -> condensation likely (DANGER)
       - >95% RH sustained -> active condensation (CRITICAL)
-
-    Also computes dew point proximity when temperature is available.
     """
     problems = []
 
@@ -289,6 +349,7 @@ def detect_condensation_risk(df: pd.DataFrame, device_id: str) -> list[Problem]:
             flag, df, device_id,
             problem_type="condensation_risk",
             min_hours=CONFIG["condensation_min_hours"],
+            merge_gap_hours=24 * 7,  # 7-day merge gap: bridges weekly oscillations
             detail_fn=lambda sub_df: {
                 "max_cavity_humidity": float(sub_df["hum_cavity"].max()),
                 "mean_cavity_humidity": float(sub_df["hum_cavity"].mean()),
@@ -332,9 +393,11 @@ def detect_drying_failure(df: pd.DataFrame, device_id: str) -> list[Problem]:
     """
     Detect when construction is not drying as expected.
 
-    After construction/installation, moisture should gradually decrease
-    (moisture_resistance should INCREASE over weeks/months).
-    A plateau or reversal in this trend indicates a problem.
+    Produces a SINGLE chronic assessment per device by analyzing the full data
+    period rather than many fragmented episodes. Compares year-over-year trend
+    (aligned with Senzomatic quarterly reports).
+
+    Output: max 1-2 problems per device (one for moisture, one for cavity humidity).
     """
     problems = []
 
@@ -344,82 +407,104 @@ def detect_drying_failure(df: pd.DataFrame, device_id: str) -> list[Problem]:
     if not has_moisture and not has_cavity:
         return problems
 
-    eval_weeks = CONFIG["drying_eval_window_weeks"]
-    w_weekly = 288 * 7  # samples in a week
+    # Need at least 3 months of data for meaningful trend
+    data_span_days = (df.index[-1] - df.index[0]).total_seconds() / 86400
+    if data_span_days < 90:
+        return problems
 
-    if has_moisture and len(df) > w_weekly * eval_weeks:
-        # Weekly rolling mean of moisture_resistance
-        weekly_mean = df["moisture"].rolling(w_weekly, min_periods=w_weekly // 2).mean()
+    # --- Moisture resistance chronic assessment ---
+    if has_moisture:
+        moisture = df["moisture"].dropna()
+        if len(moisture) > 288 * 30:  # at least 1 month
+            # Compute quarterly averages
+            quarterly = moisture.resample("QS").agg(["mean", "std", "min", "max"])
 
-        # Trend over evaluation window: compare current week to eval_weeks ago
-        trend = weekly_mean.diff(w_weekly * eval_weeks)
+            # Overall trend: linear regression over quarterly means
+            q_means = quarterly["mean"].dropna()
+            if len(q_means) >= 2:
+                x = np.arange(len(q_means))
+                slope = np.polyfit(x, q_means.values, 1)[0]  # pct-points per quarter
+                current_avg = float(moisture.iloc[-288*30:].mean())  # last month avg
+                overall_avg = float(moisture.mean())
 
-        # Reversal: moisture_resistance is DECREASING over the evaluation window
-        reversal = trend < -CONFIG["drying_reversal_threshold"]
-        # Plateau: moisture_resistance barely changed
-        plateau = trend.abs() < CONFIG["drying_plateau_tolerance"]
+                # Classify: is the device drying (improving) or not?
+                is_wet = current_avg < 50  # moisture resistance below 50% = wet
+                is_worsening = slope < -0.5  # losing >0.5 pct per quarter
+                is_stagnant = abs(slope) < 0.3 and is_wet
+                is_improving = slope > 0.5
 
-        # Only flag if moisture is still high (< 50% suggests still wet)
-        still_wet = df["moisture"] < 50
+                if is_wet and is_worsening:
+                    problems.append(Problem(
+                        problem_type="drying_failure",
+                        severity=DANGER,
+                        device_id=device_id,
+                        start=df.index[0],
+                        end=df.index[-1],
+                        description=(
+                            f"Chronic moisture: resistance WORSENING at {slope:+.1f} pct/quarter "
+                            f"(current avg: {current_avg:.1f}%, overall: {overall_avg:.1f}%)"
+                        ),
+                        details={
+                            "trend_direction": "WORSENING",
+                            "slope_per_quarter": float(slope),
+                            "current_moisture": current_avg,
+                            "overall_moisture": overall_avg,
+                            "data_span_months": data_span_days / 30,
+                        },
+                    ))
+                elif is_stagnant:
+                    problems.append(Problem(
+                        problem_type="drying_failure",
+                        severity=WARNING,
+                        device_id=device_id,
+                        start=df.index[0],
+                        end=df.index[-1],
+                        description=(
+                            f"Chronic moisture: resistance STAGNANT at {current_avg:.1f}% "
+                            f"(slope: {slope:+.1f} pct/quarter over {data_span_days/30:.0f} months)"
+                        ),
+                        details={
+                            "trend_direction": "STAGNANT",
+                            "slope_per_quarter": float(slope),
+                            "current_moisture": current_avg,
+                            "overall_moisture": overall_avg,
+                            "data_span_months": data_span_days / 30,
+                        },
+                    ))
 
-        flag_reversal = reversal & still_wet
-        flag_plateau = plateau & still_wet
+    # --- Cavity humidity chronic assessment ---
+    if has_cavity:
+        hum = df["hum_cavity"].dropna()
+        if len(hum) > 288 * 30:
+            quarterly_hum = hum.resample("QS").agg(["mean", "std", "min", "max"])
+            q_hum_means = quarterly_hum["mean"].dropna()
 
-        problems.extend(_extract_episodes(
-            flag_reversal, df, device_id,
-            problem_type="drying_failure",
-            min_hours=24 * 7,  # at least 1 week
-            detail_fn=lambda sub_df: {
-                "trend_direction": "REVERSAL",
-                "moisture_change": float(trend.loc[sub_df.index].mean()),
-                "current_moisture": float(sub_df["moisture"].mean()),
-            },
-            severity_fn=lambda sub_df: DANGER,
-            desc_fn=lambda sub_df, details: (
-                f"Drying REVERSAL: moisture resistance dropped {abs(details['moisture_change']):.1f} pct "
-                f"over {eval_weeks} weeks (current avg: {details['current_moisture']:.1f}%)"
-            ),
-        ))
+            if len(q_hum_means) >= 2:
+                x = np.arange(len(q_hum_means))
+                hum_slope = np.polyfit(x, q_hum_means.values, 1)[0]
+                current_hum = float(hum.iloc[-288*30:].mean())
 
-        problems.extend(_extract_episodes(
-            flag_plateau, df, device_id,
-            problem_type="drying_failure",
-            min_hours=24 * 14,  # at least 2 weeks of plateau
-            detail_fn=lambda sub_df: {
-                "trend_direction": "PLATEAU",
-                "moisture_change": float(trend.loc[sub_df.index].mean()),
-                "current_moisture": float(sub_df["moisture"].mean()),
-            },
-            severity_fn=lambda sub_df: WARNING,
-            desc_fn=lambda sub_df, details: (
-                f"Drying PLATEAU: moisture resistance stagnant at {details['current_moisture']:.1f}% "
-                f"for >{eval_weeks} weeks"
-            ),
-        ))
+                # Flag if humidity is high AND rising
+                is_high = current_hum > 75
+                is_rising = hum_slope > 0.5  # rising >0.5 pct per quarter
 
-    # Also check cavity humidity long-term trend (should decrease)
-    if has_cavity and len(df) > w_weekly * eval_weeks:
-        weekly_hum = df["hum_cavity"].rolling(w_weekly, min_periods=w_weekly // 2).mean()
-        hum_trend = weekly_hum.diff(w_weekly * eval_weeks)
-
-        # Cavity humidity INCREASING over evaluation window while still high
-        hum_rising = (hum_trend > 2.0) & (df["hum_cavity"] > 70)
-
-        problems.extend(_extract_episodes(
-            hum_rising, df, device_id,
-            problem_type="drying_failure",
-            min_hours=24 * 7,
-            detail_fn=lambda sub_df: {
-                "trend_direction": "CAVITY_HUM_RISING",
-                "humidity_change": float(hum_trend.loc[sub_df.index].mean()),
-                "current_humidity": float(sub_df["hum_cavity"].mean()),
-            },
-            severity_fn=lambda sub_df: DANGER if sub_df["hum_cavity"].mean() > 85 else WARNING,
-            desc_fn=lambda sub_df, details: (
-                f"Cavity humidity rising: +{details['humidity_change']:.1f}% over {eval_weeks} weeks "
-                f"(current avg: {details['current_humidity']:.1f}%)"
-            ),
-        ))
+                if is_high and is_rising:
+                    problems.append(Problem(
+                        problem_type="drying_failure",
+                        severity=DANGER if current_hum > 85 else WARNING,
+                        device_id=device_id,
+                        start=df.index[0],
+                        end=df.index[-1],
+                        description=(
+                            f"Cavity humidity RISING: {hum_slope:+.1f}%/quarter "
+                            f"(current avg: {current_hum:.1f}%)"
+                        ),
+                        details={
+                            "trend_direction": "CAVITY_HUM_RISING",
+                            "slope_per_quarter": float(hum_slope),
+                            "current_humidity": current_hum,
+                        },
+                    ))
 
     return problems
 
@@ -430,14 +515,18 @@ def detect_drying_failure(df: pd.DataFrame, device_id: str) -> list[Problem]:
 
 def detect_sensor_malfunction(df: pd.DataFrame, device_id: str) -> list[Problem]:
     """
-    Detect sensor hardware issues:
+    Detect sensor hardware issues using RAW (unsmoothed) data:
       - Flatline: zero variance for extended period (sensor stuck)
-      - Jumps: physically impossible rate of change
-      - Out-of-range: values outside physical bounds
+      - Jumps: physically impossible rate of change, requires cluster of jumps
+      - Out-of-range: values outside physical bounds, sustained
+
+    Caps total episodes at 10 per device. If a sensor has chronic issues,
+    reports a summary instead of hundreds of episodes.
     """
     problems = []
 
     flatline_window = int(CONFIG["flatline_window_hours"] * 12)  # samples
+    min_jump_count = CONFIG.get("jump_min_count", 3)
 
     for col, label, jump_thresh, valid_range in [
         ("temp", "Temperature", CONFIG["jump_threshold_temp"], CONFIG["temp_range"]),
@@ -448,9 +537,11 @@ def detect_sensor_malfunction(df: pd.DataFrame, device_id: str) -> list[Problem]
         if col not in df.columns:
             continue
 
-        series = df[col]
+        # Use raw data for malfunction detection (not smoothed)
+        raw_col = f"{col}_raw"
+        series = df[raw_col] if raw_col in df.columns else df[col]
 
-        # --- Flatline detection ---
+        # --- Flatline detection (use raw data to catch stuck sensors) ---
         rolling_std = series.rolling(flatline_window, min_periods=flatline_window // 2).std()
         flatline = rolling_std < 1e-6  # effectively zero variance
 
@@ -458,50 +549,64 @@ def detect_sensor_malfunction(df: pd.DataFrame, device_id: str) -> list[Problem]
             flatline, df, device_id,
             problem_type="sensor_malfunction",
             min_hours=CONFIG["flatline_window_hours"],
-            detail_fn=lambda sub_df, c=col: {
+            detail_fn=lambda sub_df, c=col, rc=raw_col: {
                 "subtype": "flatline",
                 "channel": c,
-                "stuck_value": float(sub_df[c].iloc[0]) if c in sub_df.columns else None,
+                "stuck_value": float(sub_df[rc].iloc[0]) if rc in sub_df.columns else (
+                    float(sub_df[c].iloc[0]) if c in sub_df.columns else None
+                ),
             },
             severity_fn=lambda sub_df: WARNING,
             desc_fn=lambda sub_df, details: (
                 f"FLATLINE: {label} stuck at {details.get('stuck_value', '?'):.2f} "
                 f"for {(sub_df.index[-1] - sub_df.index[0]).total_seconds() / 3600:.0f}h"
             ),
+            merge_gap_hours=48,  # merge flatlines within 2 days (was 1h)
         ))
 
-        # --- Jump detection ---
+        # --- Jump detection (require cluster of jumps, not isolated) ---
         delta = series.diff().abs()
         jumps = delta > jump_thresh
 
-        # Each jump is a point event, group nearby jumps
-        problems.extend(_extract_episodes(
-            jumps, df, device_id,
-            problem_type="sensor_malfunction",
-            min_hours=0,  # even single jumps matter
-            detail_fn=lambda sub_df, c=col: {
-                "subtype": "jump",
-                "channel": c,
-                "max_jump": float(delta.loc[sub_df.index].max()),
-            },
-            severity_fn=lambda sub_df: DANGER if len(sub_df) > 3 else WARNING,
-            desc_fn=lambda sub_df, details: (
-                f"JUMP: {label} changed by {details.get('max_jump', 0):.1f} in single step"
-            ),
-        ))
+        # Only flag if there are enough jumps in a 1-hour window (12 samples)
+        jump_density = jumps.astype(int).rolling(12, min_periods=1).sum()
+        jump_cluster = jump_density >= min_jump_count
 
-        # --- Out-of-range detection ---
+        if jump_cluster.any():
+            problems.extend(_extract_episodes(
+                jump_cluster, df, device_id,
+                problem_type="sensor_malfunction",
+                min_hours=0,  # clusters are already filtered by count
+                detail_fn=lambda sub_df, c=col, rc=raw_col: {
+                    "subtype": "jump",
+                    "channel": c,
+                    "max_jump": float(delta.loc[sub_df.index].max()),
+                    "jump_count": int(jumps.loc[sub_df.index].sum()),
+                },
+                severity_fn=lambda sub_df: DANGER,
+                desc_fn=lambda sub_df, details: (
+                    f"JUMP CLUSTER: {label} had {details.get('jump_count', 0)} jumps "
+                    f"(max {details.get('max_jump', 0):.1f}) in {(sub_df.index[-1] - sub_df.index[0]).total_seconds() / 3600:.1f}h"
+                ),
+                merge_gap_hours=24,  # merge jump clusters within 1 day (was 2h)
+            ))
+
+        # --- Out-of-range detection (require sustained, not single sample) ---
         oor = (series < valid_range[0]) | (series > valid_range[1])
 
         problems.extend(_extract_episodes(
             oor, df, device_id,
             problem_type="sensor_malfunction",
-            min_hours=0,
-            detail_fn=lambda sub_df, c=col: {
+            min_hours=1,  # at least 1 hour of out-of-range
+            detail_fn=lambda sub_df, c=col, rc=raw_col: {
                 "subtype": "out_of_range",
                 "channel": c,
-                "min_value": float(sub_df[c].min()) if c in sub_df.columns else None,
-                "max_value": float(sub_df[c].max()) if c in sub_df.columns else None,
+                "min_value": float(sub_df[rc].min()) if rc in sub_df.columns else (
+                    float(sub_df[c].min()) if c in sub_df.columns else None
+                ),
+                "max_value": float(sub_df[rc].max()) if rc in sub_df.columns else (
+                    float(sub_df[c].max()) if c in sub_df.columns else None
+                ),
             },
             severity_fn=lambda sub_df: CRITICAL,
             desc_fn=lambda sub_df, details: (
@@ -509,6 +614,32 @@ def detect_sensor_malfunction(df: pd.DataFrame, device_id: str) -> list[Problem]
                 f"(valid: {valid_range})"
             ),
         ))
+
+    # Cap at 10 episodes per device. If more, consolidate into a chronic summary.
+    if len(problems) > 10:
+        total_count = len(problems)
+        severity_order = {CRITICAL: 3, DANGER: 2, WARNING: 1, OK: 0}
+        max_severity = max(problems, key=lambda p: severity_order.get(p.severity, 0)).severity
+        earliest = min(p.start for p in problems)
+        latest = max(p.end for p in problems)
+        total_hours = sum(p.duration_hours for p in problems)
+
+        # Keep top 5 most severe, replace rest with a summary
+        problems.sort(key=lambda p: (severity_order.get(p.severity, 0), p.duration_hours), reverse=True)
+        kept = problems[:5]
+        kept.append(Problem(
+            problem_type="sensor_malfunction",
+            severity=max_severity,
+            device_id=device_id,
+            start=earliest,
+            end=latest,
+            description=(
+                f"CHRONIC SENSOR ISSUES: {total_count} episodes detected "
+                f"({total_hours:.0f}h total malfunction time) - sensor may need replacement"
+            ),
+            details={"subtype": "chronic_summary", "total_episodes": total_count, "total_hours": total_hours},
+        ))
+        problems = kept
 
     return problems
 
@@ -526,20 +657,48 @@ def _extract_episodes(
     detail_fn,
     severity_fn,
     desc_fn,
+    merge_gap_hours: float | None = None,
 ) -> list[Problem]:
-    """Find contiguous True regions in flag, create Problem for each."""
+    """
+    Find contiguous True regions in flag, merge nearby ones, create Problem for each.
+
+    Args:
+        merge_gap_hours: If two True regions are separated by less than this many hours,
+            merge them into one episode. Defaults to CONFIG["episode_merge_gap_hours"].
+    """
     problems = []
     if flag.sum() == 0:
         return problems
+
+    if merge_gap_hours is None:
+        merge_gap_hours = CONFIG["episode_merge_gap_hours"]
 
     # Find contiguous groups of True
     flag = flag.reindex(df.index).fillna(False)
     groups = (flag != flag.shift()).cumsum()
     flagged_groups = groups[flag]
 
+    # Collect raw intervals first
+    intervals = []
     for _, grp in flagged_groups.groupby(flagged_groups):
-        start = grp.index[0]
-        end = grp.index[-1]
+        intervals.append((grp.index[0], grp.index[-1]))
+
+    if not intervals:
+        return problems
+
+    # Merge nearby intervals (bridge small gaps)
+    merged = [intervals[0]]
+    for start, end in intervals[1:]:
+        prev_start, prev_end = merged[-1]
+        gap_hours = (start - prev_end).total_seconds() / 3600
+        if gap_hours <= merge_gap_hours:
+            # Merge with previous interval
+            merged[-1] = (prev_start, end)
+        else:
+            merged.append((start, end))
+
+    # Create problems from merged intervals
+    for start, end in merged:
         duration_hours = (end - start).total_seconds() / 3600
 
         if duration_hours < min_hours:
@@ -613,6 +772,9 @@ def visualize_device_problems(
         CRITICAL: "#DC143C",  # crimson
     }
 
+    # Separate acute problems (short) from chronic (>90 days) for shading
+    acute_problems = [p for p in problems if p.duration_hours < 90 * 24]
+
     # Plot each channel
     for ax, col in zip(axes, available):
         ax.plot(df.index, df[col], linewidth=0.4, color="#333", alpha=0.8)
@@ -625,8 +787,8 @@ def visualize_device_problems(
             ax.axhline(90, color=severity_colors[DANGER], linestyle="--", linewidth=0.8, alpha=0.7)
             ax.axhline(95, color=severity_colors[CRITICAL], linestyle="--", linewidth=0.8, alpha=0.7)
 
-        # Shade problem periods
-        for p in problems:
+        # Only shade ACUTE problem periods on data panels (not chronic ones that cover everything)
+        for p in acute_problems:
             color = severity_colors.get(p.severity, "#999")
             ax.axvspan(p.start, p.end, alpha=0.15, color=color, zorder=0)
 
@@ -780,8 +942,20 @@ def run_pipeline(
     all_problems: dict[str, list[Problem]] = {}
     summary_rows = []
 
+    # Preprocess all devices (noise removal)
+    print("\nPreprocessing: median filter + smoothing...")
+    for device_id in list(devices.keys()):
+        df = devices[device_id]
+        # Skip devices with too little data
+        if len(df) < CONFIG["min_data_hours"] * 12:
+            print(f"  Skipping {device_id[:12]}... (only {len(df)} samples, <{CONFIG['min_data_hours']}h)")
+            del devices[device_id]
+            continue
+        devices[device_id] = preprocess_device_data(df)
+    print(f"  {len(devices)} devices after preprocessing")
+
     for i, (device_id, df) in enumerate(devices.items()):
-        print(f"\n[{i+1}/{len(devices)}] Device {device_id[:12]}... ({len(df)} samples, channels: {list(df.columns)})")
+        print(f"\n[{i+1}/{len(devices)}] Device {device_id[:12]}... ({len(df)} samples, channels: {[c for c in df.columns if not c.endswith('_raw')]})")
 
         device_problems = []
 
