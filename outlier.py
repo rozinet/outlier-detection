@@ -95,14 +95,16 @@ def load_device_data(data_dir: str) -> dict[str, pd.DataFrame]:
                 device_files[device_id] = {}
             device_files[device_id][sensor_type] = os.path.join(root, fname)
 
-            # Extract installation_id from first file's metadata
+            # Extract installation_id from metadata (try each file until success)
             if device_id not in installation_map:
                 try:
                     with open(os.path.join(root, fname), "r") as f:
-                        meta = json.loads(f.readline())["metric"]
-                        installation_map[device_id] = meta.get("installation_id", "unknown")
+                        line = f.readline().strip()
+                        if line:
+                            meta = json.loads(line)["metric"]
+                            installation_map[device_id] = meta.get("installation_id", "unknown")
                 except Exception:
-                    installation_map[device_id] = "unknown"
+                    pass  # will try next file for this device
 
     print(f"Found {len(device_files)} devices")
 
