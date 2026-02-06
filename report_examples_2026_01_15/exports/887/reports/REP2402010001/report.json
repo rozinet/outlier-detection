@@ -1,0 +1,197 @@
+{
+  "id": "08b97b80-4512-47d0-8bc6-557cbb257e15",
+  "name": "REP2402010001",
+  "level": null,
+  "published_at": "2024-02-01 13:48:22 UTC",
+  "published_by": "a4119634-2914-444b-8115-1919c74c0079",
+  "created_at": "2024-02-01 13:43:00 UTC",
+  "updated_at": "2025-10-22 08:06:29 UTC",
+  "installation_id": "a645f52d-f674-4e11-831c-84583029135c",
+  "report_template": {
+    "id": "c073dc19-d3ba-4093-b5bf-9e4f2793f20b",
+    "name": "Report po aktivaci systému - vyhodnocení vlhkosti"
+  },
+  "charts": [
+    {
+      "id": "8cde3f70-ebfe-4ea0-9fbe-b2080dd39627",
+      "order": 1,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "1a5d50c0-81e7-4980-922d-31c1a3b1732d",
+      "created_at": "2024-02-01 13:46:38 UTC",
+      "updated_at": "2024-02-01 13:46:38 UTC",
+      "image_file": "chart_8cde3f70-ebfe-4ea0-9fbe-b2080dd39627.png"
+    },
+    {
+      "id": "49d29bb4-620b-480c-ae10-68c0be3313a9",
+      "order": 2,
+      "title": "Hmotnostní vlhkost dřeva",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "1a5d50c0-81e7-4980-922d-31c1a3b1732d",
+      "created_at": "2024-02-01 13:46:38 UTC",
+      "updated_at": "2024-02-01 13:46:38 UTC",
+      "image_file": "chart_49d29bb4-620b-480c-ae10-68c0be3313a9.png"
+    },
+    {
+      "id": "e04af749-5084-4b2a-8451-ca6215a67994",
+      "order": 3,
+      "title": "Absolutní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "1a5d50c0-81e7-4980-922d-31c1a3b1732d",
+      "created_at": "2024-02-01 13:46:38 UTC",
+      "updated_at": "2024-02-01 13:46:38 UTC",
+      "image_file": "chart_e04af749-5084-4b2a-8451-ca6215a67994.png"
+    },
+    {
+      "id": "da3b80e4-3a2c-427d-81a2-f6511c8ef128",
+      "order": 4,
+      "title": "Teplota okolí",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "1a5d50c0-81e7-4980-922d-31c1a3b1732d",
+      "created_at": "2024-02-01 13:46:38 UTC",
+      "updated_at": "2024-02-01 13:46:38 UTC",
+      "image_file": "chart_da3b80e4-3a2c-427d-81a2-f6511c8ef128.png"
+    }
+  ],
+  "tables": [
+    {
+      "id": "a1e1a587-1c1f-4597-b367-feca52c7744a",
+      "source": {
+        "03c28e06-3bc5-4308-925b-eaa363ab200f": {
+          "note": "Velmi vysoká hmotnostní vlhkost, doporučujeme vanu dále nepoužívat a kontaktovat zhotovitele, aby místo řádně vysušil a prověřil, kde se blhkost bere.",
+          "color": "rgba(31, 119, 180, 1)",
+          "status": "level_3"
+        },
+        "05ab315a-f06d-4859-983c-24a06336092e": {
+          "note": "",
+          "color": "rgba(255, 127, 14, 1)",
+          "status": "level_0"
+        },
+        "3c64a8a6-3f82-4541-a33f-9075d488b805": {
+          "note": "Mírně zvýšená vlhkost, nadále budeme sledovat. Zatím není třeba nic dělat.",
+          "color": "rgba(44, 160, 44, 1)",
+          "status": "level_1"
+        },
+        "9f5c487f-1687-4f51-b40b-bb8a941dbfdf": {
+          "note": "",
+          "color": "rgba(227, 119, 194, 1)",
+          "status": "level_0"
+        },
+        "bf37dac6-e5bf-4331-84b1-d5b4651606a3": {
+          "note": "",
+          "color": "rgba(127, 127, 127, 1)",
+          "status": "level_0"
+        },
+        "c663401c-190d-4217-90a2-1ffd192fe65f": {
+          "note": "",
+          "color": "rgba(188, 189, 34, 1)",
+          "status": "level_0"
+        },
+        "d0545a3e-89fa-4497-b8b2-0b24b44e5c7a": {
+          "note": "",
+          "color": "rgba(23, 190, 207, 1)",
+          "status": "level_0"
+        },
+        "f1e832c1-e4a4-4d3c-88a6-7caab1f127f4": {
+          "note": "",
+          "color": "rgba(105, 239, 123, 1)",
+          "status": "level_0"
+        }
+      },
+      "report_template_table_section_id": "85bfc134-5118-4f56-9e0e-013bdfb5a678",
+      "created_at": "2024-02-01 13:45:47 UTC",
+      "updated_at": "2024-02-01 13:45:47 UTC"
+    }
+  ],
+  "texts": [
+    {
+      "id": "a5e45e04-f641-48a7-a2f3-eaab0da5b2e0",
+      "order": 1,
+      "report_template_text": {
+        "id": "8fa8843c-6296-49de-93a5-031b9a0faf7c",
+        "text": "Sledovat zda dochází k poklesu vlhkosti."
+      },
+      "report_template_text_section": {
+        "id": "1e61079e-aced-42cf-879f-e51873c2b245",
+        "name": "Doporučení reportu po aktivaci - vlhkost"
+      },
+      "created_at": "2024-02-01 13:47:54 UTC",
+      "updated_at": "2024-02-01 13:47:54 UTC"
+    },
+    {
+      "id": "4cb74f63-0d79-4499-83c2-54a4e1de495a",
+      "order": 1,
+      "report_template_text": {
+        "id": "6b578e16-6565-40df-aa7b-56f6538bf5de",
+        "text": "Tento report obsahuje vyhodnocení dat ze senzorů po aktivaci systému. V případech, kdy byla provedena offline aktivace, systém běžel nějakou dobu offline a sbíral data. Po připojení k internetu se nasbíraná data nahrála na naše servery a tento report obsahuje i jejich vyhodnocení."
+      },
+      "report_template_text_section": {
+        "id": "64d6951a-95cb-4bfc-86e1-8946a2bb58f5",
+        "name": "Úvodní slovo o reportu po aktivaci systému - vlhkost"
+      },
+      "created_at": "2024-02-01 13:46:57 UTC",
+      "updated_at": "2024-02-01 13:46:57 UTC"
+    },
+    {
+      "id": "080064c0-41d4-4da3-ac00-95f0a78b43ff",
+      "order": 1,
+      "report_template_text": {
+        "id": "ff8be79f-ad76-43d4-a8cd-6c8dbd1b0fec",
+        "text": "Některé senzory vykazují přebytečnou vlhkost, která byla pravděpodobně zanesena během stavebních prací. Po dostavbě tento stav bývá poměrně běžný a je třeba sledovat, zda vlhkost bude v následujících měsících klesat. Kompletní vysychání stavby může trvat rok až dva roky. Nejrychleji vlhkost klesá v zimním období, když se v domě topí. "
+      },
+      "report_template_text_section": {
+        "id": "ec9cd985-5002-46e6-bd4a-856035d46a7d",
+        "name": "Detaily reportu po aktivaci systému - vlhkost"
+      },
+      "created_at": "2024-02-01 13:47:38 UTC",
+      "updated_at": "2024-02-01 13:47:38 UTC"
+    },
+    {
+      "id": "fd224d72-2003-4242-a3e3-ca5135b5d029",
+      "order": 2,
+      "report_template_text": {
+        "id": "fec9f071-7645-4801-b2bf-3b7e9e795ba0",
+        "text": "Revizi stěn v blízkosti senzorů se zvýšenou vlhkostí."
+      },
+      "report_template_text_section": {
+        "id": "1e61079e-aced-42cf-879f-e51873c2b245",
+        "name": "Doporučení reportu po aktivaci - vlhkost"
+      },
+      "created_at": "2024-02-01 13:47:54 UTC",
+      "updated_at": "2024-02-01 13:47:54 UTC"
+    },
+    {
+      "id": "5ad4f3d4-2078-4c02-ae07-ab01f714b2b1",
+      "order": 2,
+      "report_template_text": {
+        "id": "d0f12165-efad-449c-991b-ab0c5d8f11d8",
+        "text": "Některé senzory vykazují přebytečnou vlhkost, která dosahuje velmi vysokých hodnot. Vzhledem k hodnotám nelze vyloučit, že došlo nebo stále dochází k úniku vody do konstrukce."
+      },
+      "report_template_text_section": {
+        "id": "ec9cd985-5002-46e6-bd4a-856035d46a7d",
+        "name": "Detaily reportu po aktivaci systému - vlhkost"
+      },
+      "created_at": "2024-02-01 13:47:38 UTC",
+      "updated_at": "2024-02-01 13:47:38 UTC"
+    },
+    {
+      "id": "0ef62ba9-c3d8-481e-9d82-e449eb52a279",
+      "order": 3,
+      "report_template_text": {
+        "id": "b6aa695a-eea2-4353-b6de-bee81831fc65",
+        "text": "Snížit celkovou vlhkost v domě pomocí vysoušečů vzduchu nebo alespoň pomocí intenzivního pravidelného větrání."
+      },
+      "report_template_text_section": {
+        "id": "1e61079e-aced-42cf-879f-e51873c2b245",
+        "name": "Doporučení reportu po aktivaci - vlhkost"
+      },
+      "created_at": "2024-02-01 13:47:54 UTC",
+      "updated_at": "2024-02-01 13:47:54 UTC"
+    }
+  ],
+  "custom_texts": []
+}

@@ -1,0 +1,167 @@
+{
+  "id": "76892aec-a47b-432e-87ae-b60e8151e6c1",
+  "name": "REP2311190045",
+  "level": null,
+  "published_at": "2023-11-19 22:31:21 UTC",
+  "published_by": "ced89c66-8a02-4ded-898d-944d7b5c6332",
+  "created_at": "2023-11-19 22:27:12 UTC",
+  "updated_at": "2025-10-21 11:26:47 UTC",
+  "installation_id": "f8c602ad-95d4-41c9-9cb2-a223211fe0dc",
+  "report_template": {
+    "id": "6407813f-7d15-4632-abef-982138f1867b",
+    "name": "Pravidelný čtvrtletní report"
+  },
+  "charts": [
+    {
+      "id": "309e6213-c676-42cb-8dc7-dbcd52455671",
+      "order": 1,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2023-11-19 22:29:02 UTC",
+      "updated_at": "2023-11-19 22:29:02 UTC",
+      "image_file": "chart_309e6213-c676-42cb-8dc7-dbcd52455671.png"
+    },
+    {
+      "id": "65076fef-4e1e-4c04-80e6-a858ffc626ab",
+      "order": 2,
+      "title": "Absolutní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2023-11-19 22:29:02 UTC",
+      "updated_at": "2023-11-19 22:29:02 UTC",
+      "image_file": "chart_65076fef-4e1e-4c04-80e6-a858ffc626ab.png"
+    },
+    {
+      "id": "63b97e88-4109-4b0d-89d1-44978dfcfb47",
+      "order": 3,
+      "title": "Hmotnostní vlhkost dřeva",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2023-11-19 22:29:02 UTC",
+      "updated_at": "2023-11-19 22:29:02 UTC",
+      "image_file": "chart_63b97e88-4109-4b0d-89d1-44978dfcfb47.png"
+    }
+  ],
+  "tables": [
+    {
+      "id": "26875d1a-5438-4522-acd2-5d01debc86d1",
+      "source": {
+        "1d28e617-d5d3-4ae4-bb5a-343dea7097c5": {
+          "note": "",
+          "color": "rgba(31, 119, 180, 1)",
+          "status": "level_0"
+        },
+        "2dcc7228-ce90-4f97-9b01-2f5475713c65": {
+          "note": "",
+          "color": "rgba(255, 127, 14, 1)",
+          "status": "level_0"
+        },
+        "61c4aa32-d5ba-49c5-a0e4-df0d5f1b753e": {
+          "note": "",
+          "color": "rgba(148, 103, 189, 1)",
+          "status": "level_0"
+        },
+        "789fda72-a547-4294-bfa7-d2b470c71b90": {
+          "note": "",
+          "color": "rgba(140, 86, 75, 1)",
+          "status": "level_0"
+        },
+        "98f972ec-32d6-4211-8931-ed417635cf42": {
+          "note": "Dlouhodobě zvýšená vlhkost bez známek poklesu. Mohlo by zde docházet k pronikání vlhkosti z okolí do stěny. Doporučujeme revizi stěny a její vysušení.",
+          "color": "rgba(227, 119, 194, 1)",
+          "status": "level_3"
+        },
+        "9f58dbbc-1aeb-40f2-92cc-169bd3f1c85b": {
+          "note": "",
+          "color": "rgba(127, 127, 127, 1)",
+          "status": "level_0"
+        },
+        "bbf72bc5-ef56-4de7-a44d-65ef696c5a4a": {
+          "note": "",
+          "color": "rgba(188, 189, 34, 1)",
+          "status": "level_0"
+        }
+      },
+      "report_template_table_section_id": "e9662cef-99bf-41dd-b05b-f4bb40c2f50b",
+      "created_at": "2023-11-19 22:28:03 UTC",
+      "updated_at": "2023-11-19 22:31:19 UTC"
+    }
+  ],
+  "texts": [
+    {
+      "id": "7fff35e8-4f33-42b2-90f1-4d99ac6f4ab7",
+      "order": 1,
+      "report_template_text": {
+        "id": "2bd9e9c1-3ccf-4dc8-8cd0-72a973a05e8c",
+        "text": "V domě jsou místa, kde se vyskytuje dlouhodobě zvýšená vlhkost. Tato vlhkost byla buď zanesena při stavbě a nemá možnost samovolně vyschnout nebo dochází k drobnému trvalému pronikání vlhkosti z okolí do stěn."
+      },
+      "report_template_text_section": {
+        "id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+        "name": "Detail"
+      },
+      "created_at": "2023-11-19 22:29:22 UTC",
+      "updated_at": "2023-11-19 22:29:22 UTC"
+    },
+    {
+      "id": "164beda6-d6c1-43f5-a7b4-5c7259837e4e",
+      "order": 1,
+      "report_template_text": {
+        "id": "8e5436be-682a-4975-b7d3-70104ca13bf5",
+        "text": "Tento pravidelný čtvrtletní report Vám zasíláme na základě Vašeho předplatného služby monitoringu Senzomatic (dříve MoistureGuard). Čtvrtletní reporting Vám budeme zasílat pravidelně po dobu trvání předplatného. \r\n\r\nReport obsahuje vyhodnocení dlouhodobého stavu vlhkosti v domě s důrazem na poslední 3 měsíce. V případě havárie nebo náhlého zvýšení vlhkosti reportujeme vždy samostatně, jakmile je událost detekována.\r\n\r\nVyhodnocení v tomto pravidelném reportu je založeno na mnoha faktorech, které jsou shrnuty ve sloupci \"STAV\" v tabulce níže.  Mezi sledované faktory patří aktuální hodnota vlhkosti, vazba mezi teplotou a vlhkostí, vývoj vlhkosti v čase, porovnání aktuálních hodnot s předchozími roky (pokud monitoring běží více než rok), vzájemné vazby mezi senzory, souvislost vlhkosti ve stěnách a vlhkosti v interiéru a exteriéru (pokud jsou tyto senzory nainstalovány).\r\n\r\nNa další straně reportu najdete grafy za sledované období a případná doporučení pro další postup."
+      },
+      "report_template_text_section": {
+        "id": "4a0e59bf-93ad-452d-9cc6-c74eb1f401bf",
+        "name": "Úvod"
+      },
+      "created_at": "2023-11-19 22:30:02 UTC",
+      "updated_at": "2023-11-19 22:30:02 UTC"
+    },
+    {
+      "id": "83edf69b-2f1a-4240-8627-58550f88ff8c",
+      "order": 2,
+      "report_template_text": {
+        "id": "60ef8e31-167d-4930-9194-b66d1197c628",
+        "text": "Po letním nárůstu začínají hodnoty vlhkosti klesat. Tento trend by měl v průběhu zimy dále pokračovat."
+      },
+      "report_template_text_section": {
+        "id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+        "name": "Detail"
+      },
+      "created_at": "2023-11-19 22:29:36 UTC",
+      "updated_at": "2023-11-19 22:29:36 UTC"
+    },
+    {
+      "id": "3902e250-8449-4bb6-9012-13baf805ed15",
+      "order": 3,
+      "report_template_text": {
+        "id": "b7b80396-85dc-4508-8477-cfa38fbe4911",
+        "text": "Revizi stěny pro zjištění stavu a rozsahu vlhkosti."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2023-11-19 22:29:57 UTC",
+      "updated_at": "2023-11-19 22:30:35 UTC"
+    },
+    {
+      "id": "65dc951c-6ae2-449b-89e1-74e95b8863a5",
+      "order": 4,
+      "report_template_text": {
+        "id": "38a5bbe5-df9c-4ba9-86b6-fe60f9ef0cf1",
+        "text": "Prověřit zdali v místech senzorů zmíněných na předešlé straně dochází k pronikání vlhkosti do konstrukce."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2023-11-19 22:29:57 UTC",
+      "updated_at": "2023-11-19 22:30:35 UTC"
+    }
+  ],
+  "custom_texts": []
+}

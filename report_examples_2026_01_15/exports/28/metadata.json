@@ -1,0 +1,54 @@
+{
+  "exported_at": "2026-01-15 09:09:50 UTC",
+  "export_version": "1.0",
+  "installation_id": "2d3705ff-e025-4a27-b59d-6469d07bc96f",
+  "installation": {
+    "id": "2d3705ff-e025-4a27-b59d-6469d07bc96f",
+    "name": "RD Ruttmar",
+    "tags": [
+      {
+        "old_id": 135,
+        "name": "Premium",
+        "created_at": "2023-06-23T12:38:26.770Z",
+        "updated_at": "2023-12-08T11:48:51.128Z",
+        "taggings_count": 134,
+        "taggable_type": "Installation",
+        "bg_color": "#FFD700",
+        "color": "black",
+        "slug": "premium",
+        "id": "27764113-053f-4919-9ecc-5551e056852a"
+      }
+    ],
+    "vm_tenant_id": 28,
+    "addresses": [
+      {
+        "address_type_id": "58c13c43-f33c-404c-804e-a71bb26ba116",
+        "city": "Potvorice",
+        "zip": "916 25",
+        "street": "Potvorice 294",
+        "country": "CZ"
+      },
+      {
+        "address_type_id": "faf73bf6-c256-4c1d-929f-6b6ee6aa3a90",
+        "city": "Potvorice",
+        "zip": "916 25",
+        "street": "Potvorice 294",
+        "country": "CZ"
+      }
+    ],
+    "central_units": [
+      {
+        "label": "0",
+        "first_online_at": "2021-08-11T07:09:02.631Z",
+        "state": "monitored"
+      }
+    ]
+  },
+  "statistics": {
+    "total_reports": 10,
+    "published_reports": 10,
+    "total_devices": 10,
+    "charts_count": 30,
+    "tables_count": 10
+  }
+}

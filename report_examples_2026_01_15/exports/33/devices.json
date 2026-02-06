@@ -1,0 +1,572 @@
+{
+  "installation_id": "d3b7881f-d27b-40cb-9842-0a991f9d1c0c",
+  "exported_at": "2026-01-15 09:09:32 UTC",
+  "devices_count": 10,
+  "devices": [
+    {
+      "id": "758edfbd-1ebd-497e-a637-2ff327ce17ae",
+      "busable_id": "695a4cdc-51fb-48bb-92e6-ebd543e37f74",
+      "color": "rgba(214, 39, 40, 1)",
+      "disabled": false,
+      "placement": {
+        "id": "d6cbee4e-94bc-4264-bda5-aaef4f482ffe",
+        "name": "1.10 bojler, pračka, sušička",
+        "tags": [
+          {
+            "old_id": 136,
+            "name": "Konstrukce budovy",
+            "created_at": "2023-09-08T11:58:18.926Z",
+            "updated_at": "2023-12-08T11:48:51.238Z",
+            "taggings_count": 18214,
+            "taggable_type": "Placement",
+            "bg_color": "yellow",
+            "color": "black",
+            "slug": "construction-of-building",
+            "id": "83fdc98d-f722-4e26-ba19-a48721fdec56"
+          }
+        ],
+        "number": 6
+      },
+      "floorplan": {
+        "id": "765a61e5-1c81-4050-90c5-297fbb798113",
+        "floor_number": 1
+      },
+      "hw_parts": [
+        "MHT03"
+      ],
+      "product_type": {
+        "id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "name": "Sensor",
+        "created_at": "2020-07-03T09:59:42.429Z",
+        "updated_at": "2020-07-03T09:59:43.179Z"
+      },
+      "product": {
+        "id": "095ab501-060c-403b-863d-a6598f3e8b8a",
+        "name": "MHT",
+        "created_at": "2022-05-03T09:07:25.127Z",
+        "updated_at": "2025-11-14T14:16:07.452Z",
+        "color": "#e42c3b",
+        "order": 2,
+        "installation_notes": "Čidlo MHT určené pro monitorování teploty a vlhkosti v konstrukci domu včetně monitoringu teploty a vlhkosti dřevěného konstrukčního prvku (konstrukce) se instaluje co nejníže, tzn. do zakládacího prahu stěny a to buď z horní části směrem do stěny (navazuje izolační vata) anebo z boku do prostoru budoucí podlahy (kolem čidla stačí zanechatmalý prostor – výřez v polystyrenu, aby kolem vznikla vzduchová kapsa).",
+        "product_type_id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "auto_add": false,
+        "shape": "cross_red",
+        "upgradable_firmware": false,
+        "category": null,
+        "sales_level": "public_sale",
+        "crm_id": 4,
+        "tag_list": [],
+        "placement_tag_list": [
+          "Konstrukce budovy"
+        ]
+      }
+    },
+    {
+      "id": "76a5df42-72c7-4681-965e-7e650e5155d5",
+      "busable_id": "695a4cdc-51fb-48bb-92e6-ebd543e37f74",
+      "color": "rgba(148, 103, 189, 1)",
+      "disabled": false,
+      "placement": {
+        "id": "76f6c4c5-6350-4693-aa5d-f8fd65be6e18",
+        "name": "1.10 rekuperace, čerpací stanice",
+        "tags": [
+          {
+            "old_id": 136,
+            "name": "Konstrukce budovy",
+            "created_at": "2023-09-08T11:58:18.926Z",
+            "updated_at": "2023-12-08T11:48:51.238Z",
+            "taggings_count": 18214,
+            "taggable_type": "Placement",
+            "bg_color": "yellow",
+            "color": "black",
+            "slug": "construction-of-building",
+            "id": "83fdc98d-f722-4e26-ba19-a48721fdec56"
+          }
+        ],
+        "number": 7
+      },
+      "floorplan": {
+        "id": "765a61e5-1c81-4050-90c5-297fbb798113",
+        "floor_number": 1
+      },
+      "hw_parts": [
+        "MHT03"
+      ],
+      "product_type": {
+        "id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "name": "Sensor",
+        "created_at": "2020-07-03T09:59:42.429Z",
+        "updated_at": "2020-07-03T09:59:43.179Z"
+      },
+      "product": {
+        "id": "095ab501-060c-403b-863d-a6598f3e8b8a",
+        "name": "MHT",
+        "created_at": "2022-05-03T09:07:25.127Z",
+        "updated_at": "2025-11-14T14:16:07.452Z",
+        "color": "#e42c3b",
+        "order": 2,
+        "installation_notes": "Čidlo MHT určené pro monitorování teploty a vlhkosti v konstrukci domu včetně monitoringu teploty a vlhkosti dřevěného konstrukčního prvku (konstrukce) se instaluje co nejníže, tzn. do zakládacího prahu stěny a to buď z horní části směrem do stěny (navazuje izolační vata) anebo z boku do prostoru budoucí podlahy (kolem čidla stačí zanechatmalý prostor – výřez v polystyrenu, aby kolem vznikla vzduchová kapsa).",
+        "product_type_id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "auto_add": false,
+        "shape": "cross_red",
+        "upgradable_firmware": false,
+        "category": null,
+        "sales_level": "public_sale",
+        "crm_id": 4,
+        "tag_list": [],
+        "placement_tag_list": [
+          "Konstrukce budovy"
+        ]
+      }
+    },
+    {
+      "id": "5c872b6e-6110-4289-b570-5ae61bfcf80d",
+      "busable_id": "695a4cdc-51fb-48bb-92e6-ebd543e37f74",
+      "color": "rgba(44, 160, 44, 1)",
+      "disabled": false,
+      "placement": {
+        "id": "eb53eb38-8572-4aef-8b17-55665f1aa92e",
+        "name": "1.06 sprcha, wc",
+        "tags": [
+          {
+            "old_id": 136,
+            "name": "Konstrukce budovy",
+            "created_at": "2023-09-08T11:58:18.926Z",
+            "updated_at": "2023-12-08T11:48:51.238Z",
+            "taggings_count": 18214,
+            "taggable_type": "Placement",
+            "bg_color": "yellow",
+            "color": "black",
+            "slug": "construction-of-building",
+            "id": "83fdc98d-f722-4e26-ba19-a48721fdec56"
+          }
+        ],
+        "number": 5
+      },
+      "floorplan": {
+        "id": "765a61e5-1c81-4050-90c5-297fbb798113",
+        "floor_number": 1
+      },
+      "hw_parts": [
+        "MHT03"
+      ],
+      "product_type": {
+        "id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "name": "Sensor",
+        "created_at": "2020-07-03T09:59:42.429Z",
+        "updated_at": "2020-07-03T09:59:43.179Z"
+      },
+      "product": {
+        "id": "095ab501-060c-403b-863d-a6598f3e8b8a",
+        "name": "MHT",
+        "created_at": "2022-05-03T09:07:25.127Z",
+        "updated_at": "2025-11-14T14:16:07.452Z",
+        "color": "#e42c3b",
+        "order": 2,
+        "installation_notes": "Čidlo MHT určené pro monitorování teploty a vlhkosti v konstrukci domu včetně monitoringu teploty a vlhkosti dřevěného konstrukčního prvku (konstrukce) se instaluje co nejníže, tzn. do zakládacího prahu stěny a to buď z horní části směrem do stěny (navazuje izolační vata) anebo z boku do prostoru budoucí podlahy (kolem čidla stačí zanechatmalý prostor – výřez v polystyrenu, aby kolem vznikla vzduchová kapsa).",
+        "product_type_id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "auto_add": false,
+        "shape": "cross_red",
+        "upgradable_firmware": false,
+        "category": null,
+        "sales_level": "public_sale",
+        "crm_id": 4,
+        "tag_list": [],
+        "placement_tag_list": [
+          "Konstrukce budovy"
+        ]
+      }
+    },
+    {
+      "id": "976196c7-96e2-4507-811b-5b04d43b6520",
+      "busable_id": "695a4cdc-51fb-48bb-92e6-ebd543e37f74",
+      "color": "rgba(227, 119, 194, 1)",
+      "disabled": false,
+      "placement": {
+        "id": "8a4f001e-715b-4129-b435-3c193e17d393",
+        "name": "kuchyň (myčka, dřez)",
+        "tags": [
+          {
+            "old_id": 136,
+            "name": "Konstrukce budovy",
+            "created_at": "2023-09-08T11:58:18.926Z",
+            "updated_at": "2023-12-08T11:48:51.238Z",
+            "taggings_count": 18214,
+            "taggable_type": "Placement",
+            "bg_color": "yellow",
+            "color": "black",
+            "slug": "construction-of-building",
+            "id": "83fdc98d-f722-4e26-ba19-a48721fdec56"
+          }
+        ],
+        "number": 4
+      },
+      "floorplan": {
+        "id": "765a61e5-1c81-4050-90c5-297fbb798113",
+        "floor_number": 1
+      },
+      "hw_parts": [
+        "HT02"
+      ],
+      "product_type": {
+        "id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "name": "Sensor",
+        "created_at": "2020-07-03T09:59:42.429Z",
+        "updated_at": "2020-07-03T09:59:43.179Z"
+      },
+      "product": {
+        "id": "d7915551-3a61-4621-9b76-ca36dd790f9b",
+        "name": "HT",
+        "created_at": "2022-05-03T09:07:49.536Z",
+        "updated_at": "2025-11-14T14:16:20.874Z",
+        "color": "#9d2e91",
+        "order": 3,
+        "installation_notes": "Čidlo HT, které měří okolní teplotu a vlhkost, se instaluje do vybraných míst co nejníže. Tzn. do prostoru stěny pod izolační výplň, pod úroveň budoucí podlahy (do polystyrenu – zde ideálně schovaná v chráničce). Toto čidlo je vhodné instalovat i do struktury rovných střech, míst pod budoucí teplovodní podlahové vytápění nebo k nezámrzným venkovním kohoutům apod., tedy do míst, kde by mohlo dojít k zatečení.",
+        "product_type_id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "auto_add": false,
+        "shape": "diamond_violet",
+        "upgradable_firmware": false,
+        "category": null,
+        "sales_level": "public_sale",
+        "crm_id": 120,
+        "tag_list": [],
+        "placement_tag_list": [
+          "Konstrukce budovy"
+        ]
+      }
+    },
+    {
+      "id": "c20c980a-9988-4749-8ab7-5fc3679ff49a",
+      "busable_id": "695a4cdc-51fb-48bb-92e6-ebd543e37f74",
+      "color": "rgba(127, 127, 127, 1)",
+      "disabled": false,
+      "placement": {
+        "id": "f2d37eb6-32a1-4a8b-a52d-66571d291f97",
+        "name": "HT02 - Exteriér",
+        "tags": [
+          {
+            "old_id": 139,
+            "name": "Okolí domu",
+            "created_at": "2023-09-08T11:59:43.809Z",
+            "updated_at": "2023-12-08T11:48:51.150Z",
+            "taggings_count": 1687,
+            "taggable_type": "Placement",
+            "bg_color": "yellow",
+            "color": "black",
+            "slug": "surroundings-of-the-house",
+            "id": "465d0f23-1807-4d33-bc16-380c7220218d"
+          }
+        ],
+        "number": 2
+      },
+      "floorplan": {
+        "id": "765a61e5-1c81-4050-90c5-297fbb798113",
+        "floor_number": 1
+      },
+      "hw_parts": [
+        "HT02"
+      ],
+      "product_type": {
+        "id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "name": "Sensor",
+        "created_at": "2020-07-03T09:59:42.429Z",
+        "updated_at": "2020-07-03T09:59:43.179Z"
+      },
+      "product": {
+        "id": "b0daa239-152f-4249-82f2-f27c3a305442",
+        "name": "HT - Exteriér",
+        "created_at": "2020-07-03T10:03:24.446Z",
+        "updated_at": "2025-11-14T14:16:17.446Z",
+        "color": "#5bb053",
+        "order": 5,
+        "installation_notes": "Čidlo pro exteriér HT se instaluje na fasádu domu obvykle na severní straně, aby na čidlo nesvítilo přímé slunce a nepršelo na něj. Tzn. ideální místo umístění čidla je pod převisem střechy viditelně přiznané nebo schované do instalační krabičky se zakrytím mřížkou.",
+        "product_type_id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "auto_add": false,
+        "shape": "blob_green",
+        "upgradable_firmware": false,
+        "category": null,
+        "sales_level": "public_sale",
+        "crm_id": 1,
+        "tag_list": [],
+        "placement_tag_list": [
+          "Okolí domu"
+        ]
+      }
+    },
+    {
+      "id": "7ea2464c-95a6-45cc-8e47-b66dffd44c7f",
+      "busable_id": "695a4cdc-51fb-48bb-92e6-ebd543e37f74",
+      "color": "rgba(140, 86, 75, 1)",
+      "disabled": false,
+      "placement": {
+        "id": "7ae1195a-f018-4038-98a7-5b81070d181f",
+        "name": "HT02 - Interiér",
+        "tags": [
+          {
+            "old_id": 137,
+            "name": "Kvalita vzduchu v interiéru",
+            "created_at": "2023-09-08T11:58:30.177Z",
+            "updated_at": "2023-12-08T11:48:51.079Z",
+            "taggings_count": 1919,
+            "taggable_type": "Placement",
+            "bg_color": "yellow",
+            "color": "black",
+            "slug": "indoor-air-quality",
+            "id": "fcb0b499-556c-425b-b048-d32ad7362f61"
+          }
+        ],
+        "number": 3
+      },
+      "floorplan": {
+        "id": "765a61e5-1c81-4050-90c5-297fbb798113",
+        "floor_number": 1
+      },
+      "hw_parts": [
+        "HT02"
+      ],
+      "product_type": {
+        "id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "name": "Sensor",
+        "created_at": "2020-07-03T09:59:42.429Z",
+        "updated_at": "2020-07-03T09:59:43.179Z"
+      },
+      "product": {
+        "id": "2bc262be-c24b-401f-a0eb-3628c1511124",
+        "name": "HT - Interiér",
+        "created_at": "2020-07-03T10:03:21.441Z",
+        "updated_at": "2025-11-14T14:16:10.408Z",
+        "color": "#26a3dc",
+        "order": 4,
+        "installation_notes": "Čidlo pro interiér HT se obvykle instaluje do prostoru chodby, předsíně nebo v oblasti schodiště, ideálně dále od kuchyně jako zdroje tepla a vlhkosti a také dále od krbu/kamen jako zdroje tepla. Čidlo se může umístit viditelně nebo zabudovat do instalační krabičky ve stěně či stropu se zakrytím mřížkou, aby k němu mohl proudit vzduch z interiéru.",
+        "product_type_id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "auto_add": false,
+        "shape": "triangle_blue",
+        "upgradable_firmware": false,
+        "category": null,
+        "sales_level": "public_sale",
+        "crm_id": 5,
+        "tag_list": [],
+        "placement_tag_list": [
+          "Kvalita vzduchu v interiéru"
+        ]
+      }
+    },
+    {
+      "id": "d36c8786-5ac8-4465-a673-cd4f534f96ae",
+      "busable_id": "695a4cdc-51fb-48bb-92e6-ebd543e37f74",
+      "color": "rgba(23, 190, 207, 1)",
+      "disabled": false,
+      "placement": {
+        "id": "bbff52f1-c968-431f-8045-5d823eec2a88",
+        "name": "1.06 umyvadla",
+        "tags": [
+          {
+            "old_id": 136,
+            "name": "Konstrukce budovy",
+            "created_at": "2023-09-08T11:58:18.926Z",
+            "updated_at": "2023-12-08T11:48:51.238Z",
+            "taggings_count": 18214,
+            "taggable_type": "Placement",
+            "bg_color": "yellow",
+            "color": "black",
+            "slug": "construction-of-building",
+            "id": "83fdc98d-f722-4e26-ba19-a48721fdec56"
+          }
+        ],
+        "number": 9
+      },
+      "floorplan": {
+        "id": "765a61e5-1c81-4050-90c5-297fbb798113",
+        "floor_number": 1
+      },
+      "hw_parts": [
+        "HT02"
+      ],
+      "product_type": {
+        "id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "name": "Sensor",
+        "created_at": "2020-07-03T09:59:42.429Z",
+        "updated_at": "2020-07-03T09:59:43.179Z"
+      },
+      "product": {
+        "id": "d7915551-3a61-4621-9b76-ca36dd790f9b",
+        "name": "HT",
+        "created_at": "2022-05-03T09:07:49.536Z",
+        "updated_at": "2025-11-14T14:16:20.874Z",
+        "color": "#9d2e91",
+        "order": 3,
+        "installation_notes": "Čidlo HT, které měří okolní teplotu a vlhkost, se instaluje do vybraných míst co nejníže. Tzn. do prostoru stěny pod izolační výplň, pod úroveň budoucí podlahy (do polystyrenu – zde ideálně schovaná v chráničce). Toto čidlo je vhodné instalovat i do struktury rovných střech, míst pod budoucí teplovodní podlahové vytápění nebo k nezámrzným venkovním kohoutům apod., tedy do míst, kde by mohlo dojít k zatečení.",
+        "product_type_id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "auto_add": false,
+        "shape": "diamond_violet",
+        "upgradable_firmware": false,
+        "category": null,
+        "sales_level": "public_sale",
+        "crm_id": 120,
+        "tag_list": [],
+        "placement_tag_list": [
+          "Konstrukce budovy"
+        ]
+      }
+    },
+    {
+      "id": "58af67d9-3be2-4b2d-81f0-52c50228c278",
+      "busable_id": "695a4cdc-51fb-48bb-92e6-ebd543e37f74",
+      "color": "rgba(31, 119, 180, 1)",
+      "disabled": false,
+      "placement": {
+        "id": "ccc3d152-71f1-47df-9a9b-9f28fa6b6233",
+        "name": "1.06 vana",
+        "tags": [
+          {
+            "old_id": 136,
+            "name": "Konstrukce budovy",
+            "created_at": "2023-09-08T11:58:18.926Z",
+            "updated_at": "2023-12-08T11:48:51.238Z",
+            "taggings_count": 18214,
+            "taggable_type": "Placement",
+            "bg_color": "yellow",
+            "color": "black",
+            "slug": "construction-of-building",
+            "id": "83fdc98d-f722-4e26-ba19-a48721fdec56"
+          }
+        ],
+        "number": 8
+      },
+      "floorplan": {
+        "id": "765a61e5-1c81-4050-90c5-297fbb798113",
+        "floor_number": 1
+      },
+      "hw_parts": [
+        "MHT03"
+      ],
+      "product_type": {
+        "id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "name": "Sensor",
+        "created_at": "2020-07-03T09:59:42.429Z",
+        "updated_at": "2020-07-03T09:59:43.179Z"
+      },
+      "product": {
+        "id": "095ab501-060c-403b-863d-a6598f3e8b8a",
+        "name": "MHT",
+        "created_at": "2022-05-03T09:07:25.127Z",
+        "updated_at": "2025-11-14T14:16:07.452Z",
+        "color": "#e42c3b",
+        "order": 2,
+        "installation_notes": "Čidlo MHT určené pro monitorování teploty a vlhkosti v konstrukci domu včetně monitoringu teploty a vlhkosti dřevěného konstrukčního prvku (konstrukce) se instaluje co nejníže, tzn. do zakládacího prahu stěny a to buď z horní části směrem do stěny (navazuje izolační vata) anebo z boku do prostoru budoucí podlahy (kolem čidla stačí zanechatmalý prostor – výřez v polystyrenu, aby kolem vznikla vzduchová kapsa).",
+        "product_type_id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "auto_add": false,
+        "shape": "cross_red",
+        "upgradable_firmware": false,
+        "category": null,
+        "sales_level": "public_sale",
+        "crm_id": 4,
+        "tag_list": [],
+        "placement_tag_list": [
+          "Konstrukce budovy"
+        ]
+      }
+    },
+    {
+      "id": "59ad4f45-7139-49eb-978b-c0ae7e83a1d9",
+      "busable_id": "695a4cdc-51fb-48bb-92e6-ebd543e37f74",
+      "color": "rgba(255, 127, 14, 1)",
+      "disabled": false,
+      "placement": {
+        "id": "db4c4119-1f5c-45e4-95c3-c3b67b6eeba6",
+        "name": "1.06 wc",
+        "tags": [
+          {
+            "old_id": 136,
+            "name": "Konstrukce budovy",
+            "created_at": "2023-09-08T11:58:18.926Z",
+            "updated_at": "2023-12-08T11:48:51.238Z",
+            "taggings_count": 18214,
+            "taggable_type": "Placement",
+            "bg_color": "yellow",
+            "color": "black",
+            "slug": "construction-of-building",
+            "id": "83fdc98d-f722-4e26-ba19-a48721fdec56"
+          }
+        ],
+        "number": 10
+      },
+      "floorplan": {
+        "id": "765a61e5-1c81-4050-90c5-297fbb798113",
+        "floor_number": 1
+      },
+      "hw_parts": [
+        "HT02"
+      ],
+      "product_type": {
+        "id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "name": "Sensor",
+        "created_at": "2020-07-03T09:59:42.429Z",
+        "updated_at": "2020-07-03T09:59:43.179Z"
+      },
+      "product": {
+        "id": "d7915551-3a61-4621-9b76-ca36dd790f9b",
+        "name": "HT",
+        "created_at": "2022-05-03T09:07:49.536Z",
+        "updated_at": "2025-11-14T14:16:20.874Z",
+        "color": "#9d2e91",
+        "order": 3,
+        "installation_notes": "Čidlo HT, které měří okolní teplotu a vlhkost, se instaluje do vybraných míst co nejníže. Tzn. do prostoru stěny pod izolační výplň, pod úroveň budoucí podlahy (do polystyrenu – zde ideálně schovaná v chráničce). Toto čidlo je vhodné instalovat i do struktury rovných střech, míst pod budoucí teplovodní podlahové vytápění nebo k nezámrzným venkovním kohoutům apod., tedy do míst, kde by mohlo dojít k zatečení.",
+        "product_type_id": "84bcdf36-961d-44a6-87f3-234ac37f528c",
+        "auto_add": false,
+        "shape": "diamond_violet",
+        "upgradable_firmware": false,
+        "category": null,
+        "sales_level": "public_sale",
+        "crm_id": 120,
+        "tag_list": [],
+        "placement_tag_list": [
+          "Konstrukce budovy"
+        ]
+      }
+    },
+    {
+      "id": "c2ffe551-e013-43cd-bf72-ee9728c63308",
+      "busable_id": null,
+      "color": "rgba(188, 189, 34, 1)",
+      "disabled": false,
+      "placement": {
+        "id": "b6833266-add8-48db-9bb6-24d41b1b96e8",
+        "name": "Centrální jednotka",
+        "tags": [],
+        "number": 1
+      },
+      "floorplan": {
+        "id": "765a61e5-1c81-4050-90c5-297fbb798113",
+        "floor_number": 1
+      },
+      "hw_parts": [
+        "UniPi Neuron"
+      ],
+      "product_type": {
+        "id": "41511396-e646-468f-98b8-9a9614a2cd65",
+        "name": "Centrální jednotka",
+        "created_at": "2020-07-03T09:59:41.225Z",
+        "updated_at": "2023-03-29T13:31:12.497Z"
+      },
+      "product": {
+        "id": "a098d78e-a720-49e5-bcf0-947cc6a4bf23",
+        "name": "Centrální jednotka",
+        "created_at": "2022-05-03T09:06:17.218Z",
+        "updated_at": "2025-11-14T14:16:16.072Z",
+        "color": "#eda739",
+        "order": 1,
+        "installation_notes": "Pro instalaci centrální jednotky do rozvodné skříně je potřeba počítat s velikostí 6 modulů + 1 modul jistič (připojení na DIN lištu) a přivedení internetového připojení pomocí ethernetového UTP kabelu s koncovkou RJ-45 (kabel není nutný, pokud se bude provozovat jednotka bez internetu). Pro jištění centrální jednotky je potřeba jistič B2 (jistič nedodáváme).",
+        "product_type_id": "41511396-e646-468f-98b8-9a9614a2cd65",
+        "auto_add": false,
+        "shape": "circle_orange",
+        "upgradable_firmware": true,
+        "category": null,
+        "sales_level": "public_sale",
+        "crm_id": 3,
+        "tag_list": [],
+        "placement_tag_list": []
+      }
+    }
+  ]
+}

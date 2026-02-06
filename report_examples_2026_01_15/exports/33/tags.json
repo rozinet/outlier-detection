@@ -1,0 +1,22 @@
+{
+  "installation_id": "d3b7881f-d27b-40cb-9842-0a991f9d1c0c",
+  "exported_at": "2026-01-15 09:09:32 UTC",
+  "count": 3,
+  "devices_by_tags": {
+    "Konstrukce budovy": [
+      "758edfbd-1ebd-497e-a637-2ff327ce17ae",
+      "76a5df42-72c7-4681-965e-7e650e5155d5",
+      "5c872b6e-6110-4289-b570-5ae61bfcf80d",
+      "976196c7-96e2-4507-811b-5b04d43b6520",
+      "d36c8786-5ac8-4465-a673-cd4f534f96ae",
+      "58af67d9-3be2-4b2d-81f0-52c50228c278",
+      "59ad4f45-7139-49eb-978b-c0ae7e83a1d9"
+    ],
+    "Okolí domu": [
+      "c20c980a-9988-4749-8ab7-5fc3679ff49a"
+    ],
+    "Kvalita vzduchu v interiéru": [
+      "7ea2464c-95a6-45cc-8e47-b66dffd44c7f"
+    ]
+  }
+}

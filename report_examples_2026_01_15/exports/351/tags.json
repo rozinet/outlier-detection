@@ -1,0 +1,20 @@
+{
+  "installation_id": "c642b33b-a4fa-43d9-8ddd-0c458eaa3146",
+  "exported_at": "2026-01-15 09:09:38 UTC",
+  "count": 2,
+  "devices_by_tags": {
+    "Okolí domu": [
+      "3563df21-849e-4888-a813-7cb6615c0b6e"
+    ],
+    "Konstrukce budovy": [
+      "aefefa03-6c62-4ead-baae-a94d9f35224c",
+      "bd67044c-88ff-442e-b835-e84f11acf0b4",
+      "bc2b4c10-71c2-4bfb-987b-3dda86349d29",
+      "411d9693-26d8-43ff-a2c9-f4ecf105bacf",
+      "94ca0ced-68eb-4d36-abe3-70f2fed54594",
+      "4570de5f-4537-486b-817b-2e32dfd4f4da",
+      "3f7582f7-a1cf-42a3-b2b7-e3d9e4ba19e1",
+      "99aa1059-ed8e-4d75-8241-36474ea09b46"
+    ]
+  }
+}

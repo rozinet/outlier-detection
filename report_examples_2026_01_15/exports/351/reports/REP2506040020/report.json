@@ -1,0 +1,227 @@
+{
+  "id": "173eac7c-1a83-4259-9173-01ab22b9a31d",
+  "name": "REP2506040020",
+  "level": null,
+  "published_at": "2025-06-04 13:09:21 UTC",
+  "published_by": "0eb7ab47-9014-4ca9-8003-23050a151476",
+  "created_at": "2025-06-04 13:06:46 UTC",
+  "updated_at": "2025-10-21 10:48:32 UTC",
+  "installation_id": "c642b33b-a4fa-43d9-8ddd-0c458eaa3146",
+  "report_template": {
+    "id": "6407813f-7d15-4632-abef-982138f1867b",
+    "name": "Pravidelný čtvrtletní report"
+  },
+  "charts": [
+    {
+      "id": "1fe5cb04-0451-42b7-82fb-636e71b4ca76",
+      "order": 1,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(23, 190, 207, 1)",
+          "label": "3 - 102 koupelna (vana) (HT02)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "6 - tech.m. (umyvadlo) (HT02)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "8 - 108 tech.m. (wc, pračka, sušička) (HT02)"
+        },
+        {
+          "color": "rgba(44, 160, 44, 1)",
+          "label": "10 - 104 pokoj (nezámrzný kohout) (HT02)"
+        },
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "5 - 108 tech.m. (vnitřní jednotka tepelného čerpadla) (HT02)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "9 - 107 kuchyň (dřez, myčka) (HT02)"
+        },
+        {
+          "color": "rgba(214, 39, 40, 1)",
+          "label": "7 - 102 koupelna (sprcha, wc) (HT02)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "4 - 102 koupelna (umyvadlo) (HT02)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-06-04 13:07:45 UTC",
+      "updated_at": "2025-06-04 13:07:45 UTC",
+      "image_file": "chart_1fe5cb04-0451-42b7-82fb-636e71b4ca76.png"
+    },
+    {
+      "id": "e9f79894-e793-4ae1-99a8-efbdef27aa60",
+      "order": 2,
+      "title": "Absolutní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "6 - tech.m. (umyvadlo) (HT02)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "8 - 108 tech.m. (wc, pračka, sušička) (HT02)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "9 - 107 kuchyň (dřez, myčka) (HT02)"
+        },
+        {
+          "color": "rgba(23, 190, 207, 1)",
+          "label": "3 - 102 koupelna (vana) (HT02)"
+        },
+        {
+          "color": "rgba(44, 160, 44, 1)",
+          "label": "10 - 104 pokoj (nezámrzný kohout) (HT02)"
+        },
+        {
+          "color": "rgba(214, 39, 40, 1)",
+          "label": "7 - 102 koupelna (sprcha, wc) (HT02)"
+        },
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "5 - 108 tech.m. (vnitřní jednotka tepelného čerpadla) (HT02)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "4 - 102 koupelna (umyvadlo) (HT02)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-06-04 13:07:45 UTC",
+      "updated_at": "2025-06-04 13:07:45 UTC",
+      "image_file": "chart_e9f79894-e793-4ae1-99a8-efbdef27aa60.png"
+    }
+  ],
+  "tables": [
+    {
+      "id": "5c514ba5-fe1e-445c-9948-aaffad342e11",
+      "source": {
+        "3f7582f7-a1cf-42a3-b2b7-e3d9e4ba19e1": {
+          "note": "Sezónní nárůst vlhkosti.",
+          "color": "rgba(255, 127, 14, 1)",
+          "status": "level_1"
+        },
+        "411d9693-26d8-43ff-a2c9-f4ecf105bacf": {
+          "note": "",
+          "color": "rgba(44, 160, 44, 1)",
+          "status": "level_0"
+        },
+        "4570de5f-4537-486b-817b-2e32dfd4f4da": {
+          "note": "Dlouhodobě vysoká vlhkost, která nemá tendenci dostatečně klesat. ",
+          "color": "rgba(214, 39, 40, 1)",
+          "status": "level_3"
+        },
+        "94ca0ced-68eb-4d36-abe3-70f2fed54594": {
+          "note": "",
+          "color": "rgba(148, 103, 189, 1)",
+          "status": "level_0"
+        },
+        "99aa1059-ed8e-4d75-8241-36474ea09b46": {
+          "note": "",
+          "color": "rgba(140, 86, 75, 1)",
+          "status": "level_0"
+        },
+        "aefefa03-6c62-4ead-baae-a94d9f35224c": {
+          "note": "",
+          "color": "rgba(127, 127, 127, 1)",
+          "status": "level_0"
+        },
+        "bc2b4c10-71c2-4bfb-987b-3dda86349d29": {
+          "note": "",
+          "color": "rgba(188, 189, 34, 1)",
+          "status": "level_0"
+        },
+        "bd67044c-88ff-442e-b835-e84f11acf0b4": {
+          "note": "",
+          "color": "rgba(23, 190, 207, 1)",
+          "status": "level_0"
+        }
+      },
+      "report_template_table_section_id": "e9662cef-99bf-41dd-b05b-f4bb40c2f50b",
+      "created_at": "2025-06-04 13:07:42 UTC",
+      "updated_at": "2025-06-04 13:07:42 UTC"
+    }
+  ],
+  "texts": [
+    {
+      "id": "925d0d11-dc52-4dfc-a507-1666298ffb86",
+      "order": 1,
+      "report_template_text": {
+        "id": "38a5bbe5-df9c-4ba9-86b6-fe60f9ef0cf1",
+        "text": "Prověřit zdali v místech senzorů zmíněných na předešlé straně dochází k pronikání vlhkosti do konstrukce."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-06-04 13:08:52 UTC",
+      "updated_at": "2025-06-04 13:08:52 UTC"
+    },
+    {
+      "id": "62dbfad5-2230-480b-8994-3753a05037c7",
+      "order": 1,
+      "report_template_text": {
+        "id": "2bd9e9c1-3ccf-4dc8-8cd0-72a973a05e8c",
+        "text": "V domě jsou místa, kde se vyskytuje dlouhodobě zvýšená vlhkost. Tato vlhkost byla buď zanesena při stavbě a nemá možnost samovolně vyschnout nebo dochází k drobnému trvalému pronikání vlhkosti z okolí do stěn."
+      },
+      "report_template_text_section": {
+        "id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+        "name": "Detail"
+      },
+      "created_at": "2025-06-04 13:09:06 UTC",
+      "updated_at": "2025-06-04 13:09:06 UTC"
+    },
+    {
+      "id": "25494130-c925-41d0-8709-acfb10236135",
+      "order": 1,
+      "report_template_text": {
+        "id": "8e5436be-682a-4975-b7d3-70104ca13bf5",
+        "text": "Tento pravidelný čtvrtletní report Vám zasíláme na základě Vašeho předplatného služby monitoringu Senzomatic (dříve MoistureGuard). Čtvrtletní reporting Vám budeme zasílat pravidelně po dobu trvání předplatného. \r\n\r\nReport obsahuje vyhodnocení dlouhodobého stavu vlhkosti v domě s důrazem na poslední 3 měsíce. V případě havárie nebo náhlého zvýšení vlhkosti reportujeme vždy samostatně, jakmile je událost detekována.\r\n\r\nVyhodnocení v tomto pravidelném reportu je založeno na mnoha faktorech, které jsou shrnuty ve sloupci \"STAV\" v tabulce níže.  Mezi sledované faktory patří aktuální hodnota vlhkosti, vazba mezi teplotou a vlhkostí, vývoj vlhkosti v čase, porovnání aktuálních hodnot s předchozími roky (pokud monitoring běží více než rok), vzájemné vazby mezi senzory, souvislost vlhkosti ve stěnách a vlhkosti v interiéru a exteriéru (pokud jsou tyto senzory nainstalovány).\r\n\r\nNa další straně reportu najdete grafy za sledované období a případná doporučení pro další postup."
+      },
+      "report_template_text_section": {
+        "id": "4a0e59bf-93ad-452d-9cc6-c74eb1f401bf",
+        "name": "Úvod"
+      },
+      "created_at": "2025-06-04 13:09:08 UTC",
+      "updated_at": "2025-06-04 13:09:08 UTC"
+    },
+    {
+      "id": "39633cb6-576b-4591-a8a4-5e83bd1f0ddc",
+      "order": 2,
+      "report_template_text": {
+        "id": "53eddf04-c9e1-4d03-8d1b-1927e9978d6f",
+        "text": "Doporučujeme sledovat, zda v zimním období dojde k poklesu vlhkosti na senzorech zmíněných na předchozích stránce."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-06-04 13:08:52 UTC",
+      "updated_at": "2025-06-04 13:08:52 UTC"
+    },
+    {
+      "id": "dc83c26d-69b6-47ec-b7a2-adaab6bff06c",
+      "order": 2,
+      "report_template_text": {
+        "id": "0eb5204f-66da-45d2-b399-0c7417b821e4",
+        "text": "V letním období je běžné, že vlhkost u některých senzorů roste. Na podzim a v zimě by vlhkost na těchto senzorech měla opět samovolně klesat."
+      },
+      "report_template_text_section": {
+        "id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+        "name": "Detail"
+      },
+      "created_at": "2025-06-04 13:09:06 UTC",
+      "updated_at": "2025-06-04 13:09:06 UTC"
+    }
+  ],
+  "custom_texts": []
+}

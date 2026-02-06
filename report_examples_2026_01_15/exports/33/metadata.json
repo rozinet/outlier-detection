@@ -1,0 +1,54 @@
+{
+  "exported_at": "2026-01-15 09:09:32 UTC",
+  "export_version": "1.0",
+  "installation_id": "d3b7881f-d27b-40cb-9842-0a991f9d1c0c",
+  "installation": {
+    "id": "d3b7881f-d27b-40cb-9842-0a991f9d1c0c",
+    "name": "RD Vančura",
+    "tags": [
+      {
+        "old_id": 133,
+        "name": "Vypršené předplatné",
+        "created_at": "2023-06-23T11:46:08.592Z",
+        "updated_at": "2023-12-08T11:48:51.195Z",
+        "taggings_count": 128,
+        "taggable_type": "Installation",
+        "bg_color": "yellow",
+        "color": "black",
+        "slug": "Expired-subscription",
+        "id": "a6e87659-4f44-4ab5-abcb-1d051e714d76"
+      }
+    ],
+    "vm_tenant_id": 33,
+    "addresses": [
+      {
+        "address_type_id": "58c13c43-f33c-404c-804e-a71bb26ba116",
+        "city": "Strančice",
+        "zip": "251 63",
+        "street": "Všechromy 105",
+        "country": "CZ"
+      },
+      {
+        "address_type_id": "faf73bf6-c256-4c1d-929f-6b6ee6aa3a90",
+        "city": "Strančice",
+        "zip": "251 63",
+        "street": "Všechromy 105",
+        "country": "CZ"
+      }
+    ],
+    "central_units": [
+      {
+        "label": "0",
+        "first_online_at": "2020-10-02T04:00:07.420Z",
+        "state": "monitored"
+      }
+    ]
+  },
+  "statistics": {
+    "total_reports": 6,
+    "published_reports": 6,
+    "total_devices": 10,
+    "charts_count": 18,
+    "tables_count": 6
+  }
+}

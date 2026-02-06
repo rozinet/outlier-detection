@@ -1,0 +1,228 @@
+{
+  "id": "4cd5206b-230a-4e6a-8408-ef277ef2d48d",
+  "name": "REP2511090001",
+  "level": null,
+  "published_at": "2025-11-09 20:54:20 UTC",
+  "published_by": "ced89c66-8a02-4ded-898d-944d7b5c6332",
+  "created_at": "2025-11-09 20:48:45 UTC",
+  "updated_at": "2025-12-22 03:15:44 UTC",
+  "installation_id": "f8c602ad-95d4-41c9-9cb2-a223211fe0dc",
+  "report_template": {
+    "id": "ccd33185-ee6e-4615-a805-32492f893924",
+    "name": "Nárůst vlhkosti v konstrukci"
+  },
+  "charts": [
+    {
+      "id": "12fb5fbd-a317-4fd1-a150-97891f4d175d",
+      "order": 1,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "2 - 1.07 technická místnost - sprchový kout/pračka/sušička/kohout (MHT03)"
+        }
+      ],
+      "report_template_chart_section_id": "0a2d5b13-9a9d-4d38-9ae6-21554dd1bd2e",
+      "created_at": "2025-11-09 20:52:49 UTC",
+      "updated_at": "2025-11-09 20:53:11 UTC",
+      "image_file": "chart_12fb5fbd-a317-4fd1-a150-97891f4d175d.png"
+    },
+    {
+      "id": "13bc1a84-1ce5-4b7a-8716-4884ab7b04b8",
+      "order": 2,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "6 - 1.05 koupelna - vana/umyvadla (HT02)"
+        },
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "5 - 1.05 koupelna - WC (HT02)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "4 - 1.07 technická místnost - bojler (HT02)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "10 - 1.01 kuchyň - dřez/myčka (MHT03)"
+        },
+        {
+          "color": "rgba(227, 119, 194, 1)",
+          "label": "3 - 1.05 koupelna - sprchový kout (MHT03)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "7 - 1.11 WC - WC/umyvadlo (HT02)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "2 - 1.07 technická místnost - sprchový kout/pračka/sušička/kohout (MHT03)"
+        }
+      ],
+      "report_template_chart_section_id": "0a2d5b13-9a9d-4d38-9ae6-21554dd1bd2e",
+      "created_at": "2025-11-09 20:52:49 UTC",
+      "updated_at": "2025-11-09 20:53:11 UTC",
+      "image_file": "chart_13bc1a84-1ce5-4b7a-8716-4884ab7b04b8.png"
+    },
+    {
+      "id": "98045112-2cf1-439b-befc-e8894abf50b2",
+      "order": 3,
+      "title": "Hmotnostní vlhkost dřeva",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "2 - 1.07 technická místnost - sprchový kout/pračka/sušička/kohout (MHT03)"
+        }
+      ],
+      "report_template_chart_section_id": "0a2d5b13-9a9d-4d38-9ae6-21554dd1bd2e",
+      "created_at": "2025-11-09 20:52:49 UTC",
+      "updated_at": "2025-11-09 20:53:11 UTC",
+      "image_file": "chart_98045112-2cf1-439b-befc-e8894abf50b2.png"
+    },
+    {
+      "id": "7ae41815-bb95-4417-8e3d-2187c61cd6f4",
+      "order": 4,
+      "title": "Hmotnostní vlhkost dřeva",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "2 - 1.07 technická místnost - sprchový kout/pračka/sušička/kohout (MHT03)"
+        },
+        {
+          "color": "rgba(227, 119, 194, 1)",
+          "label": "3 - 1.05 koupelna - sprchový kout (MHT03)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "10 - 1.01 kuchyň - dřez/myčka (MHT03)"
+        }
+      ],
+      "report_template_chart_section_id": "0a2d5b13-9a9d-4d38-9ae6-21554dd1bd2e",
+      "created_at": "2025-11-09 20:52:49 UTC",
+      "updated_at": "2025-11-09 20:53:11 UTC",
+      "image_file": "chart_7ae41815-bb95-4417-8e3d-2187c61cd6f4.png"
+    }
+  ],
+  "tables": [
+    {
+      "id": "8e075c0b-fd91-46c8-bf23-ac640e0ff261",
+      "source": {
+        "bbf72bc5-ef56-4de7-a44d-65ef696c5a4a": {
+          "note": "Středně rychlý a středně velký nárůst vlhkosti. Počátek nárůstu je dne 9.11.2025 přibližně ve 14:45.\n\nNárůst je patrný pouze v relativní vzdušné vlhkosti. Hmotnostní vlhkost dřeva zůstává téměř beze změny. ",
+          "color": "rgba(188, 189, 34, 1)",
+          "status": "level_2"
+        }
+      },
+      "report_template_table_section_id": "c53f4000-2f94-40e9-bfee-f6da6256285b",
+      "created_at": "2025-11-09 20:52:33 UTC",
+      "updated_at": "2025-11-09 20:52:33 UTC"
+    }
+  ],
+  "texts": [
+    {
+      "id": "91044f22-22e9-44a2-a9fa-1e31da396974",
+      "order": 1,
+      "report_template_text": {
+        "id": "dbe9a28e-4b63-4642-8d36-085a8518e874",
+        "text": "Vzhledem k umístění senzoru a charakteru nárůstu je nejpravděpodobnější příčinou pronikání skrze spáry nebo netěsnosti napojení odpadu ve srchovém koutě."
+      },
+      "report_template_text_section": {
+        "id": "a67ccd31-c515-4cec-9af9-8003060fbbbf",
+        "name": "Detail"
+      },
+      "created_at": "2025-11-09 20:53:39 UTC",
+      "updated_at": "2025-11-09 20:53:39 UTC"
+    },
+    {
+      "id": "d18ba05f-5741-400a-bdbf-4c9ef0824806",
+      "order": 1,
+      "report_template_text": {
+        "id": "7396b075-8efa-4ae7-9eb3-429ba7043062",
+        "text": "Prověřit, zdali v místě senzoru dochází k pronikání vlhkosti do konstrukce."
+      },
+      "report_template_text_section": {
+        "id": "75620260-9f77-468d-a568-b8e3cf72d43c",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-11-09 20:54:11 UTC",
+      "updated_at": "2025-11-09 20:54:11 UTC"
+    },
+    {
+      "id": "99be00f8-ee4c-4566-b5d7-ee63b2b5366d",
+      "order": 1,
+      "report_template_text": {
+        "id": "3a572602-cdd2-4cf0-8538-f065724d047e",
+        "text": "Systém Senzomatic detekuje nárůst vlhkosti, který může být způsobený únikem vody nebo vlhkosti do konstrukce.\r\n\r\nPříčinou úniku vlhkosti může být:\r\n    • zatečení z odpadního systému nebo z netěsnících spojů (například netěsnící spáry ve sprše/vaně nebo odtok kondenzátu z nějaké technologie) \r\n    • trvalý únik z přívodního vodovodního potrubí nebo otopného systému\r\n    • jednorázové zatečení zvenku (například při silném dešti)\r\n    • jednorázové zatečení z interiéru (například rozlití vody na podlahu), které pomalu prostupuje stěnou až k senzoru\t\r\n    • intenzivní stavební úpravy v přilehlé místnosti (například obkládání stěn nebo pokládání podlahy)\r\n    • nasávání vlhkosti z exteriéru nebo z podloží domu"
+      },
+      "report_template_text_section": {
+        "id": "bc912193-496d-4a1d-acb5-97d50dffd564",
+        "name": "Úvod"
+      },
+      "created_at": "2025-11-09 20:54:21 UTC",
+      "updated_at": "2025-11-09 20:54:21 UTC"
+    },
+    {
+      "id": "7a5492f0-8fe8-481c-8882-33d209944ef6",
+      "order": 2,
+      "report_template_text": {
+        "id": "8e4f14bf-e846-4d38-821f-2832c34bfe69",
+        "text": "Ani ostatní příčiny ale nelze v tuto chvíli vyloučit."
+      },
+      "report_template_text_section": {
+        "id": "a67ccd31-c515-4cec-9af9-8003060fbbbf",
+        "name": "Detail"
+      },
+      "created_at": "2025-11-09 20:53:39 UTC",
+      "updated_at": "2025-11-09 20:53:39 UTC"
+    },
+    {
+      "id": "efaf11d1-6deb-41bb-a172-2967a40f3721",
+      "order": 2,
+      "report_template_text": {
+        "id": "44b2daf9-335b-43ff-bb81-aa02c98a0bf8",
+        "text": "Důkladnou kontrolu těsnosti spár a odpadu ve sprchovém koutě/vaně."
+      },
+      "report_template_text_section": {
+        "id": "75620260-9f77-468d-a568-b8e3cf72d43c",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-11-09 20:54:11 UTC",
+      "updated_at": "2025-11-09 20:54:11 UTC"
+    },
+    {
+      "id": "9354d8cf-b565-490c-90c7-40a9716993f2",
+      "order": 3,
+      "report_template_text": {
+        "id": "0c18b1ed-3483-41cd-a4e0-b7152209ccf9",
+        "text": "Pokud se jednalo o jednorázové zatečení a příčina je již odstraněna, je možné počkat na samovolný pokles vlhkosti. K samovolnému poklesu by mělo dojít nejpozději do 1 měsíce od události."
+      },
+      "report_template_text_section": {
+        "id": "75620260-9f77-468d-a568-b8e3cf72d43c",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-11-09 20:54:11 UTC",
+      "updated_at": "2025-11-09 20:54:11 UTC"
+    },
+    {
+      "id": "208b4724-9ea9-4dc1-a15b-4adaac70c7b8",
+      "order": 4,
+      "report_template_text": {
+        "id": "e490e459-ee4e-4051-add0-a87d9ba41dbd",
+        "text": "Důkladnou kontrolu těsnosti spár a odpadu ve vaně."
+      },
+      "report_template_text_section": {
+        "id": "75620260-9f77-468d-a568-b8e3cf72d43c",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-12-02 11:23:26 UTC",
+      "updated_at": "2025-12-02 11:23:26 UTC"
+    }
+  ],
+  "custom_texts": []
+}

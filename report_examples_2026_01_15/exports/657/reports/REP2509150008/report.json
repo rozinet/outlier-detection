@@ -1,0 +1,231 @@
+{
+  "id": "9bc98110-ce7d-4684-8c7b-410177e82b56",
+  "name": "REP2509150008",
+  "level": null,
+  "published_at": "2025-09-15 10:55:02 UTC",
+  "published_by": "0eb7ab47-9014-4ca9-8003-23050a151476",
+  "created_at": "2025-09-15 10:52:30 UTC",
+  "updated_at": "2025-10-21 11:41:44 UTC",
+  "installation_id": "f8c602ad-95d4-41c9-9cb2-a223211fe0dc",
+  "report_template": {
+    "id": "6407813f-7d15-4632-abef-982138f1867b",
+    "name": "Pravidelný čtvrtletní report"
+  },
+  "charts": [
+    {
+      "id": "c04f5fc0-aa03-4120-9504-5af70dcb6e4d",
+      "order": 1,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(227, 119, 194, 1)",
+          "label": "3 - 1.05 koupelna - sprchový kout (MHT03)"
+        },
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "5 - 1.05 koupelna - WC (HT02)"
+        },
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "6 - 1.05 koupelna - vana/umyvadla (HT02)"
+        },
+        {
+          "color": "rgba(214, 39, 40, 1)",
+          "label": "8 - HT02 - Interiér (HT03)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "4 - 1.07 technická místnost - bojler (HT02)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "2 - 1.07 technická místnost - sprchový kout/pračka/sušička/kohout (MHT03)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "7 - 1.11 WC - WC/umyvadlo (HT02)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "10 - 1.01 kuchyň - dřez/myčka (MHT03)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-09-15 10:54:08 UTC",
+      "updated_at": "2025-09-15 10:54:14 UTC",
+      "image_file": "chart_c04f5fc0-aa03-4120-9504-5af70dcb6e4d.png"
+    },
+    {
+      "id": "62bbae33-b99f-4a04-a5db-865a7971f88b",
+      "order": 2,
+      "title": "Absolutní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "5 - 1.05 koupelna - WC (HT02)"
+        },
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "6 - 1.05 koupelna - vana/umyvadla (HT02)"
+        },
+        {
+          "color": "rgba(227, 119, 194, 1)",
+          "label": "3 - 1.05 koupelna - sprchový kout (MHT03)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "4 - 1.07 technická místnost - bojler (HT02)"
+        },
+        {
+          "color": "rgba(214, 39, 40, 1)",
+          "label": "8 - HT02 - Interiér (HT03)"
+        },
+        {
+          "color": "rgba(44, 160, 44, 1)",
+          "label": "9 - HT02 - Exteriér (HT03)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "10 - 1.01 kuchyň - dřez/myčka (MHT03)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "2 - 1.07 technická místnost - sprchový kout/pračka/sušička/kohout (MHT03)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "7 - 1.11 WC - WC/umyvadlo (HT02)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-09-15 10:54:08 UTC",
+      "updated_at": "2025-09-15 10:54:14 UTC",
+      "image_file": "chart_62bbae33-b99f-4a04-a5db-865a7971f88b.png"
+    },
+    {
+      "id": "f0da73c7-0596-429a-86c7-256270f4c72f",
+      "order": 3,
+      "title": "Hmotnostní vlhkost dřeva",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "10 - 1.01 kuchyň - dřez/myčka (MHT03)"
+        },
+        {
+          "color": "rgba(227, 119, 194, 1)",
+          "label": "3 - 1.05 koupelna - sprchový kout (MHT03)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "2 - 1.07 technická místnost - sprchový kout/pračka/sušička/kohout (MHT03)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-09-15 10:54:08 UTC",
+      "updated_at": "2025-09-15 10:54:14 UTC",
+      "image_file": "chart_f0da73c7-0596-429a-86c7-256270f4c72f.png"
+    }
+  ],
+  "tables": [
+    {
+      "id": "07968369-3256-430a-af11-566c6c620856",
+      "source": {
+        "1d28e617-d5d3-4ae4-bb5a-343dea7097c5": {
+          "note": "",
+          "color": "rgba(31, 119, 180, 1)",
+          "status": "level_0"
+        },
+        "2dcc7228-ce90-4f97-9b01-2f5475713c65": {
+          "note": "",
+          "color": "rgba(255, 127, 14, 1)",
+          "status": "level_0"
+        },
+        "61c4aa32-d5ba-49c5-a0e4-df0d5f1b753e": {
+          "note": "",
+          "color": "rgba(148, 103, 189, 1)",
+          "status": "level_0"
+        },
+        "789fda72-a547-4294-bfa7-d2b470c71b90": {
+          "note": "",
+          "color": "rgba(140, 86, 75, 1)",
+          "status": "level_0"
+        },
+        "98f972ec-32d6-4211-8931-ed417635cf42": {
+          "note": "Dlouhodobě zvýšená až vysoká vlhkost.\r\nDochází k velmi pomalému poklesu vlhkosti.",
+          "color": "rgba(227, 119, 194, 1)",
+          "status": "level_2"
+        },
+        "9f58dbbc-1aeb-40f2-92cc-169bd3f1c85b": {
+          "note": "",
+          "color": "rgba(127, 127, 127, 1)",
+          "status": "level_0"
+        },
+        "bbf72bc5-ef56-4de7-a44d-65ef696c5a4a": {
+          "note": "",
+          "color": "rgba(188, 189, 34, 1)",
+          "status": "level_0"
+        }
+      },
+      "report_template_table_section_id": "e9662cef-99bf-41dd-b05b-f4bb40c2f50b",
+      "created_at": "2025-09-15 10:54:03 UTC",
+      "updated_at": "2025-09-15 10:54:03 UTC"
+    }
+  ],
+  "texts": [
+    {
+      "id": "757c464d-1f24-4a02-beb4-cb3b405479ea",
+      "order": 1,
+      "report_template_text": {
+        "id": "38a5bbe5-df9c-4ba9-86b6-fe60f9ef0cf1",
+        "text": "Prověřit zdali v místech senzorů zmíněných na předešlé straně dochází k pronikání vlhkosti do konstrukce."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-09-15 10:54:43 UTC",
+      "updated_at": "2025-09-15 10:54:43 UTC"
+    },
+    {
+      "id": "f7becb8a-91b9-4c17-bcff-5f669ff3e513",
+      "order": 1,
+      "report_template_text": {
+        "id": "8e5436be-682a-4975-b7d3-70104ca13bf5",
+        "text": "Tento pravidelný čtvrtletní report Vám zasíláme na základě Vašeho předplatného služby monitoringu Senzomatic (dříve MoistureGuard). Čtvrtletní reporting Vám budeme zasílat pravidelně po dobu trvání předplatného. \r\n\r\nReport obsahuje vyhodnocení dlouhodobého stavu vlhkosti v domě s důrazem na poslední 3 měsíce. V případě havárie nebo náhlého zvýšení vlhkosti reportujeme vždy samostatně, jakmile je událost detekována.\r\n\r\nVyhodnocení v tomto pravidelném reportu je založeno na mnoha faktorech, které jsou shrnuty ve sloupci \"STAV\" v tabulce níže.  Mezi sledované faktory patří aktuální hodnota vlhkosti, vazba mezi teplotou a vlhkostí, vývoj vlhkosti v čase, porovnání aktuálních hodnot s předchozími roky (pokud monitoring běží více než rok), vzájemné vazby mezi senzory, souvislost vlhkosti ve stěnách a vlhkosti v interiéru a exteriéru (pokud jsou tyto senzory nainstalovány).\r\n\r\nNa další straně reportu najdete grafy za sledované období a případná doporučení pro další postup."
+      },
+      "report_template_text_section": {
+        "id": "4a0e59bf-93ad-452d-9cc6-c74eb1f401bf",
+        "name": "Úvod"
+      },
+      "created_at": "2025-09-15 10:54:46 UTC",
+      "updated_at": "2025-09-15 10:54:46 UTC"
+    },
+    {
+      "id": "d96870b5-f318-465d-9783-de1f6030edb7",
+      "order": 2,
+      "report_template_text": {
+        "id": "df450d3e-bd2d-47cf-a641-7df213168973",
+        "text": "Doporučujeme sledovat, zda dojde k poklesu vlhkosti na senzorech uvedených na předchozí stránce."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-09-15 10:54:44 UTC",
+      "updated_at": "2025-09-15 10:54:44 UTC"
+    }
+  ],
+  "custom_texts": [
+    {
+      "id": "dd0162f5-a5a6-4266-8b6f-5bf230aa7e75",
+      "order": 1,
+      "text": "V domě jsou místa, kde se vyskytuje dlouhodobě zvýšená vlhkost. ",
+      "report_template_text_section_id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+      "created_at": "2025-09-15 10:54:31 UTC",
+      "updated_at": "2025-09-15 10:54:31 UTC"
+    }
+  ]
+}

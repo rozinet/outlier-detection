@@ -1,0 +1,322 @@
+{
+  "id": "dfd6b232-5c25-4466-b65b-52c422c72d9b",
+  "name": "REP2502050001",
+  "level": null,
+  "published_at": "2025-02-05 10:36:41 UTC",
+  "published_by": "0eb7ab47-9014-4ca9-8003-23050a151476",
+  "created_at": "2025-02-05 10:26:43 UTC",
+  "updated_at": "2025-10-21 12:08:38 UTC",
+  "installation_id": "aef7bcdc-ddd6-494f-bff2-e835b26dd330",
+  "report_template": {
+    "id": "6407813f-7d15-4632-abef-982138f1867b",
+    "name": "Pravidelný čtvrtletní report"
+  },
+  "charts": [
+    {
+      "id": "d6df9268-880e-4f52-87b3-8e728d573ac7",
+      "order": 1,
+      "title": "Absolutní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "2 - 1.03 kychyň (dřez, myčka) (HT02)"
+        },
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "6 - 1.05 tech.m. (pračka, sušička) (HT02)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "3 - 1.04 Koupelna 1 (sprcha) (MHT03)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "13 - americká lednice (HT02)"
+        },
+        {
+          "color": "rgba(44, 160, 44, 1)",
+          "label": "10 - 1.04 koupelna 1 (umyvadlo) (HT02)"
+        },
+        {
+          "color": "rgba(214, 39, 40, 1)",
+          "label": "12 - HT02 - Exteriér (HT02)"
+        },
+        {
+          "color": "rgba(227, 119, 194, 1)",
+          "label": "5 - 1.05 nezamrzný kohout (HT02)"
+        },
+        {
+          "color": "rgba(23, 190, 207, 1)",
+          "label": "8 - 1.10 Koupelna 2 (sprcha, vana) (HT02)"
+        },
+        {
+          "color": "rgba(105, 239, 123, 1)",
+          "label": "11 - HT02 - Interiér (HT02)"
+        },
+        {
+          "color": "rgba(81, 132, 19, 1)",
+          "label": "7 - 1.12 toalera (wc, umyvadlo) (MHT03)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "4 - 1.04 koupelna 1 (wc, umyvadlo) (HT02)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "9 - 1.04 koupelna 1 (wc) (HT02)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-02-05 10:33:25 UTC",
+      "updated_at": "2025-02-05 10:33:25 UTC",
+      "image_file": "chart_d6df9268-880e-4f52-87b3-8e728d573ac7.png"
+    },
+    {
+      "id": "db9519e6-bfa9-410e-ad99-c64bcfad0016",
+      "order": 2,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "6 - 1.05 tech.m. (pračka, sušička) (HT02)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "3 - 1.04 Koupelna 1 (sprcha) (MHT03)"
+        },
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "2 - 1.03 kychyň (dřez, myčka) (HT02)"
+        },
+        {
+          "color": "rgba(44, 160, 44, 1)",
+          "label": "10 - 1.04 koupelna 1 (umyvadlo) (HT02)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "13 - americká lednice (HT02)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "4 - 1.04 koupelna 1 (wc, umyvadlo) (HT02)"
+        },
+        {
+          "color": "rgba(227, 119, 194, 1)",
+          "label": "5 - 1.05 nezamrzný kohout (HT02)"
+        },
+        {
+          "color": "rgba(81, 132, 19, 1)",
+          "label": "7 - 1.12 toalera (wc, umyvadlo) (MHT03)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "9 - 1.04 koupelna 1 (wc) (HT02)"
+        },
+        {
+          "color": "rgba(23, 190, 207, 1)",
+          "label": "8 - 1.10 Koupelna 2 (sprcha, vana) (HT02)"
+        },
+        {
+          "color": "rgba(105, 239, 123, 1)",
+          "label": "11 - HT02 - Interiér (HT02)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-02-05 10:33:26 UTC",
+      "updated_at": "2025-02-05 10:33:26 UTC",
+      "image_file": "chart_db9519e6-bfa9-410e-ad99-c64bcfad0016.png"
+    },
+    {
+      "id": "3c001df7-0f0e-4963-9714-49f561c487a4",
+      "order": 3,
+      "title": "Hmotnostní vlhkost dřeva",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(81, 132, 19, 1)",
+          "label": "7 - 1.12 toalera (wc, umyvadlo) (MHT03)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "3 - 1.04 Koupelna 1 (sprcha) (MHT03)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-02-05 10:33:26 UTC",
+      "updated_at": "2025-02-05 10:33:26 UTC",
+      "image_file": "chart_3c001df7-0f0e-4963-9714-49f561c487a4.png"
+    },
+    {
+      "id": "bd09157e-2cc1-48d3-acec-a4c23b55308e",
+      "order": 4,
+      "title": "Teplota okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "2 - 1.03 kychyň (dřez, myčka) (HT02)"
+        },
+        {
+          "color": "rgba(44, 160, 44, 1)",
+          "label": "10 - 1.04 koupelna 1 (umyvadlo) (HT02)"
+        },
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "6 - 1.05 tech.m. (pračka, sušička) (HT02)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "9 - 1.04 koupelna 1 (wc) (HT02)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "3 - 1.04 Koupelna 1 (sprcha) (MHT03)"
+        },
+        {
+          "color": "rgba(105, 239, 123, 1)",
+          "label": "11 - HT02 - Interiér (HT02)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "13 - americká lednice (HT02)"
+        },
+        {
+          "color": "rgba(227, 119, 194, 1)",
+          "label": "5 - 1.05 nezamrzný kohout (HT02)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "4 - 1.04 koupelna 1 (wc, umyvadlo) (HT02)"
+        },
+        {
+          "color": "rgba(81, 132, 19, 1)",
+          "label": "7 - 1.12 toalera (wc, umyvadlo) (MHT03)"
+        },
+        {
+          "color": "rgba(23, 190, 207, 1)",
+          "label": "8 - 1.10 Koupelna 2 (sprcha, vana) (HT02)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-02-05 10:34:12 UTC",
+      "updated_at": "2025-02-05 10:34:12 UTC",
+      "image_file": "chart_bd09157e-2cc1-48d3-acec-a4c23b55308e.png"
+    }
+  ],
+  "tables": [
+    {
+      "id": "fc81db3d-7e4d-4912-85de-8adfe3b78106",
+      "source": {
+        "0099c8ef-406e-4aff-91e0-6287c9138b36": {
+          "note": "",
+          "color": "rgba(31, 119, 180, 1)",
+          "status": "level_0"
+        },
+        "17815fd5-e64c-4bf2-be11-3f1d609198f4": {
+          "note": "Běžně zvýšená vlhkost s kolísavým klesajícím trendem.",
+          "color": "rgba(255, 127, 14, 1)",
+          "status": "level_1"
+        },
+        "19a86289-ebf0-4a13-9e56-327c8237998f": {
+          "note": "",
+          "color": "rgba(44, 160, 44, 1)",
+          "status": "level_0"
+        },
+        "5d166e02-d1cd-4789-8923-783d0c895b0d": {
+          "note": "",
+          "color": "rgba(148, 103, 189, 1)",
+          "status": "level_0"
+        },
+        "67276d2b-d4c4-46ae-a485-5e67007a2a64": {
+          "note": "",
+          "color": "rgba(140, 86, 75, 1)",
+          "status": "level_0"
+        },
+        "8e89317a-b442-4c31-8667-409b08abf02d": {
+          "note": "",
+          "color": "rgba(227, 119, 194, 1)",
+          "status": "level_0"
+        },
+        "b098762a-fd77-4411-8def-98f9b0522df3": {
+          "note": "",
+          "color": "rgba(127, 127, 127, 1)",
+          "status": "level_0"
+        },
+        "b9b65680-cc1f-4823-a4b5-13e750a5bf06": {
+          "note": "",
+          "color": "rgba(188, 189, 34, 1)",
+          "status": "level_0"
+        },
+        "ca31501a-40bb-4d96-bf0a-66a8e2f3ac04": {
+          "note": "Dlouhodobě mírně zvýšená až zvýšená kolísavá vlhkost, zřejmě zabudovaná po dostavbě. Ačkoli oproti předešlým rokům je zde náznak většího poklesu vlhkosti, tato vlhkost nemá tendenci dostatečně klesat. V zimních měsících doporučujeme alespoň v průběhu vytápění intenzivně větrat. Vliv může mít také nízká teplota ve stěně.",
+          "color": "rgba(23, 190, 207, 1)",
+          "status": "level_2"
+        },
+        "f1f25e96-78c7-4457-9ed3-182b75ec1505": {
+          "note": "",
+          "color": "rgba(81, 132, 19, 1)",
+          "status": "level_0"
+        }
+      },
+      "report_template_table_section_id": "e9662cef-99bf-41dd-b05b-f4bb40c2f50b",
+      "created_at": "2025-02-05 10:33:23 UTC",
+      "updated_at": "2025-02-05 10:33:23 UTC"
+    }
+  ],
+  "texts": [
+    {
+      "id": "132120ee-2b1c-4b09-9168-6070232d9196",
+      "order": 1,
+      "report_template_text": {
+        "id": "38a5bbe5-df9c-4ba9-86b6-fe60f9ef0cf1",
+        "text": "Prověřit zdali v místech senzorů zmíněných na předešlé straně dochází k pronikání vlhkosti do konstrukce."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-02-05 10:35:52 UTC",
+      "updated_at": "2025-02-05 10:35:52 UTC"
+    },
+    {
+      "id": "b3cf264b-d7d0-4252-be42-f907ee6bbf7d",
+      "order": 1,
+      "report_template_text": {
+        "id": "8e5436be-682a-4975-b7d3-70104ca13bf5",
+        "text": "Tento pravidelný čtvrtletní report Vám zasíláme na základě Vašeho předplatného služby monitoringu Senzomatic (dříve MoistureGuard). Čtvrtletní reporting Vám budeme zasílat pravidelně po dobu trvání předplatného. \r\n\r\nReport obsahuje vyhodnocení dlouhodobého stavu vlhkosti v domě s důrazem na poslední 3 měsíce. V případě havárie nebo náhlého zvýšení vlhkosti reportujeme vždy samostatně, jakmile je událost detekována.\r\n\r\nVyhodnocení v tomto pravidelném reportu je založeno na mnoha faktorech, které jsou shrnuty ve sloupci \"STAV\" v tabulce níže.  Mezi sledované faktory patří aktuální hodnota vlhkosti, vazba mezi teplotou a vlhkostí, vývoj vlhkosti v čase, porovnání aktuálních hodnot s předchozími roky (pokud monitoring běží více než rok), vzájemné vazby mezi senzory, souvislost vlhkosti ve stěnách a vlhkosti v interiéru a exteriéru (pokud jsou tyto senzory nainstalovány).\r\n\r\nNa další straně reportu najdete grafy za sledované období a případná doporučení pro další postup."
+      },
+      "report_template_text_section": {
+        "id": "4a0e59bf-93ad-452d-9cc6-c74eb1f401bf",
+        "name": "Úvod"
+      },
+      "created_at": "2025-02-05 10:35:54 UTC",
+      "updated_at": "2025-02-05 10:35:54 UTC"
+    },
+    {
+      "id": "bb01e393-449e-406a-ab57-f740030ccffc",
+      "order": 2,
+      "report_template_text": {
+        "id": "2c5f5005-4599-4ed6-9dc8-84e79f0cd41e",
+        "text": "Zvýšení teploty ve stěně u senzorů s nízkou teplotou a vysokou relativní vzdušnou vlhkostí. Toho lze docílit například zlepšením vnějšího zateplení, odstraněním tepelných mostů, případně zvýšením teploty v přilehlé místnosti."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-02-05 10:35:52 UTC",
+      "updated_at": "2025-02-05 10:35:52 UTC"
+    }
+  ],
+  "custom_texts": [
+    {
+      "id": "636d2597-8cae-4a89-969e-d25acec41a17",
+      "order": 1,
+      "text": "V domě jsou místa, kde se vyskytuje dlouhodobě zvýšená vlhkost. Tato vlhkost byla pravděpodobně zanesena při stavbě a nemá možnost samovolně vyschnout. Vliv na tuto vlhkost může mít nízká teplota ve stěně.",
+      "report_template_text_section_id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+      "created_at": "2025-02-05 10:35:27 UTC",
+      "updated_at": "2025-02-05 10:35:27 UTC"
+    }
+  ]
+}

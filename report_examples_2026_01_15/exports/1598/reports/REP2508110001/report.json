@@ -1,0 +1,149 @@
+{
+  "id": "b187a812-222a-4897-9cc0-abc2892ac3c6",
+  "name": "REP2508110001",
+  "level": "level_1",
+  "published_at": "2025-08-11 07:54:12 UTC",
+  "published_by": "0eb7ab47-9014-4ca9-8003-23050a151476",
+  "created_at": "2025-08-11 07:40:45 UTC",
+  "updated_at": "2026-01-12 10:41:09 UTC",
+  "installation_id": "3cdc76bd-310b-4928-bd3a-70135cf8d205",
+  "report_template": {
+    "id": "6407813f-7d15-4632-abef-982138f1867b",
+    "name": "Pravidelný čtvrtletní report"
+  },
+  "charts": [
+    {
+      "id": "977609f7-7639-4766-ab5f-f0d46dc29d03",
+      "order": 1,
+      "title": "Hmotnostní vlhkost dřeva",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(81, 132, 19, 1)",
+          "label": "13 - 1.11 zahradní ventil (MHT04)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-08-11 07:45:51 UTC",
+      "updated_at": "2025-08-11 07:45:57 UTC",
+      "image_file": "chart_977609f7-7639-4766-ab5f-f0d46dc29d03.png"
+    },
+    {
+      "id": "3ef23eb9-e4d6-4523-88ee-6aa46b2f709f",
+      "order": 2,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(81, 132, 19, 1)",
+          "label": "13 - 1.11 zahradní ventil (MHT04)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-08-11 07:45:51 UTC",
+      "updated_at": "2025-08-11 07:45:58 UTC",
+      "image_file": "chart_3ef23eb9-e4d6-4523-88ee-6aa46b2f709f.png"
+    },
+    {
+      "id": "b1e3fb08-5dd8-4d65-a516-fcd1daa8ed00",
+      "order": 3,
+      "title": "Absolutní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(88, 38, 166, 1)",
+          "label": "12 - 1.02 zahradní ventil (MHT04)"
+        },
+        {
+          "color": "rgba(81, 132, 19, 1)",
+          "label": "13 - 1.11 zahradní ventil (MHT04)"
+        },
+        {
+          "color": "rgba(184, 222, 183, 1)",
+          "label": "2 - 1.02 bojler (MHT04)"
+        },
+        {
+          "color": "rgba(170, 123, 40, 1)",
+          "label": "11 - 1.07 myčka (MHT04)"
+        },
+        {
+          "color": "rgba(208, 3, 214, 1)",
+          "label": "8 - 1.11 WC (MHT04)"
+        },
+        {
+          "color": "rgba(144, 40, 107, 1)",
+          "label": "7 - 1.11 sprchový kout/vana (MHT04)"
+        },
+        {
+          "color": "rgba(45, 116, 122, 1)",
+          "label": "5 - 1.07 dřez (HT03)"
+        },
+        {
+          "color": "rgba(152, 168, 234, 1)",
+          "label": "3 - 1.05 sprchový kout/umyvadlo (MHT04)"
+        },
+        {
+          "color": "rgba(104, 61, 13, 1)",
+          "label": "4 - 1.05 WC (MHT04)"
+        },
+        {
+          "color": "rgba(247, 57, 58, 1)",
+          "label": "6 - 1.11 umyvadlo (MHT04)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-08-11 07:45:51 UTC",
+      "updated_at": "2025-08-11 07:45:58 UTC",
+      "image_file": "chart_b1e3fb08-5dd8-4d65-a516-fcd1daa8ed00.png"
+    }
+  ],
+  "tables": [
+    {
+      "id": "97275ced-c100-4f44-93f4-64fb1866eb69",
+      "source": {
+        "4878e083-31af-499a-88d2-5f89899546bd": {
+          "note": "Senzor detekoval velmi pomalý, středně velký nárůst hmotnostní vlhkosti dřeva.\r\nZačátek tohoto nárůstu lze pozorovat přibližně k 7.8. Dne 9.8. ve večerních hodinách a dále 10.8. v dopoledních hodinách došlo ke znatelnému zrychlení tohoto nárůstu.\r\n\r\nPříčinou tohoto nárůstu může být například nadměrné užívání zahradního ventilu nebo netěsnosti kolem ventilu z exteriéru domu.\r\n\r\nHmotnostní vlhkost dřeva dosáhla pouze mírně zvýšených hodnot.\r\nAktuálně senzor detekuje pokles vlhkosti na přijatelné hodnoty.\r\n",
+          "color": "rgba(81, 132, 19, 1)",
+          "status": "level_1"
+        }
+      },
+      "report_template_table_section_id": "e9662cef-99bf-41dd-b05b-f4bb40c2f50b",
+      "created_at": "2025-08-11 07:45:48 UTC",
+      "updated_at": "2025-08-11 07:52:42 UTC"
+    }
+  ],
+  "texts": [
+    {
+      "id": "af87b176-167c-4c73-9194-3226776ca483",
+      "order": 1,
+      "report_template_text": {
+        "id": "88dc53c3-6664-4388-bfcc-2a67fcc61938",
+        "text": "Tento mimořádný report Vám zasíláme na základě Vašeho předplatného služby monitoringu Senzomatic (dříve MoistureGuard). Tento report slouží pro vyhodnocení konkrétní situace či zhoršujícího se stavu již probíhajícího nárůstu vlhkosti ve Vašem domě. Vyhodnocení v tomto reportu je založeno na mnoha faktorech, které jsou shrnuty ve sloupci \"STAV\" v tabulce níže. Mezi sledované faktory patří aktuální hodnota vlhkosti, vazba mezi teplotou a vlhkostí, vývoj vlhkosti v čase, porovnání aktuálních hodnot s předchozími roky (pokud monitoring běží více než rok), vzájemné vazby mezi senzory, souvislost vlhkosti ve stěnách a vlhkosti v interiéru a exteriéru (pokud jsou tyto senzory nainstalovány). Na další straně reportu najdete grafy za sledované období a případná doporučení pro další postup.\r\n"
+      },
+      "report_template_text_section": {
+        "id": "4a0e59bf-93ad-452d-9cc6-c74eb1f401bf",
+        "name": "Úvod"
+      },
+      "created_at": "2025-08-11 07:46:16 UTC",
+      "updated_at": "2025-08-11 07:46:16 UTC"
+    }
+  ],
+  "custom_texts": [
+    {
+      "id": "c941adbb-73f5-4ba6-93ca-6566d4e60767",
+      "order": 1,
+      "text": "Senzor \"13 - 1.11 zahradní ventil \" detekoval nárůst vlhkosti, který mohl být způsoben proniknutím vody nebo vlhkosti do konstrukce.\r\n",
+      "report_template_text_section_id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+      "created_at": "2025-08-11 07:47:36 UTC",
+      "updated_at": "2025-08-11 07:47:36 UTC"
+    },
+    {
+      "id": "48d72161-1ced-4504-9871-eb22db899dfb",
+      "order": 1,
+      "text": "Doporučujeme prověřit, zdali dochází k pronikání vlhkosti do konstrukce okolo zahradního ventilu zejména z exteriéru v místě zahradního ventilu.\r\n",
+      "report_template_text_section_id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+      "created_at": "2025-08-11 07:47:19 UTC",
+      "updated_at": "2025-08-11 07:51:36 UTC"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "installation_id": "cb6c80c4-09d6-469b-83b3-14ac40bfaa5e",
+  "exported_at": "2026-01-15 09:09:46 UTC",
+  "count": 9,
+  "devices_by_tags": {
+    "Konstrukce budovy": [
+      "d1f6e0d7-0b9c-4f8a-ace2-832626c9aea9",
+      "19c32b7f-bbc8-41d7-88bb-40bd40f14616",
+      "4589130b-d05c-447b-a684-820015f8f0c7",
+      "6ebf0f2b-dd81-44ec-8664-9c9cdfe4a457",
+      "352866d5-56fa-49e7-b99c-8c93bf031410",
+      "f977c8d5-b48a-4d8e-8d3e-7cdc670c0ed8",
+      "822561ac-bf53-4e67-af1e-b0ae0d28de02"
+    ],
+    "Okolí domu": [
+      "dc3ae952-2e0c-4de7-882d-0b4c44bf8021"
+    ],
+    "Exteriér": [
+      "dc3ae952-2e0c-4de7-882d-0b4c44bf8021"
+    ],
+    "Wc": [
+      "4589130b-d05c-447b-a684-820015f8f0c7",
+      "822561ac-bf53-4e67-af1e-b0ae0d28de02"
+    ],
+    "Koupelna": [
+      "6ebf0f2b-dd81-44ec-8664-9c9cdfe4a457",
+      "352866d5-56fa-49e7-b99c-8c93bf031410",
+      "822561ac-bf53-4e67-af1e-b0ae0d28de02"
+    ],
+    "Kvalita vzduchu v interiéru": [
+      "d2d1c040-5bfb-4483-ae72-f9e2a832c0b2"
+    ],
+    "Interiér": [
+      "d2d1c040-5bfb-4483-ae72-f9e2a832c0b2"
+    ],
+    "Myčka": [
+      "f977c8d5-b48a-4d8e-8d3e-7cdc670c0ed8"
+    ],
+    "Dřez": [
+      "f977c8d5-b48a-4d8e-8d3e-7cdc670c0ed8"
+    ]
+  }
+}

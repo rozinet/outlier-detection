@@ -1,0 +1,33 @@
+{
+  "installation_id": "3cdc76bd-310b-4928-bd3a-70135cf8d205",
+  "exported_at": "2026-01-15 09:09:40 UTC",
+  "count": 8,
+  "devices_by_tags": {
+    "Ventil": [
+      "4878e083-31af-499a-88d2-5f89899546bd",
+      "06e01489-219c-40d9-bdc5-4e82ef4488f9"
+    ],
+    "Dřez": [
+      "d238d2f5-fb0e-477b-bba4-65fac21da767"
+    ],
+    "Wc": [
+      "c538927b-1a54-438a-b6e2-835495d5cdbc",
+      "b51b2af5-fb8b-47c6-b2f2-3e3541cc0ba1"
+    ],
+    "Kvalita vzduchu v interiéru": [
+      "01bb2bb2-8c5d-4fc0-95d0-eea9dda22dcb"
+    ],
+    "Interiér": [
+      "01bb2bb2-8c5d-4fc0-95d0-eea9dda22dcb"
+    ],
+    "Sever": [
+      "4bd107a2-7ea3-4d05-85db-13476e2e2928"
+    ],
+    "Exteriér": [
+      "4bd107a2-7ea3-4d05-85db-13476e2e2928"
+    ],
+    "Myčka": [
+      "7806d8ad-f117-4b00-8699-5de06a775edb"
+    ]
+  }
+}

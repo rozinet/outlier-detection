@@ -1,0 +1,41 @@
+{
+  "installation_id": "b238cff1-a573-4ad7-b0dc-14244c3bc628",
+  "exported_at": "2026-01-15 09:09:24 UTC",
+  "count": 8,
+  "devices_by_tags": {
+    "Konstrukce budovy": [
+      "bc7d7378-58c3-42ae-8cc1-8ddbc2687daf",
+      "d319fb67-8438-4176-8c27-7df0436470f1",
+      "99dc1fa8-f836-4652-9e31-f0716b28f67c",
+      "864454f5-b481-492a-83a2-62503bb228a9",
+      "ad97a852-cdef-4776-8420-d6d9811c99c1",
+      "ce76f256-3670-4f24-b885-9fa9cb17aaa2",
+      "37fb7113-114d-4d4b-aec6-3a8979f94e1e",
+      "72bbdd78-e8c6-4ace-a683-a0007e287e20"
+    ],
+    "Koupelna": [
+      "bc7d7378-58c3-42ae-8cc1-8ddbc2687daf",
+      "99dc1fa8-f836-4652-9e31-f0716b28f67c",
+      "ad97a852-cdef-4776-8420-d6d9811c99c1",
+      "72bbdd78-e8c6-4ace-a683-a0007e287e20"
+    ],
+    "Kuchyně": [
+      "d319fb67-8438-4176-8c27-7df0436470f1"
+    ],
+    "Dřez": [
+      "d319fb67-8438-4176-8c27-7df0436470f1"
+    ],
+    "Myčka": [
+      "d319fb67-8438-4176-8c27-7df0436470f1"
+    ],
+    "Okolí domu": [
+      "4d39faef-88ff-4a32-b8dd-9cdda2cf2104"
+    ],
+    "Exteriér": [
+      "4d39faef-88ff-4a32-b8dd-9cdda2cf2104"
+    ],
+    "Wc": [
+      "ce76f256-3670-4f24-b885-9fa9cb17aaa2"
+    ]
+  }
+}

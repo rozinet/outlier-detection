@@ -1,0 +1,218 @@
+{
+  "id": "0f17e5c3-3b78-4311-9cfe-06a43b07f826",
+  "name": "REP2409030009",
+  "level": null,
+  "published_at": "2024-09-03 10:20:46 UTC",
+  "published_by": "0eb7ab47-9014-4ca9-8003-23050a151476",
+  "created_at": "2024-09-03 10:19:55 UTC",
+  "updated_at": "2025-10-21 10:45:26 UTC",
+  "installation_id": "cb6c80c4-09d6-469b-83b3-14ac40bfaa5e",
+  "report_template": {
+    "id": "6407813f-7d15-4632-abef-982138f1867b",
+    "name": "Pravidelný čtvrtletní report"
+  },
+  "charts": [
+    {
+      "id": "9e3399c1-3a1d-4359-882a-d53155c3c5ba",
+      "order": 1,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(227, 119, 194, 1)",
+          "label": "22 - 1.6 trubka/žlábek (HT03)"
+        },
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "2 - koupelna - vana/umyvadlo (HT03)"
+        },
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "3 - technická  místnost - pračka/bojler (MHT03)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "9 - koupelna v menším domě - sprchový kout/bojler (HT03)"
+        },
+        {
+          "color": "rgba(44, 160, 44, 1)",
+          "label": "5 - WC - WC/umyvadlo (HT03)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "8 - koupelna v menším domě - WC/vstuup vody do domu (MHT03)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "6 - HT - Interiér (HT03)"
+        },
+        {
+          "color": "rgba(23, 190, 207, 1)",
+          "label": "4 - kuchyňský kout - dřez/myčka (HT03)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2024-09-03 10:20:31 UTC",
+      "updated_at": "2024-09-03 10:20:31 UTC",
+      "image_file": "chart_9e3399c1-3a1d-4359-882a-d53155c3c5ba.png"
+    },
+    {
+      "id": "81cf943a-5afc-4546-a71c-26514617d239",
+      "order": 2,
+      "title": "Absolutní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "9 - koupelna v menším domě - sprchový kout/bojler (HT03)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "8 - koupelna v menším domě - WC/vstuup vody do domu (MHT03)"
+        },
+        {
+          "color": "rgba(44, 160, 44, 1)",
+          "label": "5 - WC - WC/umyvadlo (HT03)"
+        },
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "2 - koupelna - vana/umyvadlo (HT03)"
+        },
+        {
+          "color": "rgba(227, 119, 194, 1)",
+          "label": "22 - 1.6 trubka/žlábek (HT03)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "7 - HT - Exteriér (HT03)"
+        },
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "3 - technická  místnost - pračka/bojler (MHT03)"
+        },
+        {
+          "color": "rgba(23, 190, 207, 1)",
+          "label": "4 - kuchyňský kout - dřez/myčka (HT03)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "6 - HT - Interiér (HT03)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2024-09-03 10:20:31 UTC",
+      "updated_at": "2024-09-03 10:20:31 UTC",
+      "image_file": "chart_81cf943a-5afc-4546-a71c-26514617d239.png"
+    },
+    {
+      "id": "6bc4fe10-5e5a-4cde-86f6-a4d0c45d65ae",
+      "order": 3,
+      "title": "Hmotnostní vlhkost dřeva",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "3 - technická  místnost - pračka/bojler (MHT03)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "8 - koupelna v menším domě - WC/vstuup vody do domu (MHT03)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2024-09-03 10:20:31 UTC",
+      "updated_at": "2024-09-03 10:20:31 UTC",
+      "image_file": "chart_6bc4fe10-5e5a-4cde-86f6-a4d0c45d65ae.png"
+    }
+  ],
+  "tables": [
+    {
+      "id": "9dc0f9fd-08e2-4ec2-b656-75d82c41e48d",
+      "source": {
+        "19c32b7f-bbc8-41d7-88bb-40bd40f14616": {
+          "note": "",
+          "color": "rgba(31, 119, 180, 1)",
+          "status": "level_0"
+        },
+        "352866d5-56fa-49e7-b99c-8c93bf031410": {
+          "note": "",
+          "color": "rgba(255, 127, 14, 1)",
+          "status": "level_0"
+        },
+        "4589130b-d05c-447b-a684-820015f8f0c7": {
+          "note": "",
+          "color": "rgba(44, 160, 44, 1)",
+          "status": "level_0"
+        },
+        "6ebf0f2b-dd81-44ec-8664-9c9cdfe4a457": {
+          "note": "",
+          "color": "rgba(148, 103, 189, 1)",
+          "status": "level_0"
+        },
+        "822561ac-bf53-4e67-af1e-b0ae0d28de02": {
+          "note": "",
+          "color": "rgba(140, 86, 75, 1)",
+          "status": "level_0"
+        },
+        "d1f6e0d7-0b9c-4f8a-ace2-832626c9aea9": {
+          "note": "",
+          "color": "rgba(227, 119, 194, 1)",
+          "status": "level_0"
+        },
+        "f977c8d5-b48a-4d8e-8d3e-7cdc670c0ed8": {
+          "note": "",
+          "color": "rgba(23, 190, 207, 1)",
+          "status": "level_0"
+        }
+      },
+      "report_template_table_section_id": "e9662cef-99bf-41dd-b05b-f4bb40c2f50b",
+      "created_at": "2024-09-03 10:20:28 UTC",
+      "updated_at": "2024-09-03 10:20:28 UTC"
+    }
+  ],
+  "texts": [
+    {
+      "id": "3f085d43-9020-48c1-8fd1-60db74822893",
+      "order": 1,
+      "report_template_text": {
+        "id": "8e5436be-682a-4975-b7d3-70104ca13bf5",
+        "text": "Tento pravidelný čtvrtletní report Vám zasíláme na základě Vašeho předplatného služby monitoringu Senzomatic (dříve MoistureGuard). Čtvrtletní reporting Vám budeme zasílat pravidelně po dobu trvání předplatného. \r\n\r\nReport obsahuje vyhodnocení dlouhodobého stavu vlhkosti v domě s důrazem na poslední 3 měsíce. V případě havárie nebo náhlého zvýšení vlhkosti reportujeme vždy samostatně, jakmile je událost detekována.\r\n\r\nVyhodnocení v tomto pravidelném reportu je založeno na mnoha faktorech, které jsou shrnuty ve sloupci \"STAV\" v tabulce níže.  Mezi sledované faktory patří aktuální hodnota vlhkosti, vazba mezi teplotou a vlhkostí, vývoj vlhkosti v čase, porovnání aktuálních hodnot s předchozími roky (pokud monitoring běží více než rok), vzájemné vazby mezi senzory, souvislost vlhkosti ve stěnách a vlhkosti v interiéru a exteriéru (pokud jsou tyto senzory nainstalovány).\r\n\r\nNa další straně reportu najdete grafy za sledované období a případná doporučení pro další postup."
+      },
+      "report_template_text_section": {
+        "id": "4a0e59bf-93ad-452d-9cc6-c74eb1f401bf",
+        "name": "Úvod"
+      },
+      "created_at": "2024-09-03 10:20:37 UTC",
+      "updated_at": "2024-09-03 10:20:37 UTC"
+    },
+    {
+      "id": "34fcf9c3-ac79-4d57-9b51-9ff037be5ad4",
+      "order": 1,
+      "report_template_text": {
+        "id": "219974e0-7aba-4664-9bc0-dc2bf59dc7be",
+        "text": "V domě nedochází k nadbytečnému hromadění vlhkosti v konstrukci v blízkosti senzorů."
+      },
+      "report_template_text_section": {
+        "id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+        "name": "Detail"
+      },
+      "created_at": "2024-09-03 10:20:37 UTC",
+      "updated_at": "2024-09-03 10:20:37 UTC"
+    },
+    {
+      "id": "ca6d5755-b4fd-453f-b159-ab6184fad76e",
+      "order": 1,
+      "report_template_text": {
+        "id": "14c958c1-c163-4e51-95f6-b4081e733378",
+        "text": "Doporučujeme pokračovat v zaběhlém používání domu."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2024-09-03 10:20:37 UTC",
+      "updated_at": "2024-09-03 10:20:37 UTC"
+    }
+  ],
+  "custom_texts": []
+}

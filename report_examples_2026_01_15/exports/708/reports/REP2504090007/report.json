@@ -1,0 +1,290 @@
+{
+  "id": "749e5ec9-e0b1-4e85-9b75-845277760fe7",
+  "name": "REP2504090007",
+  "level": null,
+  "published_at": "2025-04-09 08:59:47 UTC",
+  "published_by": "0eb7ab47-9014-4ca9-8003-23050a151476",
+  "created_at": "2025-04-09 08:54:54 UTC",
+  "updated_at": "2026-01-12 10:45:03 UTC",
+  "installation_id": "493b761a-d8b5-4211-a63d-6f785b93fe6f",
+  "report_template": {
+    "id": "6407813f-7d15-4632-abef-982138f1867b",
+    "name": "Pravidelný čtvrtletní report"
+  },
+  "charts": [
+    {
+      "id": "af1ade7b-29c0-4b37-949e-45e3aa89ca8b",
+      "order": 1,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "9 - HT02 - Interiér (HT02)"
+        },
+        {
+          "color": "rgba(23, 190, 207, 1)",
+          "label": "7 - koupelna 2np - vana, umyvadlo (HT02)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "6 - koupelna 2np - wc (HT02)"
+        },
+        {
+          "color": "rgba(44, 160, 44, 1)",
+          "label": "5 - tech.m. - bojler, přívod vody (HT02)"
+        },
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "1 - kuchyň - dřez, myčka, nezámrzný kohout (MHT03)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "2 - koupelna - sprcha (MHT03)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "4 - tech.m. - pračka (HT02)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "3 - koupelna - umyvadlo - wc (HT02)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-04-09 08:58:36 UTC",
+      "updated_at": "2025-04-09 08:58:36 UTC",
+      "image_file": "chart_af1ade7b-29c0-4b37-949e-45e3aa89ca8b.png"
+    },
+    {
+      "id": "cfcf716d-fff9-4d24-ad05-fde85bbe2c37",
+      "order": 2,
+      "title": "Absolutní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "9 - HT02 - Interiér (HT02)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "3 - koupelna - umyvadlo - wc (HT02)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "2 - koupelna - sprcha (MHT03)"
+        },
+        {
+          "color": "rgba(44, 160, 44, 1)",
+          "label": "5 - tech.m. - bojler, přívod vody (HT02)"
+        },
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "1 - kuchyň - dřez, myčka, nezámrzný kohout (MHT03)"
+        },
+        {
+          "color": "rgba(214, 39, 40, 1)",
+          "label": "8 - HT02 - Exteriér (HT02)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "6 - koupelna 2np - wc (HT02)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "4 - tech.m. - pračka (HT02)"
+        },
+        {
+          "color": "rgba(23, 190, 207, 1)",
+          "label": "7 - koupelna 2np - vana, umyvadlo (HT02)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-04-09 08:58:36 UTC",
+      "updated_at": "2025-04-09 08:58:36 UTC",
+      "image_file": "chart_cfcf716d-fff9-4d24-ad05-fde85bbe2c37.png"
+    },
+    {
+      "id": "ef0025d5-d457-4c38-983e-e35ff8af0f1a",
+      "order": 3,
+      "title": "Hmotnostní vlhkost dřeva",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "1 - kuchyň - dřez, myčka, nezámrzný kohout (MHT03)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "2 - koupelna - sprcha (MHT03)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-04-09 08:58:36 UTC",
+      "updated_at": "2025-04-09 08:58:36 UTC",
+      "image_file": "chart_ef0025d5-d457-4c38-983e-e35ff8af0f1a.png"
+    },
+    {
+      "id": "45c1224f-444b-474c-989a-35d2156138d7",
+      "order": 4,
+      "title": "Teplota okolí",
+      "description": null,
+      "legend_data": [
+        {
+          "color": "rgba(255, 127, 14, 1)",
+          "label": "9 - HT02 - Interiér (HT02)"
+        },
+        {
+          "color": "rgba(140, 86, 75, 1)",
+          "label": "3 - koupelna - umyvadlo - wc (HT02)"
+        },
+        {
+          "color": "rgba(44, 160, 44, 1)",
+          "label": "5 - tech.m. - bojler, přívod vody (HT02)"
+        },
+        {
+          "color": "rgba(148, 103, 189, 1)",
+          "label": "2 - koupelna - sprcha (MHT03)"
+        },
+        {
+          "color": "rgba(31, 119, 180, 1)",
+          "label": "1 - kuchyň - dřez, myčka, nezámrzný kohout (MHT03)"
+        },
+        {
+          "color": "rgba(127, 127, 127, 1)",
+          "label": "6 - koupelna 2np - wc (HT02)"
+        },
+        {
+          "color": "rgba(188, 189, 34, 1)",
+          "label": "4 - tech.m. - pračka (HT02)"
+        },
+        {
+          "color": "rgba(23, 190, 207, 1)",
+          "label": "7 - koupelna 2np - vana, umyvadlo (HT02)"
+        }
+      ],
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2025-04-09 08:58:36 UTC",
+      "updated_at": "2025-04-09 08:58:36 UTC",
+      "image_file": "chart_45c1224f-444b-474c-989a-35d2156138d7.png"
+    }
+  ],
+  "tables": [
+    {
+      "id": "79e0c930-be1f-4ef9-b761-2c1dce2614d3",
+      "source": {
+        "05fae203-8c15-4589-a100-1ed1f692732c": {
+          "note": "Běžně zvýšená kolísavá vlhkost. Může být způsobena kombinací nízké teploty ve stěně a zvýšené interiérové vlhkosti.",
+          "color": "rgba(31, 119, 180, 1)",
+          "status": "level_1"
+        },
+        "1181cde6-ef64-4913-a225-38fcf613e336": {
+          "note": "Dlouhodobě zvýšená až vysoká vlhkost, může být způsobena vlivem nízké teploty ve stěně. Vliv může mít také zvýšená interiérová vlhkost.\r\n",
+          "color": "rgba(44, 160, 44, 1)",
+          "status": "level_3"
+        },
+        "529c406f-f3e4-471d-8430-524b54d9bc09": {
+          "note": "",
+          "color": "rgba(148, 103, 189, 1)",
+          "status": "level_0"
+        },
+        "5b895d74-2058-4789-9010-e673b161e22c": {
+          "note": "Dlouhodobě zvýšená vlhkost, může být způsobena vlivem nízké teploty ve stěně.\r\nVliv může mít také zvýšená interiérová vlhkost.\r\n",
+          "color": "rgba(140, 86, 75, 1)",
+          "status": "level_2"
+        },
+        "6cb4e8de-04f1-4348-a96c-0a04dcff16c3": {
+          "note": "",
+          "color": "rgba(127, 127, 127, 1)",
+          "status": "level_0"
+        },
+        "9fe9a041-ca95-476e-ae91-40828b4ac489": {
+          "note": "Běžně zvýšená kolísavá vlhkost. Může být způsobena kombinací nízké teploty ve stěně a zvýšené interiérové vlhkosti.",
+          "color": "rgba(188, 189, 34, 1)",
+          "status": "level_1"
+        },
+        "a91736f8-9b00-48a4-b733-2d1c35e233c0": {
+          "note": "",
+          "color": "rgba(23, 190, 207, 1)",
+          "status": "level_0"
+        }
+      },
+      "report_template_table_section_id": "e9662cef-99bf-41dd-b05b-f4bb40c2f50b",
+      "created_at": "2025-04-09 08:58:33 UTC",
+      "updated_at": "2025-04-09 08:58:33 UTC"
+    }
+  ],
+  "texts": [
+    {
+      "id": "dc9ed72c-8970-4ee6-86c1-66095f9b76d5",
+      "order": 1,
+      "report_template_text": {
+        "id": "2a000334-f1f6-4e96-b32b-90f95ec1f975",
+        "text": "U některých senzorů je zvýšená vlhkost způsobená nízkou teplotou ve stěně."
+      },
+      "report_template_text_section": {
+        "id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+        "name": "Detail"
+      },
+      "created_at": "2025-04-09 08:59:10 UTC",
+      "updated_at": "2025-04-09 08:59:10 UTC"
+    },
+    {
+      "id": "bbec885a-ded8-4886-b898-ec48de683e41",
+      "order": 1,
+      "report_template_text": {
+        "id": "8e5436be-682a-4975-b7d3-70104ca13bf5",
+        "text": "Tento pravidelný čtvrtletní report Vám zasíláme na základě Vašeho předplatného služby monitoringu Senzomatic (dříve MoistureGuard). Čtvrtletní reporting Vám budeme zasílat pravidelně po dobu trvání předplatného. \r\n\r\nReport obsahuje vyhodnocení dlouhodobého stavu vlhkosti v domě s důrazem na poslední 3 měsíce. V případě havárie nebo náhlého zvýšení vlhkosti reportujeme vždy samostatně, jakmile je událost detekována.\r\n\r\nVyhodnocení v tomto pravidelném reportu je založeno na mnoha faktorech, které jsou shrnuty ve sloupci \"STAV\" v tabulce níže.  Mezi sledované faktory patří aktuální hodnota vlhkosti, vazba mezi teplotou a vlhkostí, vývoj vlhkosti v čase, porovnání aktuálních hodnot s předchozími roky (pokud monitoring běží více než rok), vzájemné vazby mezi senzory, souvislost vlhkosti ve stěnách a vlhkosti v interiéru a exteriéru (pokud jsou tyto senzory nainstalovány).\r\n\r\nNa další straně reportu najdete grafy za sledované období a případná doporučení pro další postup."
+      },
+      "report_template_text_section": {
+        "id": "4a0e59bf-93ad-452d-9cc6-c74eb1f401bf",
+        "name": "Úvod"
+      },
+      "created_at": "2025-04-09 08:59:22 UTC",
+      "updated_at": "2025-04-09 08:59:22 UTC"
+    },
+    {
+      "id": "4ff2a933-d2dd-4a84-a75f-2027a7effe8b",
+      "order": 2,
+      "report_template_text": {
+        "id": "1a99515a-da7c-42e5-90cd-a99fbcb1d109",
+        "text": "Některé senzory vykazují zvýšenou vlhkost ve stěnách, která je způsobená vazbou na vyšší vlhkost v interiérových obytných místnostech."
+      },
+      "report_template_text_section": {
+        "id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+        "name": "Detail"
+      },
+      "created_at": "2025-04-09 08:59:10 UTC",
+      "updated_at": "2025-04-09 08:59:10 UTC"
+    },
+    {
+      "id": "668e8d04-305c-4102-947b-008039bd6822",
+      "order": 2,
+      "report_template_text": {
+        "id": "2c5f5005-4599-4ed6-9dc8-84e79f0cd41e",
+        "text": "Zvýšení teploty ve stěně u senzorů s nízkou teplotou a vysokou relativní vzdušnou vlhkostí. Toho lze docílit například zlepšením vnějšího zateplení, odstraněním tepelných mostů, případně zvýšením teploty v přilehlé místnosti."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-04-09 08:59:16 UTC",
+      "updated_at": "2025-04-09 08:59:16 UTC"
+    },
+    {
+      "id": "991e14c9-3359-4b3e-b41a-6c07ac5aac17",
+      "order": 3,
+      "report_template_text": {
+        "id": "0315be18-5d48-4870-acbb-814204b75f4b",
+        "text": "Stěny domu jsou ovlivněny vlhkostí v přilehlých místnostech. Snížením vlhkosti v interiéru dojde i ke snížení vlhkosti ve stěnách. Docílit snížení vlhkosti v interiéru je možné zejména intenzivním větráním v zimním období. Pokud používáte rekuperaci, obraťte se na výrobce ohledně možností regulace vlhkosti."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2025-04-09 08:59:16 UTC",
+      "updated_at": "2025-04-09 08:59:20 UTC"
+    }
+  ],
+  "custom_texts": []
+}

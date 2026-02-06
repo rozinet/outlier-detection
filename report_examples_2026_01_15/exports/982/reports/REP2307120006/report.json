@@ -1,0 +1,139 @@
+{
+  "id": "7c9d63d8-c21a-4e25-8361-9bfc9fed0b3d",
+  "name": "REP2307120006",
+  "level": null,
+  "published_at": "2023-07-12 09:37:19 UTC",
+  "published_by": "ced89c66-8a02-4ded-898d-944d7b5c6332",
+  "created_at": "2023-07-12 09:34:20 UTC",
+  "updated_at": "2025-10-21 11:29:21 UTC",
+  "installation_id": "cb6c80c4-09d6-469b-83b3-14ac40bfaa5e",
+  "report_template": {
+    "id": "1877d8b2-5d85-4abe-9171-910b76f0aa28",
+    "name": "Pravidelný čtvrtletní report MG"
+  },
+  "charts": [
+    {
+      "id": "55f201e9-771e-42b5-b377-2c762ef961a5",
+      "order": 1,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "0094f632-6090-4526-9186-d081a7593ac9",
+      "created_at": "2023-07-12 09:37:12 UTC",
+      "updated_at": "2023-07-12 09:37:12 UTC",
+      "image_file": "chart_55f201e9-771e-42b5-b377-2c762ef961a5.png"
+    },
+    {
+      "id": "fdd2530d-c78b-4378-9fa5-6239d9ce2ef9",
+      "order": 2,
+      "title": "Absolutní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "0094f632-6090-4526-9186-d081a7593ac9",
+      "created_at": "2023-07-12 09:37:12 UTC",
+      "updated_at": "2023-07-12 09:37:12 UTC",
+      "image_file": "chart_fdd2530d-c78b-4378-9fa5-6239d9ce2ef9.png"
+    },
+    {
+      "id": "71925ed8-f395-42d8-83a9-abefeca4de0b",
+      "order": 3,
+      "title": "Hmotnostní vlhkost dřeva",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "0094f632-6090-4526-9186-d081a7593ac9",
+      "created_at": "2023-07-12 09:37:12 UTC",
+      "updated_at": "2023-07-12 09:37:12 UTC",
+      "image_file": "chart_71925ed8-f395-42d8-83a9-abefeca4de0b.png"
+    }
+  ],
+  "tables": [
+    {
+      "id": "7a263b33-bc5c-4672-8f80-549726b55d6c",
+      "source": {
+        "19c32b7f-bbc8-41d7-88bb-40bd40f14616": {
+          "note": "",
+          "color": "rgba(31, 119, 180, 1)",
+          "status": "level_0"
+        },
+        "352866d5-56fa-49e7-b99c-8c93bf031410": {
+          "note": "",
+          "color": "rgba(255, 127, 14, 1)",
+          "status": "level_0"
+        },
+        "4589130b-d05c-447b-a684-820015f8f0c7": {
+          "note": "",
+          "color": "rgba(44, 160, 44, 1)",
+          "status": "level_0"
+        },
+        "6ebf0f2b-dd81-44ec-8664-9c9cdfe4a457": {
+          "note": "",
+          "color": "rgba(148, 103, 189, 1)",
+          "status": "level_0"
+        },
+        "822561ac-bf53-4e67-af1e-b0ae0d28de02": {
+          "note": "",
+          "color": "rgba(140, 86, 75, 1)",
+          "status": "level_0"
+        },
+        "d1f6e0d7-0b9c-4f8a-ace2-832626c9aea9": {
+          "note": "",
+          "color": "rgba(227, 119, 194, 1)",
+          "status": "level_0"
+        },
+        "f977c8d5-b48a-4d8e-8d3e-7cdc670c0ed8": {
+          "note": "",
+          "color": "rgba(23, 190, 207, 1)",
+          "status": "level_0"
+        }
+      },
+      "report_template_table_section_id": "769bd4a8-1a93-437c-865c-9206075a7072",
+      "created_at": "2023-07-12 09:34:58 UTC",
+      "updated_at": "2023-07-12 09:34:58 UTC"
+    }
+  ],
+  "texts": [
+    {
+      "id": "0af0c0fb-cdf4-40ef-b29a-20dd5f5d9f51",
+      "order": 1,
+      "report_template_text": {
+        "id": "96e85036-dd3f-498c-bd26-d057d4695254",
+        "text": "Doporučujeme pokračovat v zaběhlém používání domu."
+      },
+      "report_template_text_section": {
+        "id": "e93a9893-4635-4e86-a1f3-54330401a0fb",
+        "name": "Doporučení"
+      },
+      "created_at": "2023-07-12 09:37:20 UTC",
+      "updated_at": "2023-07-12 09:37:20 UTC"
+    },
+    {
+      "id": "ff69e3ba-b59f-4e7e-a517-b95c45c24d50",
+      "order": 1,
+      "report_template_text": {
+        "id": "86d561e1-8a2d-4c22-8864-6c8eaf58259b",
+        "text": "V domě nedochází k nadbytečnému hromadění vlhkosti v konstrukci v blízkosti senzorů."
+      },
+      "report_template_text_section": {
+        "id": "73abf065-c4d8-49d3-a764-3635bb7d4f2b",
+        "name": "Detailnější popis stavu instalace, který popisuje grafy"
+      },
+      "created_at": "2023-07-12 09:37:20 UTC",
+      "updated_at": "2023-07-12 09:37:20 UTC"
+    },
+    {
+      "id": "9a5313dd-3daf-43af-8bcc-0e97cb42e47e",
+      "order": 1,
+      "report_template_text": {
+        "id": "9ce7c3cf-fd6c-4e73-b464-5c9a402dccba",
+        "text": "Tento pravidelný čtvrtletní report Vám zasíláme na základě Vašeho předplatného služby monitoringu MoistureGuard. Čtvrtletní reporting je novou službou a budeme Vám ho zasílat pravidelně po dobu trvání předplatného. \r\n\r\nReport obsahuje vyhodnocení dlouhodobého stavu vlhkosti v domě s důrazem na poslední 3 měsíce. V případě havárie nebo náhlého zvýšení vlhkosti reportujeme vždy samostatně, jakmile je událost detekována.\r\n\r\nVyhodnocení v tomto pravidelném reportu je založeno na mnoha faktorech, které jsou shrnuty ve sloupci \"STAV\" v tabulce níže.  Mezi sledované faktory patří aktuální hodnota vlhkosti, vazba mezi teplotou a vlhkostí, vývoj vlhkosti v čase, porovnání aktuálních hodnot s předchozími roky (pokud monitoring běží více než rok), vzájemné vazby mezi senzory, souvislost vlhkosti ve stěnách a vlhkosti v interiéru a exteriéru (pokud jsou dané senzory nainstalovány).\r\n\r\nNa další straně reportu najdete grafy za sledované období a případná doporučení pro další postup."
+      },
+      "report_template_text_section": {
+        "id": "c406cfd5-ac31-4012-a719-21d6c3aa4560",
+        "name": "Úvodní slovo pravidelného reportu. Odkazy na manualy, odhlášení reportingu atd."
+      },
+      "created_at": "2023-07-12 09:37:20 UTC",
+      "updated_at": "2023-07-12 09:37:20 UTC"
+    }
+  ],
+  "custom_texts": []
+}

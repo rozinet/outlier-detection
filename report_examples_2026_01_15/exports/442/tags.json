@@ -1,0 +1,49 @@
+{
+  "installation_id": "aef7bcdc-ddd6-494f-bff2-e835b26dd330",
+  "exported_at": "2026-01-15 09:09:36 UTC",
+  "count": 9,
+  "devices_by_tags": {
+    "Konstrukce budovy": [
+      "0099c8ef-406e-4aff-91e0-6287c9138b36",
+      "5d166e02-d1cd-4789-8923-783d0c895b0d",
+      "8e89317a-b442-4c31-8667-409b08abf02d",
+      "ca31501a-40bb-4d96-bf0a-66a8e2f3ac04",
+      "17815fd5-e64c-4bf2-be11-3f1d609198f4",
+      "19a86289-ebf0-4a13-9e56-327c8237998f",
+      "67276d2b-d4c4-46ae-a485-5e67007a2a64",
+      "b9b65680-cc1f-4823-a4b5-13e750a5bf06",
+      "f1f25e96-78c7-4457-9ed3-182b75ec1505",
+      "b098762a-fd77-4411-8def-98f9b0522df3"
+    ],
+    "Dřez": [
+      "0099c8ef-406e-4aff-91e0-6287c9138b36"
+    ],
+    "Myčka": [
+      "0099c8ef-406e-4aff-91e0-6287c9138b36"
+    ],
+    "Koupelna": [
+      "ca31501a-40bb-4d96-bf0a-66a8e2f3ac04",
+      "19a86289-ebf0-4a13-9e56-327c8237998f",
+      "67276d2b-d4c4-46ae-a485-5e67007a2a64",
+      "b9b65680-cc1f-4823-a4b5-13e750a5bf06",
+      "b098762a-fd77-4411-8def-98f9b0522df3"
+    ],
+    "Okolí domu": [
+      "2494dd20-8725-4b31-8579-fc15236ee314"
+    ],
+    "Exteriér": [
+      "2494dd20-8725-4b31-8579-fc15236ee314"
+    ],
+    "Kvalita vzduchu v interiéru": [
+      "e243bd0d-96e3-430b-b451-4f184db3da97"
+    ],
+    "Interiér": [
+      "e243bd0d-96e3-430b-b451-4f184db3da97"
+    ],
+    "Wc": [
+      "b9b65680-cc1f-4823-a4b5-13e750a5bf06",
+      "f1f25e96-78c7-4457-9ed3-182b75ec1505",
+      "b098762a-fd77-4411-8def-98f9b0522df3"
+    ]
+  }
+}

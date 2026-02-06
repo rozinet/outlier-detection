@@ -1,0 +1,178 @@
+{
+  "id": "ddbbda6e-105f-47a6-9c54-bf66692d1b03",
+  "name": "REP2311190007",
+  "level": null,
+  "published_at": "2023-11-19 20:09:23 UTC",
+  "published_by": "ced89c66-8a02-4ded-898d-944d7b5c6332",
+  "created_at": "2023-11-19 20:03:29 UTC",
+  "updated_at": "2026-01-12 09:18:29 UTC",
+  "installation_id": "cb6c80c4-09d6-469b-83b3-14ac40bfaa5e",
+  "report_template": {
+    "id": "6407813f-7d15-4632-abef-982138f1867b",
+    "name": "Pravidelný čtvrtletní report"
+  },
+  "charts": [
+    {
+      "id": "00295d37-d639-49bd-aaab-6ff8d594ee04",
+      "order": 1,
+      "title": "Relativní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2023-11-19 20:04:23 UTC",
+      "updated_at": "2023-11-19 20:04:23 UTC",
+      "image_file": "chart_00295d37-d639-49bd-aaab-6ff8d594ee04.png"
+    },
+    {
+      "id": "8cd8c373-0db0-4a09-b018-0360b61996a6",
+      "order": 2,
+      "title": "Absolutní vzdušná vlhkost okolí",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2023-11-19 20:04:23 UTC",
+      "updated_at": "2023-11-19 20:04:23 UTC",
+      "image_file": "chart_8cd8c373-0db0-4a09-b018-0360b61996a6.png"
+    },
+    {
+      "id": "ea5f0a07-40f4-462d-a80d-ac58e4e6e213",
+      "order": 3,
+      "title": "Hmotnostní vlhkost dřeva",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2023-11-19 20:04:23 UTC",
+      "updated_at": "2023-11-19 20:04:23 UTC",
+      "image_file": "chart_ea5f0a07-40f4-462d-a80d-ac58e4e6e213.png"
+    },
+    {
+      "id": "2ac611d1-e0e0-4691-afc3-4165fd8e74e2",
+      "order": 4,
+      "title": "Teplota okolí",
+      "description": null,
+      "legend_data": {},
+      "report_template_chart_section_id": "a3d66bc0-7fff-45c3-927b-cf667d83e744",
+      "created_at": "2023-11-19 20:08:01 UTC",
+      "updated_at": "2023-11-19 20:08:01 UTC",
+      "image_file": "chart_2ac611d1-e0e0-4691-afc3-4165fd8e74e2.png"
+    }
+  ],
+  "tables": [
+    {
+      "id": "d7e90651-9ee9-4480-96df-210833de59f7",
+      "source": {
+        "19c32b7f-bbc8-41d7-88bb-40bd40f14616": {
+          "note": "",
+          "color": "rgba(31, 119, 180, 1)",
+          "status": "level_0"
+        },
+        "352866d5-56fa-49e7-b99c-8c93bf031410": {
+          "note": "",
+          "color": "rgba(255, 127, 14, 1)",
+          "status": "level_0"
+        },
+        "4589130b-d05c-447b-a684-820015f8f0c7": {
+          "note": "Vlhkost výrazně roste. Příčinou růstu je zejména vazba na zvýšenou vlhkost v interiéru.",
+          "color": "rgba(44, 160, 44, 1)",
+          "status": "level_2"
+        },
+        "6ebf0f2b-dd81-44ec-8664-9c9cdfe4a457": {
+          "note": "",
+          "color": "rgba(148, 103, 189, 1)",
+          "status": "level_0"
+        },
+        "822561ac-bf53-4e67-af1e-b0ae0d28de02": {
+          "note": "Vlhkost výrazně roste. Příčinou je zejména nízká teplota.",
+          "color": "rgba(140, 86, 75, 1)",
+          "status": "level_2"
+        },
+        "d1f6e0d7-0b9c-4f8a-ace2-832626c9aea9": {
+          "note": "",
+          "color": "rgba(227, 119, 194, 1)",
+          "status": "level_0"
+        },
+        "f977c8d5-b48a-4d8e-8d3e-7cdc670c0ed8": {
+          "note": "",
+          "color": "rgba(23, 190, 207, 1)",
+          "status": "level_0"
+        }
+      },
+      "report_template_table_section_id": "e9662cef-99bf-41dd-b05b-f4bb40c2f50b",
+      "created_at": "2023-11-19 20:04:18 UTC",
+      "updated_at": "2023-11-19 20:09:22 UTC"
+    }
+  ],
+  "texts": [
+    {
+      "id": "e1f6dac9-4e74-4ad3-8ee9-c3131a81186e",
+      "order": 1,
+      "report_template_text": {
+        "id": "e632b5ee-fd96-406a-b47e-6d11db977334",
+        "text": "Některé senzory vykazují zvýšenou vlhkost ve stěnách, která je způsobená vazbou na vyšší vlhkost v interiérových obytných místnostech a to zejména v zimním období."
+      },
+      "report_template_text_section": {
+        "id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+        "name": "Detail"
+      },
+      "created_at": "2023-11-19 20:04:36 UTC",
+      "updated_at": "2023-11-19 20:04:36 UTC"
+    },
+    {
+      "id": "325bdb01-6a05-476b-a546-7ded2cf09adc",
+      "order": 1,
+      "report_template_text": {
+        "id": "0315be18-5d48-4870-acbb-814204b75f4b",
+        "text": "Stěny domu jsou ovlivněny vlhkostí v přilehlých místnostech. Snížením vlhkosti v interiéru dojde i ke snížení vlhkosti ve stěnách. Docílit snížení vlhkosti v interiéru je možné zejména intenzivním větráním v zimním období. Pokud používáte rekuperaci, obraťte se na výrobce ohledně možností regulace vlhkosti."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2023-11-19 20:04:58 UTC",
+      "updated_at": "2023-11-19 20:04:58 UTC"
+    },
+    {
+      "id": "b24a6cc0-cf89-4af8-9dfa-8e871464cf88",
+      "order": 1,
+      "report_template_text": {
+        "id": "8e5436be-682a-4975-b7d3-70104ca13bf5",
+        "text": "Tento pravidelný čtvrtletní report Vám zasíláme na základě Vašeho předplatného služby monitoringu Senzomatic (dříve MoistureGuard). Čtvrtletní reporting Vám budeme zasílat pravidelně po dobu trvání předplatného. \r\n\r\nReport obsahuje vyhodnocení dlouhodobého stavu vlhkosti v domě s důrazem na poslední 3 měsíce. V případě havárie nebo náhlého zvýšení vlhkosti reportujeme vždy samostatně, jakmile je událost detekována.\r\n\r\nVyhodnocení v tomto pravidelném reportu je založeno na mnoha faktorech, které jsou shrnuty ve sloupci \"STAV\" v tabulce níže.  Mezi sledované faktory patří aktuální hodnota vlhkosti, vazba mezi teplotou a vlhkostí, vývoj vlhkosti v čase, porovnání aktuálních hodnot s předchozími roky (pokud monitoring běží více než rok), vzájemné vazby mezi senzory, souvislost vlhkosti ve stěnách a vlhkosti v interiéru a exteriéru (pokud jsou tyto senzory nainstalovány).\r\n\r\nNa další straně reportu najdete grafy za sledované období a případná doporučení pro další postup."
+      },
+      "report_template_text_section": {
+        "id": "4a0e59bf-93ad-452d-9cc6-c74eb1f401bf",
+        "name": "Úvod"
+      },
+      "created_at": "2023-11-19 20:05:02 UTC",
+      "updated_at": "2023-11-19 20:05:02 UTC"
+    },
+    {
+      "id": "60fe3bb1-f660-40f0-bae1-0fceb4118cbe",
+      "order": 2,
+      "report_template_text": {
+        "id": "2a000334-f1f6-4e96-b32b-90f95ec1f975",
+        "text": "U některých senzorů je zvýšená vlhkost způsobená nízkou teplotou ve stěně."
+      },
+      "report_template_text_section": {
+        "id": "5919f72e-8a0c-4d25-afe0-945bc1655696",
+        "name": "Detail"
+      },
+      "created_at": "2023-11-19 20:06:36 UTC",
+      "updated_at": "2023-11-19 20:06:36 UTC"
+    },
+    {
+      "id": "ed9d5af5-4628-46d5-a321-4744598592bb",
+      "order": 2,
+      "report_template_text": {
+        "id": "2c5f5005-4599-4ed6-9dc8-84e79f0cd41e",
+        "text": "Zvýšení teploty ve stěně u senzorů s nízkou teplotou a vysokou relativní vzdušnou vlhkostí. Toho lze docílit například zlepšením vnějšího zateplení, odstraněním tepelných mostů, případně zvýšením teploty v přilehlé místnosti."
+      },
+      "report_template_text_section": {
+        "id": "020e8b2b-b47d-453f-9c60-c1ee0a39b040",
+        "name": "Doporučení"
+      },
+      "created_at": "2023-11-19 20:06:57 UTC",
+      "updated_at": "2023-11-19 20:06:57 UTC"
+    }
+  ],
+  "custom_texts": []
+}
