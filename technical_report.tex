@@ -1,0 +1,950 @@
+\documentclass[11pt,a4paper]{article}
+
+% ── Packages ──────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage[margin=25mm]{geometry}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ── Notation shortcuts ────────────────────────────────────────────────
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ind}{\mathbf{1}}
+\DeclareMathOperator{\median}{median}
+\DeclareMathOperator{\MAD}{MAD}
+\DeclareMathOperator{\EWMA}{EWMA}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+% ── Document ──────────────────────────────────────────────────────────
+\title{%
+  \textbf{Automated Building Pathology Detection\\
+  from Embedded Hygrothermal Sensor Networks}\\[6pt]
+  \large Algorithmic Framework and Mathematical Formulation (v6)
+}
+\author{Senzomatic Technical Report}
+\date{February 2026}
+
+\begin{document}
+\maketitle
+
+% ══════════════════════════════════════════════════════════════════════
+\begin{abstract}
+We present a signal-processing pipeline for automated detection of building pathologies
+from embedded hygrothermal (HT) sensor arrays installed in wall cavities.
+The system ingests four time-series channels---ambient temperature, ambient relative
+humidity, cavity relative humidity, and material moisture resistance---and produces
+per-device diagnostic reports covering five pathology classes: moisture intrusion,
+condensation risk, drying failure, sensor malfunction, and rapid moisture change.
+Detection is supported by multi-resolution signal decomposition, time-based differencing,
+threshold hysteresis, fleet-seasonal reference profiling, CUSUM change-point analysis,
+exponential drying-curve fitting, Hampel-filter spike detection, and MAD-based
+installation-level outlier identification.
+Each device receives a composite health score on a 0--100 scale.
+The pipeline has been validated on 99 sensors across 11 building installations.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Sensor Model and Notation}
+\label{sec:notation}
+
+Each sensing device $d$ produces up to four synchronous time-series sampled at
+irregular intervals and resampled onto a uniform 5-minute grid
+($\Delta t = 300$\,s, i.e.\ 288 samples/day):
+
+\begin{align}
+  T^{(d)}(t)   &\in \RR   && \text{ambient temperature [\textdegree C]} \\
+  H_a^{(d)}(t) &\in [0,100]  && \text{ambient relative humidity [\%]} \\
+  H_c^{(d)}(t) &\in [0,100]  && \text{cavity relative humidity [\%]} \\
+  M^{(d)}(t)   &\in [0,100]  && \text{material moisture resistance [\%]}
+\end{align}
+
+Devices that expose only temperature and ambient humidity (two-channel devices) are
+still analysed for sensor malfunction; the remaining detectors require the full
+four-channel set. We write $N$ for the total number of samples after resampling
+and $\mathcal{D}$ for the set of all devices in a deployment.
+
+Throughout, we use the shorthand $x_{t}$ to denote the value of series~$x$ at
+time index~$t$.  Bold symbols ($\bm{x}$) denote vectors, and calligraphic
+letters ($\mathcal{I}$) denote index sets.
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Multi-Resolution Signal Decomposition}
+\label{sec:preprocessing}
+
+Raw sensor data contains both informative structure and measurement noise.
+Different detection tasks require different levels of smoothing: acute events
+(intrusion, rapid change, spike detection) benefit from minimal smoothing that
+preserves edges, while trend-based tasks (condensation, drying) benefit from
+stronger noise suppression. We therefore decompose each channel into three
+resolution levels.
+
+\begin{definition}[Multi-resolution decomposition]
+For each channel $x \in \{T, H_a, H_c, M\}$ we define:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Raw signal} $x^{\mathrm{raw}}_t$: the original resampled values, used exclusively for sensor fault detection.
+  \item \textbf{Denoised signal} $x^{\mathrm{den}}_t$: a running median filter applied to $x^{\mathrm{raw}}$, preserving edges and step changes while removing isolated spikes.
+  \item \textbf{Trend signal} $x_t$: an exponentially weighted moving average (EWMA) applied to $x^{\mathrm{den}}$, producing a smooth monotone-lag estimate of the underlying trend.
+\end{enumerate}
+\end{definition}
+
+\subsection{Median Filter (Denoised Level)}
+
+The denoised signal is obtained via a symmetric running median of kernel size
+$k_{\mathrm{med}} = 7$ (samples):
+\begin{equation}
+  x^{\mathrm{den}}_t = \median\!\bigl(x^{\mathrm{raw}}_{t-\lfloor k_{\mathrm{med}}/2\rfloor},\;\ldots,\;x^{\mathrm{raw}}_{t+\lfloor k_{\mathrm{med}}/2\rfloor}\bigr).
+  \label{eq:median-filter}
+\end{equation}
+The median filter is order-statistic based, making it robust to isolated
+outliers and salt-and-pepper noise while exactly preserving step edges---a
+critical property for intrusion detection, where a sudden drop in $M$ must
+not be attenuated.
+
+\subsection{EWMA Trend (Trend Level)}
+
+The trend signal is a causal exponentially weighted moving average:
+\begin{equation}
+  x_t = \alpha\, x^{\mathrm{den}}_t + (1 - \alpha)\, x_{t-1},
+  \qquad
+  \alpha = 1 - \exp\!\Bigl(-\frac{\Delta t}{\tau_{\mathrm{ewma}}}\Bigr),
+  \label{eq:ewma}
+\end{equation}
+where $\tau_{\mathrm{ewma}}$ is the half-life parameter, set to 6 hours
+(i.e.\ 72 samples). The EWMA is strictly causal ($x_t$ depends only on
+$x^{\mathrm{den}}_s$ for $s \le t$), ensuring that detection timestamps are
+not shifted forward in time---an essential property for real-time deployment.
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Time-Based Differencing}
+\label{sec:time-delta}
+
+Classical finite-difference operators $\Delta_n x_t = x_t - x_{t-n}$ assume
+a perfectly regular sampling grid. In practice, data gaps (sensor downtime,
+transmission failures) cause $\Delta_n$ to compare values separated by
+irregular physical time spans. We replace fixed-step differences with
+time-indexed shifts.
+
+\begin{definition}[Time-based delta]
+For a time-series $x$ indexed by timestamps and a target lag $\delta$
+(e.g.\ 24\,h, 3\,d, 7\,d, 14\,d):
+\begin{equation}
+  \Delta_{\!\delta}\, x_t \;=\; x_t - x_{t - \delta},
+  \label{eq:time-delta}
+\end{equation}
+where $x_{t-\delta}$ is obtained by shifting the datetime index by $\delta$
+and aligning via the nearest earlier observation. If no observation exists
+within the alignment tolerance, the result is $\mathrm{NaN}$ (missing).
+\end{definition}
+
+This ensures that ``24-hour drop'' genuinely means 24 hours of elapsed time
+regardless of sampling irregularities.
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Seasonal Baseline and Fleet Profiling}
+\label{sec:seasonal}
+
+Building cavities exhibit pronounced seasonal humidity cycles driven by
+ambient temperature and precipitation patterns. Detectors that flag absolute
+threshold exceedances alone produce excessive false positives during humid
+seasons when \emph{all} devices in a building are elevated. We therefore
+construct two reference signals: a per-device seasonal baseline and a
+fleet-wide monthly profile.
+
+\subsection{Per-Device Seasonal Baseline}
+
+For each device, we compute a causal rolling baseline over a window of
+$W = 30$ days ($W_s = 8{,}640$ samples):
+\begin{align}
+  \bar{x}_t^{(W)} &= \median\!\bigl(x_s : s \in [t - W_s,\, t]\bigr),
+  \label{eq:seasonal-median} \\
+  \sigma_t^{(W)}  &= \operatorname{std}\!\bigl(x_s : s \in [t - W_s,\, t]\bigr),
+  \quad \sigma_t^{(W)} \ge 1.0,
+  \label{eq:seasonal-std} \\
+  z_t &= \frac{x_t - \bar{x}_t^{(W)}}{\sigma_t^{(W)}}.
+  \label{eq:deviation}
+\end{align}
+The deviation score $z_t$ measures how many rolling standard deviations the
+current value is above its own seasonal norm. A value $z_t > 1.0$ indicates
+the device is abnormally elevated relative to its own recent history.
+
+\subsection{Fleet Monthly Profile}
+
+The fleet profile aggregates all devices sharing a cavity humidity channel:
+\begin{equation}
+  \hat{H}_c^{\,\mathrm{fleet}}(m)
+    = \median_{d \in \mathcal{D}}\!\Bigl(\,
+        \frac{1}{|\mathcal{T}_m^{(d)}|}\sum_{t \in \mathcal{T}_m^{(d)}} H_c^{(d)}(t)
+      \Bigr),
+  \qquad m = 1,\ldots,12,
+  \label{eq:fleet-seasonal}
+\end{equation}
+where $\mathcal{T}_m^{(d)}$ is the set of timestamps in calendar month~$m$
+for device~$d$. The fleet profile captures the \emph{expected} seasonal
+behavior; a device whose cavity humidity exceeds the fleet median by more
+than $\delta_{\mathrm{fleet}} = 8$~percentage points is flagged regardless
+of its own seasonal deviation.
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Detector 1: Moisture Intrusion}
+\label{sec:intrusion}
+
+Moisture intrusion occurs when liquid water enters the construction assembly,
+causing a simultaneous drop in moisture resistance and rise in cavity humidity.
+Detection uses the denoised signals and operates at two time scales.
+
+\subsection{Threshold-Based Detection}
+
+The primary flag combines two conditions via logical conjunction:
+\begin{equation}
+  F^{\mathrm{intr}}_t =
+    \underbrace{\bigl(\Delta_{24\mathrm{h}} M^{\mathrm{den}}_t < -\theta_M^{24}\bigr)
+    \wedge
+    \bigl(\Delta_{24\mathrm{h}} H_c^{\mathrm{den}}_t > \theta_{H_c}^{24}\bigr)}_{\text{acute event}}
+    \;\;\bigvee\;\;
+    \underbrace{\bigl(\Delta_{7\mathrm{d}} M^{\mathrm{den}}_t < -\theta_M^{7}\bigr)}_{\text{sustained drop}},
+  \label{eq:intrusion-flag}
+\end{equation}
+where $\theta_M^{24} = 3.0$ (percentage-point drop in moisture resistance
+over 24\,h), $\theta_{H_c}^{24} = 8.0$ (percentage-point rise in cavity
+humidity over 24\,h), and $\theta_M^{7} = 5.0$ (7-day sustained drop).
+
+An additional noise filter requires that both the moisture drop and cavity
+rise exceed a minimum magnitude $\theta_{\min} = 1.0$~pp, eliminating events
+where $\Delta = 0$ or the changes are within measurement noise:
+\begin{equation}
+  \bigl|\Delta_{24\mathrm{h}} M^{\mathrm{den}}_t\bigr| > \theta_{\min}
+  \quad\wedge\quad
+  \Delta_{24\mathrm{h}} H_c^{\mathrm{den}}_t > \theta_{\min}.
+\end{equation}
+
+\subsection{CUSUM Change-Point Detection for Slow Leaks}
+\label{sec:cusum}
+
+Threshold-based methods may miss slow, sustained leaks where cavity humidity
+rises gradually without ever crossing an acute-event threshold in a single
+time step. We supplement with a one-sided CUSUM (Cumulative Sum) detector.
+
+\begin{definition}[One-sided CUSUM]
+Let $\{y_t\}$ be a centred signal with reference level $\mu_0$
+(estimated from the first 288 samples). The upper CUSUM statistic is:
+\begin{equation}
+  S_t^{+} = \max\!\bigl(0,\; S_{t-1}^{+} + y_t - \mu_0 - \nu\bigr),
+  \qquad S_0^{+} = 0,
+  \label{eq:cusum-upper}
+\end{equation}
+where $\nu > 0$ is the \emph{allowance} (or drift) parameter that controls
+sensitivity---only deviations exceeding $\nu$ per sample accumulate.
+An alarm is triggered when $S_t^{+} > h$, where $h$ is the decision threshold.
+\end{definition}
+
+For moisture intrusion, we apply upward CUSUM to the cavity humidity trend
+signal $H_c(t)$ with parameters $\nu = 0.5$ and $h = 5.0$. Upon alarm at
+time $t^*$, we examine a confirmation window of $W_{\mathrm{conf}} = 72$~hours
+for corroborating evidence:
+\begin{equation}
+  \exists\, s \in [t^*, t^* + W_{\mathrm{conf}}]:
+  \quad M^{\mathrm{den}}_s - \min_{u \in [t^*, s]} M^{\mathrm{den}}_u > \theta_{\min}.
+  \label{eq:cusum-confirm}
+\end{equation}
+If confirmed, the CUSUM alarm region is merged into the intrusion flag via
+logical disjunction with \cref{eq:intrusion-flag}.
+
+After each alarm, the CUSUM statistic is reset to zero and the reference
+$\mu_0$ is re-estimated from the preceding 288 samples to adapt to the
+new regime. A dead-zone of 288 samples between consecutive alarms prevents
+redundant detections.
+
+\subsection{Severity Classification}
+
+Detected intrusion episodes are classified into three severity levels based
+on the magnitude of the 7-day moisture drop:
+\begin{equation}
+  \text{severity} =
+  \begin{cases}
+    \textsc{critical} & \text{if } \Delta_{7\mathrm{d}} M < -2\theta_M^{7}, \\
+    \textsc{danger}   & \text{if } \Delta_{24\mathrm{h}} M < -2\theta_M^{24}, \\
+    \textsc{warning}  & \text{otherwise}.
+  \end{cases}
+\end{equation}
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Detector 2: Condensation Risk}
+\label{sec:condensation}
+
+Sustained high cavity humidity creates risk of condensation and mould growth.
+Detection combines absolute threshold exceedance, seasonal deviation, fleet
+comparison, and supplementary thermodynamic signals.
+
+\subsection{Threshold Hysteresis}
+\label{sec:hysteresis}
+
+Simple threshold crossing $H_c > \theta$ generates excessive toggling when
+the signal fluctuates near the threshold. We apply Schmitt-trigger hysteresis
+with a band of $\beta = 2.0$~pp:
+
+\begin{definition}[Threshold hysteresis]
+The binary state $A_t \in \{0, 1\}$ evolves as:
+\begin{equation}
+  A_t =
+  \begin{cases}
+    1      & \text{if } H_c(t) > \theta_{\mathrm{enter}}, \\
+    0      & \text{if } H_c(t) < \theta_{\mathrm{exit}}, \\
+    A_{t-1} & \text{otherwise},
+  \end{cases}
+  \qquad
+  \theta_{\mathrm{exit}} = \theta_{\mathrm{enter}} - \beta,
+  \label{eq:hysteresis}
+\end{equation}
+with $A_0 = 0$.
+\end{definition}
+
+Three severity tiers are defined with the following entry/exit thresholds:
+
+\begin{center}
+\begin{tabular}{lccc}
+  \toprule
+  \textbf{Severity} & $\theta_{\mathrm{enter}}$ [\%] & $\theta_{\mathrm{exit}}$ [\%] & \textbf{Interpretation} \\
+  \midrule
+  \textsc{warning}  & 80 & 78 & mould risk \\
+  \textsc{danger}   & 90 & 88 & condensation likely \\
+  \textsc{critical} & 95 & 93 & active condensation \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Seasonal-Aware Flagging}
+
+For the \textsc{warning} tier, we require both an absolute exceedance
+\emph{and} an above-normal seasonal deviation:
+\begin{equation}
+  F_t^{\mathrm{warn}} = A_t \;\wedge\; (z_t > 1.0),
+  \label{eq:condensation-seasonal}
+\end{equation}
+where $z_t$ is the seasonal deviation from \cref{eq:deviation}. This
+suppresses flags during periods when all devices are seasonally elevated.
+
+\subsection{Fleet Seasonal Reference}
+
+A device that is consistently above the fleet median---even if stable by its
+own seasonal baseline---may indicate a localised problem. We add a fleet
+deviation criterion:
+\begin{equation}
+  F_t^{\mathrm{fleet}} = A_t \;\wedge\;
+    \bigl(H_c(t) > \hat{H}_c^{\,\mathrm{fleet}}(m_t) + \delta_{\mathrm{fleet}}\bigr),
+  \label{eq:fleet-flag}
+\end{equation}
+where $m_t$ is the calendar month of time $t$ and
+$\delta_{\mathrm{fleet}} = 8$~pp. The final \textsc{warning} flag is:
+\begin{equation}
+  F_t^{\mathrm{warn,final}} = F_t^{\mathrm{warn}} \;\vee\; F_t^{\mathrm{fleet}}.
+\end{equation}
+
+\subsection{Absolute Humidity Supplement}
+\label{sec:vapor}
+
+Relative humidity alone does not capture the total moisture load; identical
+RH values at different temperatures correspond to vastly different vapour
+concentrations. We compute the absolute humidity (mixing ratio in g/kg) via
+the Tetens approximation for saturation vapour pressure:
+\begin{align}
+  e_s(T) &= 6.1078 \times 10^{\,7.5\,T\,/\,(237.3 + T)}, \label{eq:tetens} \\
+  e(T, H_a) &= e_s(T) \cdot \frac{H_a}{100}, \label{eq:vapour-pressure} \\
+  w &= \frac{621.97\, e}{P - e}, \qquad P = 1013.25~\text{hPa}, \label{eq:mixing-ratio}
+\end{align}
+where $T$ is ambient temperature [\textdegree C], $H_a$ is ambient relative
+humidity [\%], $e_s$ is saturation vapour pressure [hPa], and $w$ is the
+mixing ratio [g\,kg$^{-1}$].
+
+For borderline \textsc{warning} cases (cavity RH within 5~pp of threshold),
+high absolute humidity ($w > 14$~g/kg) combined with moderate seasonal
+deviation ($z_t > 0.5$) provides supplementary evidence:
+\begin{equation}
+  F_t^{\mathrm{abs}} = (H_c(t) > \theta - 5) \;\wedge\; (w_t > 14) \;\wedge\; (z_t > 0.5).
+\end{equation}
+
+\subsection{Chronic and Recurring Condensation}
+
+\paragraph{Chronic merge.}
+When a device spends a large fraction of its data span above a given
+threshold, individual episodes are replaced by a single chronic assessment.
+Let $p$ be the fraction of time the flag is active:
+\begin{equation}
+  p = \frac{|\{t : F_t = 1\}|}{N}.
+\end{equation}
+If $p \ge p_{\mathrm{chronic}}$ and the data span exceeds 6 months, a chronic
+problem is emitted. The chronic threshold is severity-dependent:
+$p_{\mathrm{chronic}} = 40\%$ for \textsc{warning}, $50\%$ for
+\textsc{danger}/\textsc{critical}.
+
+\paragraph{Recurring pattern detection.}
+If a device has $\ge 6$ \textsc{warning} episodes spanning $\ge 12$
+calendar months (but below the chronic threshold), the fragmented episodes
+are consolidated into a single \textsc{recurring} assessment that reports
+the total episode count, cumulative duration, and summary statistics.
+
+\subsection{Dew-Point Margin}
+
+As an auxiliary diagnostic, we compute the dew-point margin using the Magnus
+formula:
+\begin{align}
+  \gamma(T, H_a) &= \frac{a\,T}{b + T} + \ln\!\Bigl(\frac{H_a}{100}\Bigr),
+  \label{eq:magnus-gamma} \\
+  T_d &= \frac{b\,\gamma}{a - \gamma},
+  \label{eq:dew-point} \\
+  \Delta T_d &= T - T_d,
+  \label{eq:dew-margin}
+\end{align}
+with constants $a = 17.27$, $b = 237.7$~\textdegree C. A small positive
+$\Delta T_d$ indicates proximity to condensation conditions.
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Detector 3: Drying Failure}
+\label{sec:drying}
+
+Post-construction, building cavities should exhibit a monotonically
+decreasing humidity profile as trapped moisture evaporates. Failure to dry
+(stagnation or reversal) indicates construction defects or inadequate
+ventilation. We employ two complementary approaches.
+
+\subsection{Exponential Drying Curve}
+
+Physical drying processes are well-modelled by an exponential decay to an
+equilibrium level:
+\begin{equation}
+  H_c(t) = a + b\,\exp\!\Bigl(-\frac{t}{\tau}\Bigr),
+  \label{eq:exp-drying}
+\end{equation}
+where $a$ is the asymptotic (plateau) humidity, $b$ is the initial excess
+above plateau, and $\tau$ is the time constant [days].
+
+\paragraph{Fitting procedure.}
+\begin{enumerate}[label=\arabic*.]
+  \item Identify the peak cavity humidity $H_c^{\max}$ and restrict the
+        fit to the post-peak interval.
+  \item Downsample to daily means to reduce noise.
+  \item Fit \cref{eq:exp-drying} via nonlinear least-squares
+        (Levenberg--Marquardt) with bounds $a \in [0, 100]$,
+        $b \in [0, 100]$, $\tau \in [1, 10{,}000]$ days.
+  \item Compute the coefficient of determination:
+        \begin{equation}
+          R^2 = 1 - \frac{\sum_i (y_i - \hat{y}_i)^2}{\sum_i (y_i - \bar{y})^2}.
+          \label{eq:r-squared}
+        \end{equation}
+  \item Accept the fit if $R^2 > 0.5$ and the post-peak span exceeds
+        60~days.
+\end{enumerate}
+
+\paragraph{Classification.}
+\begin{equation}
+  \text{severity} =
+  \begin{cases}
+    \textsc{danger}  & \text{if } \tau > 730~\text{days or } a > 80\%, \\
+    \textsc{warning} & \text{if } \tau > 365~\text{days}, \\
+    \text{none}      & \text{otherwise}.
+  \end{cases}
+\end{equation}
+
+A high plateau ($a > 80\%$) is particularly concerning as it indicates the
+cavity will never dry to a safe level, regardless of the time constant.
+
+\subsection{Linear Slope Fallback (Moisture Resistance)}
+
+When the exponential fit is not applicable (insufficient data, poor $R^2$,
+or moisture resistance channel), we compute quarterly means and fit a linear
+trend:
+\begin{equation}
+  \bar{M}_q = \frac{1}{|\mathcal{T}_q|}\sum_{t \in \mathcal{T}_q} M(t),
+  \qquad q = 1, 2, \ldots, Q,
+\end{equation}
+where $\mathcal{T}_q$ is the set of timestamps in quarter~$q$.
+The slope $\hat{\beta}$ is obtained via ordinary least-squares on
+$\{(q, \bar{M}_q)\}$:
+\begin{equation}
+  \hat{\beta} = \frac{\sum_q (q - \bar{q})(\bar{M}_q - \overline{\bar{M}})}
+                     {\sum_q (q - \bar{q})^2}.
+  \label{eq:linear-slope}
+\end{equation}
+
+Classification based on $\hat{\beta}$ and the current 30-day average
+$\bar{M}_{\mathrm{cur}}$:
+\begin{equation}
+  \text{severity} =
+  \begin{cases}
+    \textsc{danger}  & \text{if } \bar{M}_{\mathrm{cur}} < 50 \text{ and } \hat{\beta} < -0.5~\text{pp/quarter}, \\
+    \textsc{warning} & \text{if } \bar{M}_{\mathrm{cur}} < 50 \text{ and } |\hat{\beta}| < 0.3~\text{pp/quarter}, \\
+    \text{none}      & \text{otherwise}.
+  \end{cases}
+\end{equation}
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Detector 4: Sensor Malfunction}
+\label{sec:sensor}
+
+Sensor faults corrupt downstream analysis. We detect five fault modes
+operating on the \emph{raw} (unfiltered) signal.
+
+\subsection{Flatline Detection with Saturation Awareness}
+
+A flatline is defined as a window where the rolling standard deviation drops
+to zero:
+\begin{equation}
+  \sigma^{(W)}_t = \operatorname{std}\!\bigl(x^{\mathrm{raw}}_s : s \in [t - W_f,\, t]\bigr),
+  \qquad
+  F_t^{\mathrm{flat}} = \ind\!\bigl[\sigma^{(W)}_t < \epsilon\bigr],
+  \label{eq:flatline}
+\end{equation}
+where $W_f = 24$\,h (288 samples) and $\epsilon = 10^{-6}$.
+
+Not all flatlines indicate malfunction. When a humidity sensor saturates at
+its physical limits (0\% or 100\%), the signal is genuinely flat but the
+sensor is not broken---the environment simply exceeds its range. We classify
+flatlines at boundary values $\{0, 100\}$ (within $\pm 0.5$~pp) as
+\emph{sensor saturation} (informational) rather than malfunction.
+
+\subsection{Jump Detection with Hampel Enhancement}
+
+Sudden value jumps indicate connection faults or electrical interference.
+The primary detector uses first-order differences:
+\begin{equation}
+  J_t = \ind\!\bigl[|x^{\mathrm{raw}}_t - x^{\mathrm{raw}}_{t-1}| > \theta_J\bigr],
+  \label{eq:jump}
+\end{equation}
+with channel-dependent thresholds ($\theta_J = 10$\textdegree C for
+temperature, 25~pp for humidity, 20~pp for moisture). Isolated jumps are
+filtered by requiring $\ge 3$ events within a 1-hour window (12 samples):
+\begin{equation}
+  C_t^{\mathrm{jump}} = \sum_{s=t-11}^{t} J_s \;\ge\; 3.
+  \label{eq:jump-cluster}
+\end{equation}
+
+\paragraph{Hampel filter enhancement.}
+The Hampel filter detects spikes using a robust local dispersion estimate.
+For a window of $k = 25$ samples centred at $t$:
+\begin{align}
+  \tilde{x}_t &= \median\!\bigl(x^{\mathrm{raw}}_s : |s-t| \le \lfloor k/2 \rfloor\bigr),
+  \label{eq:hampel-median} \\
+  \MAD_t &= \median\!\bigl(|x^{\mathrm{raw}}_s - \tilde{x}_t| : |s-t| \le \lfloor k/2 \rfloor\bigr),
+  \label{eq:hampel-mad} \\
+  \hat{\sigma}_t &= 1.4826 \cdot \MAD_t,
+  \label{eq:hampel-sigma} \\
+  O_t &= \ind\!\bigl[|x^{\mathrm{raw}}_t - \tilde{x}_t| > \kappa\, \hat{\sigma}_t\bigr],
+  \label{eq:hampel-outlier}
+\end{align}
+where $\kappa = 3.0$ and the constant 1.4826 ensures Fisher consistency
+at the Gaussian model ($\MAD \approx 0.6745\,\sigma$ for $X \sim \mathcal{N}$,
+so $1/0.6745 \approx 1.4826$).
+
+To avoid false positives on slowly varying signals where the Hampel filter
+detects normal variability, we require that Hampel clusters co-occur with
+non-trivial delta activity:
+\begin{equation}
+  C_t^{\mathrm{spike}} = C_t^{\mathrm{jump}} \;\vee\;
+    \Bigl(\sum_{s=t-11}^{t} O_s \ge 3 \;\wedge\;
+          \sum_{s=t-11}^{t} \ind\!\bigl[|x_s - x_{s-1}| > \tfrac{1}{2}\theta_J\bigr] \ge 1\Bigr).
+  \label{eq:combined-spike}
+\end{equation}
+
+\subsection{Out-of-Range Detection}
+
+Values outside the sensor's physical operating range are flagged with
+\textsc{critical} severity:
+\begin{equation}
+  R_t = \ind\!\bigl[x^{\mathrm{raw}}_t < r_{\min} \;\vee\; x^{\mathrm{raw}}_t > r_{\max}\bigr],
+\end{equation}
+with $r \in \{(-40, 60)~\text{\textdegree C},\; (0, 100)~\text{\%}\}$
+depending on channel type.
+
+\subsection{Sensor Drift Detection}
+
+Gradual sensor degradation manifests as a slow shift in the relationship
+between cavity and ambient humidity. We monitor the rolling ratio:
+\begin{equation}
+  \rho_t = \frac{\overline{H_c^{\,\mathrm{raw}}}^{(W_d)}_t}
+               {\max\!\bigl(\overline{H_a^{\,\mathrm{raw}}}^{(W_d)}_t,\; 1.0\bigr)},
+  \label{eq:drift-ratio}
+\end{equation}
+where $\overline{(\cdot)}^{(W_d)}$ denotes a rolling mean over $W_d = 14$~days.
+A drift alarm is raised when the half-window shift in $\rho$ exceeds
+$\kappa_d = 3.0$ times the rolling standard deviation of $\rho$:
+\begin{equation}
+  D_t = \ind\!\Bigl[
+    \bigl|\rho_t - \rho_{t - W_d/2}\bigr| > \kappa_d \cdot \sigma_\rho^{(W_d)}
+  \Bigr].
+  \label{eq:drift-flag}
+\end{equation}
+
+\subsection{Stuck-at-Mid-Value Detection}
+
+A sensor producing near-constant readings around its midpoint (50\%) with
+very low variation ($<0.5$~pp over 24\,h) but not exactly zero variation
+(which would be caught by the flatline detector) indicates a firmware or
+ADC fault:
+\begin{equation}
+  G_t = \ind\!\Bigl[
+    \bigl(\max_{[t-W_f, t]} x^{\mathrm{raw}} - \min_{[t-W_f, t]} x^{\mathrm{raw}}\bigr) < 0.5
+    \;\wedge\;
+    |x^{\mathrm{raw}}_t - 50| < 10
+    \;\wedge\;
+    \sigma_t^{(W_f)} > \epsilon
+  \Bigr].
+  \label{eq:stuck-mid}
+\end{equation}
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Detector 5: Rapid Moisture Change}
+\label{sec:rapid}
+
+This detector targets acute moisture resistance transitions that indicate
+active water movement through the construction. It operates on the denoised
+moisture signal.
+
+\subsection{Derivative-Based Detection}
+
+The primary flag uses time-based 3-day and 14-day deltas:
+\begin{equation}
+  F_t^{\mathrm{rapid}} =
+    \bigl(\Delta_{3\mathrm{d}} M^{\mathrm{den}}_t < -\theta_R^{3}\bigr)
+    \;\vee\;
+    \bigl(\Delta_{14\mathrm{d}} M^{\mathrm{den}}_t < -\theta_R^{14}\bigr),
+  \label{eq:rapid-flag}
+\end{equation}
+with $\theta_R^{3} = 4.0$~pp and $\theta_R^{14} = 8.0$~pp. The 14-day
+component is disabled when the data span is shorter than 14 days to avoid
+semantic errors.
+
+\subsection{CUSUM Enhancement}
+
+Downward CUSUM (\cref{sec:cusum}, direction ``down'') is applied to the
+denoised moisture signal to catch sustained gradual drops:
+\begin{equation}
+  S_t^{-} = \max\!\bigl(0,\; S_{t-1}^{-} + \mu_0 - y_t - \nu\bigr),
+  \qquad S_0^{-} = 0.
+  \label{eq:cusum-down}
+\end{equation}
+CUSUM alarm regions are merged into the rapid-change flag via disjunction.
+
+\subsection{Severity Classification}
+\begin{equation}
+  \text{severity} =
+  \begin{cases}
+    \textsc{critical} & \text{if } \Delta_{3\mathrm{d}} M < -3\theta_R^{3}, \\
+    \textsc{danger}   & \text{if } \Delta_{3\mathrm{d}} M < -2\theta_R^{3}, \\
+    \textsc{warning}  & \text{otherwise}.
+  \end{cases}
+\end{equation}
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Episode Extraction and Merging}
+\label{sec:episodes}
+
+All detectors produce binary flag series $F_t \in \{0, 1\}$. These are
+converted to discrete \emph{episodes} (contiguous intervals) via the
+following procedure.
+
+\begin{algorithm}[H]
+\caption{Episode extraction and merging}
+\label{alg:episodes}
+\begin{algorithmic}[1]
+\Require Flag series $\{F_t\}_{t=1}^{N}$, merge gap $g$, minimum duration $d_{\min}$
+\Ensure List of episodes $\mathcal{E}$
+\State Find contiguous runs where $F_t = 1$: intervals $\{[s_i, e_i]\}_{i=1}^{K}$
+\State Initialise merged list $\mathcal{M} \gets \{[s_1, e_1]\}$
+\For{$i = 2, \ldots, K$}
+  \If{$s_i - e_{i-1} \le g$}
+    \State Extend last interval: $e_{\text{last}} \gets e_i$ \Comment{bridge short gap}
+  \Else
+    \State Append $[s_i, e_i]$ to $\mathcal{M}$
+  \EndIf
+\EndFor
+\State $\mathcal{E} \gets \{[s, e] \in \mathcal{M} : (e - s) \ge d_{\min}\}$ \Comment{duration filter}
+\State \Return $\mathcal{E}$
+\end{algorithmic}
+\end{algorithm}
+
+The merge gap $g$ is detector-dependent: 6\,h (default), 21~days (for
+\textsc{warning} condensation), 48\,h (for sensor malfunction and rapid
+moisture change).
+
+\paragraph{Severity deduplication.}
+When multiple severity tiers produce overlapping episodes, lower-severity
+episodes that are temporally contained within higher-severity episodes are
+removed, ensuring each time interval is assigned at most one severity level
+per problem type.
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Composite Health Score}
+\label{sec:health}
+
+Each device receives a health score $S \in [0, 100]$ that integrates all
+detected problems:
+\begin{equation}
+  S = \max\!\Bigl(0,\;\; 100 - \sum_{p \in \mathcal{P}} w_p \cdot
+    \bigl(0.3 + 0.7\, f_p\bigr)\Bigr),
+  \label{eq:health-score}
+\end{equation}
+where $\mathcal{P}$ is the set of detected problems (excluding informational
+saturation events), $w_p$ is the severity-dependent weight from
+\cref{tab:weights}, and $f_p = \min(d_p / D, 1)$ is the duration factor
+($d_p$ = problem duration, $D$ = total data span).
+
+\begin{table}[H]
+\centering
+\caption{Health penalty weights $w_p$ by problem type and severity.}
+\label{tab:weights}
+\begin{tabular}{lccc}
+  \toprule
+  \textbf{Problem type} & \textsc{warning} & \textsc{danger} & \textsc{critical} \\
+  \midrule
+  Condensation risk    & 5  & 15 & 30 \\
+  Moisture intrusion   & 10 & 25 & 40 \\
+  Drying failure       & 8  & 20 & 35 \\
+  Sensor malfunction   & 3  & 10 & 20 \\
+  Rapid moisture change & 8  & 20 & 35 \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+The factor $0.3 + 0.7 f_p$ ensures that even a brief problem incurs a
+minimum 30\% of its weight (presence penalty), while chronic problems
+($f_p \to 1$) incur the full weight.
+
+Health grades are assigned as:
+\begin{center}
+\begin{tabular}{lccccl}
+  \toprule
+  \textbf{Grade} & A & B & C & D & F \\
+  \midrule
+  \textbf{Score range} & $[90, 100]$ & $[75, 90)$ & $[50, 75)$ & $[25, 50)$ & $[0, 25)$ \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Installation-Level Outlier Detection}
+\label{sec:outlier}
+
+Devices within the same building installation share similar environmental
+conditions. A device that deviates significantly from its siblings warrants
+investigation even if it does not individually trigger any per-device
+threshold. We use a robust multivariate approach based on MAD z-scores.
+
+\subsection{Feature Extraction}
+
+For each device $d$, we extract a feature vector $\bm{v}^{(d)} \in \RR^p$:
+
+\begin{center}
+\begin{tabular}{llp{7cm}}
+  \toprule
+  \textbf{Feature} & \textbf{Channel} & \textbf{Definition} \\
+  \midrule
+  $\mathrm{cavity\_p95}$       & $H_c$ & 95th percentile of cavity humidity \\
+  $\mathrm{pct\_above\_80}$    & $H_c$ & Percentage of samples with $H_c > 80\%$ \\
+  $\mathrm{pct\_above\_90}$    & $H_c$ & Percentage of samples with $H_c > 90\%$ \\
+  $\mathrm{max\_consec\_90}$   & $H_c$ & Maximum consecutive hours above 90\% \\
+  $\mathrm{moisture\_p05}$     & $M$   & 5th percentile of moisture resistance \\
+  $\mathrm{moisture\_mean}$    & $M$   & Mean moisture resistance \\
+  $\mathrm{moisture\_slope}$   & $M$   & Linear slope over last 30 days \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{MAD Z-Scores}
+
+For each feature $j$ and installation $\mathcal{I}$, we compute the Median
+Absolute Deviation z-score:
+\begin{align}
+  \tilde{v}_j &= \median_{d \in \mathcal{I}}\!\bigl(v_j^{(d)}\bigr),
+  \label{eq:mad-median} \\
+  \MAD_j &= \median_{d \in \mathcal{I}}\!\bigl(|v_j^{(d)} - \tilde{v}_j|\bigr),
+  \label{eq:mad-def} \\
+  z_j^{(d)} &= \frac{v_j^{(d)} - \tilde{v}_j}{1.4826 \cdot \MAD_j}.
+  \label{eq:mad-zscore}
+\end{align}
+
+A device is flagged as an outlier on feature $j$ if $|z_j^{(d)}| > 3.0$.
+The flagging is directional: high values of humidity features ($z > +3$)
+indicate condensation risk outliers, while low values of moisture features
+($z < -3$) indicate drying failure outliers.
+
+The MAD-based approach is breakdown-resistant: up to 50\% of devices in an
+installation can be anomalous before the median and MAD are corrupted, making
+it far more robust than the classical mean/IQR approach.
+
+Installation-level outlier detection requires a minimum of 3 devices per
+installation to provide meaningful peer comparison.
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Validation Results}
+\label{sec:results}
+
+The pipeline was validated on a deployment of 99 devices across 11
+building installations, with data spanning up to 40 months.
+
+\subsection{Detection Summary}
+
+\begin{center}
+\begin{tabular}{lrrrr}
+  \toprule
+  & \textsc{critical} & \textsc{danger} & \textsc{warning} & \textbf{Total} \\
+  \midrule
+  Total problems       & 46  & 189 & 427 & 662 \\
+  Devices with issues  & --  & --  & --  & 77  \\
+  Clean devices        & --  & --  & --  & 22  \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Health Score Distribution}
+
+\begin{center}
+\begin{tabular}{lccccc|cc}
+  \toprule
+  \textbf{Grade} & A & B & C & D & F & \textbf{Mean} & \textbf{Median} \\
+  \midrule
+  \textbf{Count} & 38 & 24 & 24 & 10 & 3 & 76 & 79 \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Installation-Level Outliers}
+
+The MAD z-score analysis identified 17 outlier observations across the fleet,
+including:
+\begin{itemize}[nosep]
+  \item Device 03c28e06: $\mathrm{cavity\_p95} = 100.0\%$ vs.\ installation
+        median $83.6\%$ (MAD $z = 6.8$).
+  \item Device 9c3786df: $\mathrm{max\_consec\_90} = 13{,}967$\,h vs.\
+        installation median $772.5$\,h (MAD $z = 11.5$).
+  \item Device 06e01489: $\mathrm{moisture\_p05} = 7.5\%$ vs.\ installation
+        median $12.2\%$ (MAD $z = -9.5$).
+\end{itemize}
+
+\subsection{Qualitative Assessment}
+
+Visual inspection of device diagnostic plots confirmed:
+\begin{enumerate}[nosep]
+  \item Condensation episode boundaries align with visible threshold crossings
+        in cavity humidity traces; hysteresis eliminates toggling artefacts.
+  \item CUSUM-based moisture intrusion detections correspond to simultaneous
+        cavity humidity surges and moisture resistance drops.
+  \item Exponential drying curves provide physically meaningful time constants
+        (e.g.\ $\tau = 483$~days for a slowly-drying cavity).
+  \item Hampel-enhanced spike detection correctly identifies sensor faults
+        without generating false positives on normal thermal variability.
+  \item Fleet seasonal bands provide context for distinguishing building-wide
+        seasonal effects from localised pathologies.
+\end{enumerate}
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Summary of Parameters}
+\label{sec:params}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Complete parameter table.}
+\label{tab:params}
+\begin{tabular}{llrl}
+  \toprule
+  \textbf{Parameter} & \textbf{Detector} & \textbf{Value} & \textbf{Unit} \\
+  \midrule
+  Resample interval & Preprocessing & 5 & min \\
+  Median filter kernel & Preprocessing & 7 & samples \\
+  EWMA half-life & Preprocessing & 6 & hours \\
+  \midrule
+  $\theta_M^{24}$ (moisture drop 24\,h) & Intrusion & 3.0 & pp \\
+  $\theta_M^{7}$ (moisture drop 7\,d) & Intrusion & 5.0 & pp \\
+  $\theta_{H_c}^{24}$ (cavity rise 24\,h) & Intrusion & 8.0 & pp \\
+  $\theta_{\min}$ (minimum change) & Intrusion & 1.0 & pp \\
+  \midrule
+  Condensation WARNING & Condensation & 80 / 78 & \% (enter/exit) \\
+  Condensation DANGER & Condensation & 90 / 88 & \% (enter/exit) \\
+  Condensation CRITICAL & Condensation & 95 / 93 & \% (enter/exit) \\
+  Hysteresis band $\beta$ & Condensation & 2.0 & pp \\
+  Fleet offset $\delta_{\mathrm{fleet}}$ & Condensation & 8.0 & pp \\
+  Abs.\ humidity threshold & Condensation & 14.0 & g/kg \\
+  Chronic \% (WARNING) & Condensation & 40 & \% \\
+  Chronic \% (DANGER/CRITICAL) & Condensation & 50 & \% \\
+  Recurring min episodes & Condensation & 6 & -- \\
+  WARNING merge gap & Condensation & 21 & days \\
+  \midrule
+  CUSUM threshold $h$ & Intrusion / Rapid & 5.0 & -- \\
+  CUSUM drift $\nu$ & Intrusion / Rapid & 0.5 & -- \\
+  CUSUM confirmation window & Intrusion & 72 & hours \\
+  \midrule
+  $\theta_R^{3}$ (3-day drop) & Rapid change & 4.0 & pp \\
+  $\theta_R^{14}$ (14-day drop) & Rapid change & 8.0 & pp \\
+  \midrule
+  Exp.\ drying $\tau$ WARNING & Drying & 365 & days \\
+  Exp.\ drying $\tau$ DANGER & Drying & 730 & days \\
+  Plateau threshold & Drying & 80 & \% \\
+  Min fit span & Drying & 60 & days \\
+  \midrule
+  Flatline window & Sensor & 24 & hours \\
+  Jump threshold (temp) & Sensor & 10.0 & \textdegree C \\
+  Jump threshold (humidity) & Sensor & 25.0 & pp \\
+  Hampel window $k$ & Sensor & 25 & samples \\
+  Hampel threshold $\kappa$ & Sensor & 3.0 & -- \\
+  Drift window $W_d$ & Sensor & 14 & days \\
+  Drift threshold $\kappa_d$ & Sensor & 3.0 & $\sigma$ \\
+  \midrule
+  MAD z-score threshold & Outlier & 3.0 & -- \\
+  Min devices per installation & Outlier & 3 & -- \\
+  Seasonal baseline window & Baseline & 30 & days \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Conclusion}
+\label{sec:conclusion}
+
+The presented system provides a comprehensive, automated diagnostic pipeline
+for building hygrothermal health monitoring. By combining multi-resolution
+signal processing, statistical change-point detection, physical drying models,
+robust outlier identification, and fleet-level benchmarking, the system
+produces actionable per-device and per-installation reports with quantified
+severity and health scores.
+
+Validation on 99 sensors across 11 installations demonstrates the system's
+ability to correctly distinguish genuine pathologies (moisture intrusion,
+chronic condensation, drying failure) from benign seasonal variation and
+sensor artefacts, while maintaining low false-positive rates through
+hysteresis, seasonal normalisation, and minimum-magnitude filtering.
+
+\end{document}
