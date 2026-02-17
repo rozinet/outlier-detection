@@ -1,0 +1,107 @@
+{
+  "resample_interval": "5min",
+  "median_filter_window": 7,
+  "smoothing_window": 6,
+  "ewma_halflife_hours": 6,
+  "use_ewma_trend": true,
+  "min_data_hours": 48,
+  "moisture_drop_threshold_24h": 3.0,
+  "moisture_drop_threshold_7d": 5.0,
+  "cavity_rise_threshold_24h": 8.0,
+  "moisture_intrusion_min_hours": 24,
+  "moisture_drop_min": 1.0,
+  "cavity_rise_min": 1.0,
+  "condensation_warning_pct": 80.0,
+  "condensation_danger_pct": 90.0,
+  "condensation_critical_pct": 95.0,
+  "condensation_min_hours": 48,
+  "condensation_chronic_pct_warning": 40.0,
+  "condensation_chronic_pct_severe": 50.0,
+  "condensation_chronic_min_months": 6,
+  "condensation_recurring_min_episodes": 6,
+  "condensation_warning_merge_gap_days": 21,
+  "seasonal_baseline_window_days": 30,
+  "condensation_hysteresis_band": 2.0,
+  "condensation_use_abs_humidity": true,
+  "abs_humidity_warning_gkg": 14.0,
+  "fleet_seasonal_offset_pct": 8.0,
+  "rapid_moisture_drop_3d": 4.0,
+  "rapid_moisture_drop_14d": 8.0,
+  "rapid_change_min_hours": 12,
+  "cusum_threshold": 5.0,
+  "cusum_drift": 0.5,
+  "cusum_confirmation_window_hours": 72,
+  "drying_eval_window_weeks": 4,
+  "drying_plateau_tolerance": 0.5,
+  "drying_reversal_threshold": 1.0,
+  "drying_tau_warning_days": 365,
+  "drying_tau_danger_days": 730,
+  "drying_plateau_pct": 80.0,
+  "drying_initial_wet_threshold": 85.0,
+  "drying_exp_fit_min_days": 60,
+  "flatline_window_hours": 24,
+  "jump_threshold_temp": 10.0,
+  "jump_threshold_humidity": 25.0,
+  "jump_threshold_moisture": 20.0,
+  "jump_min_count": 3,
+  "temp_range": [
+    -40.0,
+    60.0
+  ],
+  "humidity_range": [
+    0.0,
+    100.0
+  ],
+  "moisture_range": [
+    0.0,
+    100.0
+  ],
+  "saturation_values": {
+    "hum_ambient": [
+      0.0,
+      100.0
+    ],
+    "hum_cavity": [
+      0.0,
+      100.0
+    ],
+    "moisture": [
+      0.0,
+      100.0
+    ]
+  },
+  "hampel_window": 25,
+  "hampel_threshold": 3.0,
+  "sensor_residual_window_days": 14,
+  "sensor_drift_threshold_std": 3.0,
+  "outlier_mad_zscore_threshold": 3.0,
+  "outlier_min_devices": 3,
+  "episode_merge_gap_hours": 6,
+  "health_score_weights": {
+    "condensation_risk": {
+      "warning": 5,
+      "danger": 15,
+      "critical": 30
+    },
+    "moisture_intrusion": {
+      "warning": 10,
+      "danger": 25,
+      "critical": 40
+    },
+    "drying_failure": {
+      "warning": 8,
+      "danger": 20,
+      "critical": 35
+    },
+    "sensor_malfunction": {
+      "warning": 3,
+      "danger": 10,
+      "critical": 20
+    },
+    "rapid_moisture_change": {
+      "warning": 8,
+      "danger": 20,
+      "critical": 35
+    }
+  }
+}

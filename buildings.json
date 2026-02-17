@@ -1,0 +1,94 @@
+{
+  "fb3136e7-856b-4a2d-be12-dccb8015ed0a": {
+    "building_id": "fb3136e7-856b-4a2d-be12-dccb8015ed0a",
+    "name": "B\u00edl\u00fd d\u016fm",
+    "address": "1600 Pennsylvania Ave, NW",
+    "description": "nikdo nev\u00ed kdo tam bydl\u00ed",
+    "rooms": [
+      {
+        "room_id": "d944c4f1-e54b-4bad-a678-21ebbc09d2e3",
+        "name": "Ov\u00e1ln\u00e1 pracovna",
+        "building_id": "fb3136e7-856b-4a2d-be12-dccb8015ed0a",
+        "floor": "1",
+        "description": "aaa",
+        "sensors": [
+          {
+            "sensor_id": "1bf223dc-4a62-4449-8724-f4ba3ace324d",
+            "name": "senzor1",
+            "room_id": "d944c4f1-e54b-4bad-a678-21ebbc09d2e3",
+            "data_path": "C:\\Users\\Max\\Desktop\\outlier\\outlier-detection\\exported_data_2026-01-22\\exported_data\\1200\\1214",
+            "description": "",
+            "is_active": true
+          }
+        ]
+      }
+    ]
+  },
+  "5cc4d97d-3480-4ce4-a645-422d4ef85c17": {
+    "building_id": "5cc4d97d-3480-4ce4-a645-422d4ef85c17",
+    "name": "Pra\u017esk\u00fd hrad",
+    "address": "Hrad\u010dany 119 08 Praha 1",
+    "description": "naprosto pr\u00e1zdno",
+    "rooms": [
+      {
+        "room_id": "e85e59b8-8ad6-4ff7-acc9-9b93758b1568",
+        "name": "Vladislavsk\u00fd s\u00e1l",
+        "building_id": "5cc4d97d-3480-4ce4-a645-422d4ef85c17",
+        "floor": "1",
+        "description": "adwddsasdsa",
+        "sensors": [
+          {
+            "sensor_id": "71a9523e-c0b8-4893-b3fa-27d651c5b12e",
+            "name": "Senzor 1",
+            "room_id": "e85e59b8-8ad6-4ff7-acc9-9b93758b1568",
+            "data_path": "C:\\Users\\Max\\Desktop\\outlier\\outlier-detection\\exported_data_2026-01-22\\exported_data\\1000\\1031",
+            "description": "",
+            "is_active": true
+          }
+        ]
+      },
+      {
+        "room_id": "eb2dc862-8744-4fb7-b264-768a4cfdb17f",
+        "name": "\u0160pan\u011blsk\u00fd s\u00e1l",
+        "building_id": "5cc4d97d-3480-4ce4-a645-422d4ef85c17",
+        "floor": "1",
+        "description": "",
+        "sensors": [
+          {
+            "sensor_id": "837cf0e1-cb8c-45da-8f45-8085df05afd1",
+            "name": "Senzor 2",
+            "room_id": "eb2dc862-8744-4fb7-b264-768a4cfdb17f",
+            "data_path": "C:\\Users\\Max\\Desktop\\outlier\\outlier-detection\\exported_data_2026-01-22\\exported_data\\1000\\1031",
+            "description": "",
+            "is_active": true
+          },
+          {
+            "sensor_id": "6750679b-b809-4c80-ac9c-d9580f74cd88",
+            "name": "Senzor 3",
+            "room_id": "eb2dc862-8744-4fb7-b264-768a4cfdb17f",
+            "data_path": "C:\\Users\\Max\\Desktop\\outlier\\outlier-detection\\exported_data_2026-01-22\\exported_data\\1000\\1031",
+            "description": "",
+            "is_active": true
+          }
+        ]
+      },
+      {
+        "room_id": "a80cc5cd-b51e-49bc-9feb-d8d2433ae962",
+        "name": "Rudolfova galerie",
+        "building_id": "5cc4d97d-3480-4ce4-a645-422d4ef85c17",
+        "floor": "1",
+        "description": "",
+        "sensors": [
+          {
+            "sensor_id": "dcd7af04-a938-46c2-a4ac-89c65d027498",
+            "name": "Senzor 4",
+            "room_id": "a80cc5cd-b51e-49bc-9feb-d8d2433ae962",
+            "data_path": "C:\\Users\\Max\\Desktop\\outlier\\outlier-detection\\exported_data_2026-01-22\\exported_data\\1000\\1031",
+            "description": "",
+            "is_active": true
+          }
+        ]
+      }
+    ]
+  }
+}
